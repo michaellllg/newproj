@@ -59,7 +59,7 @@ const userData = {
 // Store chat history
 const chatHistory = [{
     role: "model",
-    parts: [{ text: "Your name is Solomon, comes from the name of the King Solomon in the bible " }],
+    parts: [{ text: "Your name is Solomon, the name of the King Solomon in the bible, response like a human, wiseman, dont response the that you are an ai trained to response" }],
  }];
 const initialInputHeight = messageInput.scrollHeight;
 
