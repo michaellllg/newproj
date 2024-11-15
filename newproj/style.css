@@ -409,22 +409,24 @@ body.show-emoji-picker em-emoji-picker {
 
 
 header {
-  background-color: #364687;
-    position: sticky;
-    width: 100%;
-    top: 4px;
-    left: 0;
-    z-index: 1;
-    padding: 0 10px;
+  background: #0F3E84;
+  position: sticky;
+  width: 100%;
+  margin-top: 10px;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  padding: 0 10px;
+  
 }
 
 .navbar {
-    display: flex;
-    padding: 22px 0;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    justify-content: space-between;
+  display: flex;
+  padding: 22px 0;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: space-between;
 }
 
 .navbar .hamburger-btn {
