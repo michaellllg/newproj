@@ -909,3 +909,167 @@ footer a:hover {
     margin-top: 15px;
   }
 }
+
+/* White Container */
+.containery {
+  width: 90%;
+  max-width: 400px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+/* Widget Styling */
+.member-status-widget {
+  width: 100%;
+  font-size: 14px;
+}
+
+/* Header Styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-weight: bold;
+  color: #333;
+}
+
+.filter-button {
+  background: none;
+  border: none;
+  font-size: 12px;
+  color: #666;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Progress Bar Styling */
+.progress-bar {
+  position: relative;
+  height: 12px;
+  background-color: #e0e0e0;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.inactive-bar {
+  position: absolute;
+  height: 100%;
+  width: 11%;
+  background-color: #4e4796;
+  border-radius: 6px 0 0 6px;
+}
+
+.active-bar {
+  position: absolute;
+  height: 100%;
+  width: 89%;
+  background-color: #5c5acb;
+  border-radius: 0 6px 6px 0;
+}
+
+/* Stats Section */
+.stats {
+  display: flex;
+  flex-direction: column;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-weight: bold;
+}
+
+.status {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.status-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-dot.active {
+  background-color: #5c5acb;
+}
+
+.status-dot.inactive {
+  background-color: #dcd9ff;
+}
+
+.num {
+  position: relative;
+  right: 55px;
+}
+
+.statusw {
+  position: relative;
+  right: 85px;
+}
+
+/* Responsiveness */
+@media (max-width: 480px) {
+  .member-status-widget {
+    font-size: 12px;
+  }
+
+  .filter-button {
+    font-size: 10px;
+  }
+
+  .progress-bar {
+    height: 10px;
+  }
+
+  .status-item {
+    font-size: 12px;
+  }
+
+  .num {
+    position: relative;
+    right: 45px; /* Adjusted for smaller screens */
+  }
+
+  .statusw {
+    position: relative;
+    right: 60px; /* Adjusted for smaller screens */
+  }
+}
+
+@media (max-width: 320px) {
+  /* Further adjustments for very small screens */
+  .num {
+    position: relative;
+    right: 10px;
+  }
+
+  .statusw {
+    position: relative;
+    right: 15px;
+  }
+
+  .filter-button {
+    font-size: 9px;
+  }
+}
+
+

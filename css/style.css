@@ -463,7 +463,7 @@ header {
 
 .navbar .close-btn {
     position: absolute;
-    right: 20px;
+    right: 200px;
     top: 20px;
     display: none;
     color: #000;
