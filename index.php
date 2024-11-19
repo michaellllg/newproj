@@ -50,17 +50,17 @@
             <div class="form-content">
                 <h2>LOGIN</h2>
                 <!-- Login Form -->
-                <form action="" method="POST"> <!-- Form submits to the same page -->
-                    <div class="input-field">
-                        <input type="text" name="email" required>
-                        <label>Email</label>
-                    </div>
-                    <div class="input-field">
-                        <input type="password" name="password" required>
-                        <label>Password</label>
-                    </div>
-                    <a href="#" class="forgot-pass-link">Forgot password?</a>
-                    <button type="submit">Log In</button>
+                <form action="api/login.php" method="POST">
+    <div class="input-field">
+        <input type="text" name="email" required>
+        <label>Email</label>
+    </div>
+    <div class="input-field">
+        <input type="password" name="password" required>
+        <label>Password</label>
+    </div>
+    <a href="#" class="forgot-pass-link">Forgot password?</a>
+    <button type="submit">Log In</button>
                 </form>
                 <div class="bottom-link">
                     Don't have an account?

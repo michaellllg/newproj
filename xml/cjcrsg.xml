@@ -1,0 +1,120 @@
+<database name="cjcrsg">
+  <tables>
+    <table name="accountinfo">
+      <columns>
+        <column name="accountID" type="int" primaryKey="true" />
+        <column name="memberID" type="int" />
+        <column name="email" type="varchar" size="100" />
+        <column name="password" type="varchar" size="100" />
+        <column name="phone" type="int" size="15" />
+        <column name="address" type="varchar" size="100" />
+        <column name="dateCreated" type="timestamp" default="current_timestamp" />
+        <column name="lastUpdated" type="timestamp" default="current_timestamp" />
+        <column name="life_stage" type="varchar" size="255" nullable="true" />
+        <column name="image" type="blob" nullable="true" />
+      </columns>
+      <data>
+    <row accountID="1" memberID="1" email="mnm@gmail.com" password="mnm123" phone="324523525" address="San Roque" dateCreated="2024-05-09 02:02:32" lastUpdated="2024-05-06 04:48:40" life_stage="College Student" />
+    <row accountID="2" memberID="2" email="kurt@gmail.com" password="123456" phone="2147483647" address="Malvar" dateCreated="2024-05-06 06:31:53" lastUpdated="2024-05-06 06:31:53" life_stage="College student" />
+    <row accountID="3" memberID="3" email="hazel@gmail.com" password="hazel00" phone="2147483647" address="San Bartolome" dateCreated="2024-05-08 13:50:55" lastUpdated="2024-05-06 10:05:28" life_stage="College student" />
+    <row accountID="4" memberID="4" email="harvy@gmail.com" password="harvy123" phone="87382832" address="San Vicente" dateCreated="2024-05-07 11:49:21" lastUpdated="2024-05-06 10:49:30" life_stage="Professional" />
+    <row accountID="5" memberID="5" email="tonan@gmail.com" password="tonan123" phone="39049043" address="Santiago" dateCreated="2024-05-07 11:51:23" lastUpdated="2024-05-06 10:49:31" life_stage="Professional" />
+    <row accountID="6" memberID="6" email="catena@gmail.com" password="caten123" phone="93850850" address="San Roque" dateCreated="2024-05-08 13:56:25" lastUpdated="2024-05-08 13:55:08" life_stage="College student" />
+    <row accountID="7" memberID="7" email="hernandez@gmail.com" password="diana123" phone="2147483647" address="San Roque" dateCreated="2024-05-08 13:59:56" lastUpdated="2024-05-08 13:59:56" life_stage="College student" />
+    <row accountID="8" memberID="8" email="bien@gmail.com" password="bien123" phone="34034805" address="San Rafael" dateCreated="2024-05-08 14:01:30" lastUpdated="2024-05-08 14:01:30" life_stage="College Student" />
+    <row accountID="9" memberID="9" email="precious@gmail.com" password="precious123" phone="340932470" address="Darasa" dateCreated="2024-05-08 14:04:01" lastUpdated="2024-05-08 14:04:01" life_stage="College student" />
+    <row accountID="10" memberID="10" email="jr@gmail.com" password="jr123456" phone="2147483647" address="San Miguel" dateCreated="2024-05-08 14:05:09" lastUpdated="2024-05-08 14:05:09" life_stage="College student" />
+    <row accountID="11" memberID="11" email="charley@gmail.com" password="charley113" phone="34504309" address="San Roques" dateCreated="2024-05-08 14:11:07" lastUpdated="2024-05-08 14:07:22" life_stage="College student" />
+    <row accountID="12" memberID="12" email="durado@gmail.com" password="durado123" phone="345793485" address="San Roque" dateCreated="2024-05-09 05:15:30" lastUpdated="2024-05-08 14:46:25" life_stage="College student" />
+    <row accountID="13" memberID="13" email="mark@gmail.com" password="mark123" phone="32904803" address="San Roque" dateCreated="2024-05-09 07:41:43" lastUpdated="2024-05-09 07:41:43" life_stage="college student" />
+    <row accountID="14" memberID="14" email="doton@gmail.com" password="doton123" phone="320940392" address="Sta. Maria" dateCreated="2024-05-09 08:22:47" lastUpdated="2024-05-09 08:22:47" life_stage="College student" />
+    <row accountID="15" memberID="15" email="francis@gmail.com" password="francis123" phone="2147483647" address="Darasa" dateCreated="2024-05-09 08:35:07" lastUpdated="2024-05-09 08:35:07" life_stage="College Student" />
+    <row accountID="19" memberID="19" email="lei@gmail.com" password="lei123" phone="324320894" address="San Antonoi" dateCreated="2024-05-09 08:55:28" lastUpdated="2024-05-09 08:55:28" life_stage="College Student" />
+    <row accountID="20" memberID="20" email="emman@gmail.com" password="emman123" phone="237983489" address="Tanauans" dateCreated="2024-05-09 08:59:49" lastUpdated="2024-05-09 08:59:27" life_stage="College Student" />
+    <row accountID="21" memberID="21" email="allysa@gmail.com" password="ally123" phone="289374983" address="San Miguel" dateCreated="2024-05-09 21:44:41" lastUpdated="2024-05-09 09:49:47" life_stage="College Student" />
+    <row accountID="22" memberID="24" email="zai@gmail.com" password="zai123" phone="9435090" address="San Vicente" dateCreated="2024-05-09 11:32:51" lastUpdated="2024-05-09 11:32:51" life_stage="College Student" />
+    <row accountID="23" memberID="25" email="jona@gmail.com" password="jona123" phone="34508934" address="Talisay" dateCreated="2024-05-09 22:03:26" lastUpdated="2024-05-09 22:03:26" life_stage="College Student" />
+
+
+        <!-- More rows here -->
+      </data>
+    </table>
+
+    <table name="accountrole">
+      <columns>
+        <column name="accRoleID" type="int" primaryKey="true" />
+        <column name="memberID" type="int" />
+        <column name="roleID" type="int" />
+        <column name="dateCreated" type="timestamp" default="current_timestamp" />
+      </columns>
+      <data>
+        <row accRoleID="1" memberID="1" roleID="1" dateCreated="2024-05-07 12:09:16" />
+        <!-- More rows here -->
+      </data>
+    </table>
+
+    <table name="attendance">
+      <columns>
+        <column name="atten_id" type="int" primaryKey="true" />
+        <column name="memberID" type="int" />
+        <column name="date" type="timestamp" default="current_timestamp" />
+      </columns>
+      <data>
+        <row atten_id="1" memberID="1" date="2024-05-06 06:32:58" />
+        <!-- More rows here -->
+      </data>
+    </table>
+
+    <table name="member">
+    <columns>
+        <column name="memberID" type="int" primaryKey="true" />
+        <column name="name" type="varchar" size="100" />
+        <column name="status" type="varchar" size="50" />
+        <column name="dateCreated" type="timestamp" default="current_timestamp" />
+        <column name="lastUpdated" type="timestamp" default="current_timestamp" onUpdate="current_timestamp" />
+    </columns>
+    <data>
+        <row memberID="1" name="Michael Manlangit" status="Active" dateCreated="2024-05-06 04:48:40" lastUpdated="2024-05-06 04:48:40" />
+        <row memberID="2" name="Kurt Angelo Labandelo" status="Active" dateCreated="2024-05-06 06:31:53" lastUpdated="2024-05-06 06:31:53" />
+        <row memberID="3" name="Hazel Anne Malitig" status="Active" dateCreated="2024-05-06 10:05:28" lastUpdated="2024-05-07 12:13:21" />
+        <row memberID="4" name="Harvy Winceslao" status="Inactive" dateCreated="2024-05-06 10:49:30" lastUpdated="2024-05-07 11:47:58" />
+        <row memberID="5" name="Kenneth Onan" status="Active" dateCreated="2024-05-06 10:49:31" lastUpdated="2024-05-06 10:51:23" />
+        <row memberID="6" name="Daniel Catena" status="Active" dateCreated="2024-05-08 13:55:08" lastUpdated="2024-05-08 13:55:08" />
+        <row memberID="7" name="Diana Hernadez" status="Active" dateCreated="2024-05-08 13:59:56" lastUpdated="2024-05-08 13:59:56" />
+        <row memberID="8" name="Bien Tolentino" status="Inactive" dateCreated="2024-05-08 14:01:30" lastUpdated="2024-05-09 09:00:46" />
+        <row memberID="9" name="Precious Grace Abion" status="Active" dateCreated="2024-05-08 14:04:01" lastUpdated="2024-05-08 14:04:01" />
+        <row memberID="10" name="Rolly Pascual Jr." status="Active" dateCreated="2024-05-08 14:05:09" lastUpdated="2024-05-08 14:05:09" />
+        <row memberID="11" name="Charley Comia" status="Inactive" dateCreated="2024-05-08 14:07:22" lastUpdated="2024-05-08 14:12:34" />
+        <row memberID="12" name="Kurt Durado" status="Inactive" dateCreated="2024-05-08 14:46:25" lastUpdated="2024-05-09 05:16:52" />
+        <row memberID="13" name="Mark Aeron Vierneza" status="Active" dateCreated="2024-05-09 07:41:43" lastUpdated="2024-05-09 07:41:43" />
+        <row memberID="14" name="John Ansel Doton" status="Inactive" dateCreated="2024-05-09 08:22:47" lastUpdated="2024-05-09 08:32:34" />
+        <row memberID="15" name="Francis Andrei Aciado" status="Active" dateCreated="2024-05-09 08:35:07" lastUpdated="2024-05-09 08:35:07" />
+        <row memberID="19" name="Lei Charles Doria" status="Active" dateCreated="2024-05-09 08:55:28" lastUpdated="2024-05-09 08:55:28" />
+        <row memberID="20" name="Emmanuel Parenio" status="Active" dateCreated="2024-05-09 08:59:27" lastUpdated="2024-05-09 08:59:27" />
+        <row memberID="21" name="Allyssa Mae Espiritu" status="Active" dateCreated="2024-05-09 09:49:47" lastUpdated="2024-05-09 21:44:33" />
+        <row memberID="24" name="Zairah Torres" status="Inactive" dateCreated="2024-05-09 11:32:51" lastUpdated="2024-05-09 11:36:15" />
+        <row memberID="25" name="Jonalyn Umali" status="Active" dateCreated="2024-05-09 22:03:26" lastUpdated="2024-05-09 22:03:26" />
+    </data>
+</table>
+
+
+    <table name="role">
+      <columns>
+        <column name="roleID" type="int" primaryKey="true" />
+        <column name="roletype" type="text" />
+      </columns>
+      <data>
+        <row roleID="1" roletype="Admin" />
+        <row roleID="2" roletype="Member" />
+        <row roleID="3" roletype="Visitor" />
+      </data>
+    </table>
+  </tables>
+
+  <constraints>
+    <foreignKey table="accountinfo" column="memberID" referencesTable="member" referencesColumn="memberID" />
+    <foreignKey table="accountrole" column="roleID" referencesTable="role" referencesColumn="roleID" />
+    <foreignKey table="accountrole" column="memberID" referencesTable="member" referencesColumn="memberID" />
+    <foreignKey table="attendance" column="memberID" referencesTable="member" referencesColumn="memberID" />
+  </constraints>
+</database>

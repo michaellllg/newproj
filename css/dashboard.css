@@ -849,86 +849,86 @@ footer a:hover {
   }
 }
 
-.chartMenu p {
-  padding: 10px;
-  font-size: 20px;
-}
-
-.chartBox {
-  width: 30%; /* Set to 40% of the width */
-  max-width: 800px; /* Maximum width */
-  padding: 20px;
-  border-radius: 20px;
-  border: solid 3px rgb(214, 231, 243);
-  background: white;
-  margin-left: auto; /* Align to the right edge */
-  margin-right: 0; /* Ensure no margin on the right */
-  box-sizing: border-box;
-}
-
-.chartCard {
-  display: flex;
-  justify-content: flex-end; /* Align content to the right */
-  width: 100%;
+/* Container for Admin Section */
+.admin-container {
+  text-align: left; /* Align text to the left */
   margin-top: 20px;
+  margin-left: 10x; /* Align to the left edge */
+  padding-top: 30px;
+  padding-right: 300px;
+ 
 }
 
-#myChart {
-  width: 100% !important;
-  height: auto !important;
+/* Greeting Label Styling */
+.admin-greeting {
+  font-size: 30px;
+  font-weight: bold;
+  color: #303858;
+  margin-bottom: 8px;
+  display: block; /* Ensure spacing below the label */
 }
 
-/* Responsiveness */
-@media (max-width: 1200px) {
-  .chartBox {
-    width: 40%; /* Still 40% for medium screens */
-  }
+/* Description Label Styling */
+.admin-description {
+  font-size: 14px;
+  color: #60657b;
+  margin-bottom: 16px;
+  display: block; /* Ensure proper spacing */
 }
 
-@media (max-width: 768px) {
-  .chartBox {
-    width: 80%; /* Wider on smaller screens */
-    padding: 15px;
-  }
-
-  .chartCard {
-    flex-direction: column;
-    align-items: center;
-  }
+/* Button Styling */
+.attendance-button {
+  font-size: 14px;
+  font-weight: bold;
+  color: #303858;
+  background-color: #a4b6ee;
+  border: 1px solid #d6e7f3;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
-@media (max-width: 480px) {
-  .chartBox {
-    width: 90%; /* Take up more width on very small screens */
-    padding: 10px;
-  }
+/* Button Hover Effect */
+.attendance-button:hover {
+  background-color: #b4c6e4;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
 
-  .chartCard {
-    flex-direction: column;
-    align-items: center;
-    margin-top: 15px;
-  }
+
+/* Flex Container for Layout */
+.container-wrapper {
+  display: flex;
+  gap: 2px; /* Space between containery and chartCard */
+  justify-content: flex-end; /* Align to the right edge */
+  align-items: flex-start; /* Align at the top */
+  margin: 20px auto; /* Center the container horizontally */
+  padding: 0 15px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  box-sizing: border-box;
 }
 
 /* White Container */
 .containery {
-  width: 90%;
+  width: 27%; /* Default width for large screens */
   max-width: 400px;
+  height: 220px; /* Ensure it matches chart height */
   background: #ffffff;
   border-radius: 12px;
-  padding: 16px;
+  padding: 35px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Widget Styling */
+/* Member Status Widget Styling */
 .member-status-widget {
   width: 100%;
   font-size: 14px;
 }
 
-/* Header Styling */
 .header {
   display: flex;
   justify-content: space-between;
@@ -950,12 +950,12 @@ footer a:hover {
   font-weight: bold;
 }
 
-/* Progress Bar Styling */
 .progress-bar {
   position: relative;
   height: 12px;
   background-color: #e0e0e0;
-  border-radius: 6px;
+ 
+  border-radius: 3px;
   margin-bottom: 16px;
   overflow: hidden;
 }
@@ -963,7 +963,6 @@ footer a:hover {
 .inactive-bar {
   position: absolute;
   height: 100%;
-  width: 11%;
   background-color: #4e4796;
   border-radius: 6px 0 0 6px;
 }
@@ -971,12 +970,10 @@ footer a:hover {
 .active-bar {
   position: absolute;
   height: 100%;
-  width: 89%;
   background-color: #5c5acb;
   border-radius: 0 6px 6px 0;
 }
 
-/* Stats Section */
 .stats {
   display: flex;
   flex-direction: column;
@@ -997,8 +994,11 @@ footer a:hover {
 
 .status-item {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Ensure space between dots and text */
   align-items: center;
+  gap: 10px; /* Added gap to ensure space between dot and text */
+  flex-wrap: wrap; /* Allow items to wrap if necessary */
+  width: 100%; /* Ensure the status item doesn't overflow */
 }
 
 .status-dot {
@@ -1018,57 +1018,249 @@ footer a:hover {
 
 .num {
   position: relative;
-  right: 55px;
+  right: 44px;
 }
 
 .statusw {
   position: relative;
-  right: 85px;
+  right: 60px;
 }
 
-/* Responsiveness */
-@media (max-width: 480px) {
-  .member-status-widget {
-    font-size: 12px;
+/* Chart Box */
+.chartCard {
+  width: 28%; /* Default width for large screens */
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%; /* Ensure height matches the containery */
+}
+
+.chartBox {
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+  border-radius: 20px;
+  border: solid 3px rgb(214, 231, 243);
+  background: white;
+  box-sizing: border-box;
+  height: 100%; /* Ensure the chart takes full height */
+}
+
+#myChart {
+  width: 100% !important;
+  height: auto !important;
+}
+
+
+@media (max-width: 1024px) {
+  .admin-container {
+    margin-left: 5px;
+    padding-right: 150px;
   }
 
-  .filter-button {
-    font-size: 10px;
+  .container-wrapper {
+    gap: 10px;
+    padding: 0 10px;
   }
 
-  .progress-bar {
-    height: 10px;
-  }
-
-  .status-item {
-    font-size: 12px;
-  }
-
-  .num {
-    position: relative;
-    right: 45px; /* Adjusted for smaller screens */
-  }
-
-  .statusw {
-    position: relative;
-    right: 60px; /* Adjusted for smaller screens */
+  .containery,
+  .chartCard {
+    width: 45%; /* Adjust width for medium screens */
   }
 }
+
+/* For screens between 991px and 1399px */
+@media (min-width: 991px) and (max-width: 1399px) {
+  /* Admin container stays aligned to the left */
+  .admin-container {
+    text-align: left; /* Align text to the left */
+    margin-top: 20px;
+    margin-left: 10px; /* Ensure the container is on the left side */
+    padding-top: 30px;
+    padding-right: 10px; /* Adjust padding */
+  }
+
+  /* Flex container should align the widget and chart side by side */
+  .container-wrapper {
+    display: flex;
+    gap: 10px; /* Increase gap between the widget and chart */
+    justify-content: flex-start; /* Align to the left */
+    align-items: flex-start; /* Align at the top */
+    margin: 20px auto;
+    padding: 0 20px; /* Ensure proper padding on the sides */
+    flex-wrap: wrap; /* Allow wrapping if needed */
+    box-sizing: border-box;
+  }
+
+  /* Widget and Chart Cards side by side */
+  .containery,
+  .chartCard {
+    width: 30%; /* Set each to 48% width to fit side by side */
+    height: 235px !important;
+  }
+
+  .statusw{
+    position: relative;
+    right: 50px;
+  }
+
+  .num{
+    position: relative;
+    right: 40px;
+  }
+
+
+  /* Ensure the greeting text and description are properly sized */
+  .admin-greeting {
+    font-size: 26px; /* Adjust font size */
+  }
+
+  .admin-description {
+    font-size: 14px; /* Adjust font size */
+  }
+
+  /* Adjust button size */
+  .attendance-button {
+    font-size: 14px;
+    padding: 10px 18px; /* Adjust padding for better fit */
+  }
+
+  /* Ensure chart box adapts properly */
+  .chartBox {
+    width: 120%;
+    padding: 20px;
+
+  }
+}
+
+@media (max-width: 1999px) {
+  .statusw{
+    position: relative;
+    right: 35px;
+  }
+
+  .num{
+    position: relative;
+    right: 30px;
+  }
+
+}
+
+@media (max-width: 990px) {
+  .statusw{
+    position: relative;
+    right: 38px;
+  }
+
+  .num{
+    position: relative;
+    right: 37px;
+  }
+  .containery{
+    height: 12.2rem;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .container-wrapper {
+    flex-direction: column; /* Stack vertically below 768px */
+    align-items: center;
+  }
+
+  .chartCard {
+    width: 70%; /* Full width for smaller screens */
+    margin-bottom: 20px;
+  }
+
+  .containery{
+    width: 70%;
+  }
+
+  .admin-container {
+    margin-left: 5px;
+    padding-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .statusw{
+    position: relative;
+    right: 59px;
+  }
+
+  .num{
+    position: relative;
+    right: 40px;
+  }
+}
+
+@media (max-width: 500px) {
+  .chartCard {
+    width: 100%;
+  }
+
+  .containery{
+    width: 100%;
+  }
+
+  .statusw{
+    position: relative;
+    left: -69px;
+  }
+}
+
+
+@media (max-width: 346px) {
+  /* Very small screens adjustments */
+  .container-wrapper {
+    flex-direction: column; /* Ensure vertical stacking on very small screens */
+  }
+
+  .chartCard {
+    width: 100%; /* Full width */
+    padding: 15px; /* Reduce padding */
+  }
+
+  .statusw{
+    position: relative;
+    left: -16%;
+  }
+
+  .num{
+    position: relative;
+    right: 30px;
+  }
+
+  .containery{
+    width: 90% !important;
+  }
+}
+
 
 @media (max-width: 320px) {
-  /* Further adjustments for very small screens */
-  .num {
-    position: relative;
-    right: 10px;
+  /* Adjustments for extremely small screens */
+  .containery,
+  .chartCard {
+    width: 100%; /* Full width */
+    padding: 10px; /* Further reduce padding */
   }
 
-  .statusw {
-    position: relative;
-    right: 15px;
+  .admin-container {
+    padding-right: 0; /* Remove extra padding */
+  }
+}
+
+@media (max-width: 200px) {
+  /* Minimal adjustments for very tiny screens */
+  .containery,
+  .chartCard {
+    width: 100%; /* Full width */
+    padding: 5px; /* Further reduce padding */
   }
 
-  .filter-button {
-    font-size: 9px;
+  .admin-container {
+    font-size: 10px; /* Reduce font size for tiny screens */
   }
 }
 

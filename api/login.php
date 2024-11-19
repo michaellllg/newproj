@@ -1,36 +1,61 @@
 <?php
-// Login logic: process form submission and check credentials
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Load the XML file containing account data with error handling
-    $xml = simplexml_load_file('xml/accountinfo.xml');
+// Define file path
+$xmlFile = '../xml/cjcrsg.xml';  // Correct the path here
 
-    // Check if XML loading failed
-    if ($xml === false) {
-        die('Error: Unable to load XML file');
-    }
-    
-    // Get user input from the form
+// Check if the form is submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Get form data
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Initialize a flag to track if login is successful
-    $loginSuccessful = false;
+    // Load XML database
+    if (file_exists($xmlFile)) {
+        $xml = simplexml_load_file($xmlFile);
 
-    // Loop through each account in the XML to check if email and password match
-    foreach ($xml->account as $account) {
-        if ((string)$account->email == $email && (string)$account->password == $password) {
-            $loginSuccessful = true;
-            break;
+        // Search for matching email and password
+        foreach ($xml->tables->table as $table) {
+            if ((string)$table['name'] === 'accountinfo') {
+                foreach ($table->data->row as $account) {
+                    if ((string)$account['email'] === $email && (string)$account['password'] === $password) {
+                        // Successful login
+                        $memberID = (int)$account['memberID'];
+
+                        // Get role from the `accountrole` table
+                        foreach ($xml->tables->table as $roleTable) {
+                            if ((string)$roleTable['name'] === 'accountrole') {
+                                foreach ($roleTable->data->row as $role) {
+                                    if ((int)$role['memberID'] === $memberID) {
+                                        $roleID = (int)$role['roleID'];
+
+                                        // Get role type from the `role` table
+                                        foreach ($xml->tables->table as $roleTypeTable) {
+                                            if ((string)$roleTypeTable['name'] === 'role') {
+                                                foreach ($roleTypeTable->data->row as $roleType) {
+                                                    if ((int)$roleType['roleID'] === $roleID) {
+                                                        $roleTypeName = (string)$roleType['roletype'];
+
+                                                        // Redirect based on role, include memberID in URL
+                                                        if ($roleTypeName === 'Admin') {
+                                                            header('Location: ../dashboard.php?id=' . $memberID);  // Add memberID to URL
+                                                        } else {
+                                                            header('Location: ../home.html?id=' . $memberID);  // Add memberID to URL
+                                                        }
+                                                        exit;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
-    // Check the result of login
-    if ($loginSuccessful) {
-        echo "<script>alert('Login successful!');</script>";
-        // Redirect or start a session, depending on your implementation
-         header('Location: dashboard.html');  // Redirect to a dashboard page
-    } else {
-        echo "<script>alert('Invalid email or password.');</script>";
-    }
+    // If no match found, display error
+    echo "<script>alert('Invalid email or password. Please try again.'); window.location.href = '../index.php';</script>";
 }
 ?>
