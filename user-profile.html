@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #0f3e84;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        header .profile {
+            display: flex;
+            align-items: center;
+        }
+        header .profile img {
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            margin-right: 10px;
+        }
+        header .profile span {
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+        }
+        .container {
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #0f3e84;
+            color: white;
+            height: 100vh;
+            padding: 20px 0;
+            box-sizing: border-box;
+        }
+        .sidebar a {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .sidebar a:hover {
+            background-color: #175cc3;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .navbar .logo {
+            gap: 10px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .navbar .logo img {
+            width: 40px;
+            border-radius: 50%;
+        }
+        .navbar .logo h2 {
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.7rem;
+        }
+        .profile-picture {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .profile-picture img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        .profile-picture input[type="file"] {
+            margin-top: 10px;
+        }
+        .profile-form label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .profile-form input,
+        .profile-form select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .profile-form button {
+            margin-top: 20px;
+            background-color: #0f3e84;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .profile-form button:hover {
+            background-color: #175cc3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <button onclick="toggleSidebar()">☰</button>
+            <a href="#" class="logo">
+                <img src="images/logo.png" alt="logo">
+                <h2>CJCRSG</h2>
+            </a>
+        </div>
+        <div class="profile">
+            <img src="https://via.placeholder.com/35" alt="Profile Picture">
+            <span>Brittany Babotts</span>
+        </div>
+    </header>
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <a href="user.html">Home</a>
+            <a href="user-profile.html">Profile</a>
+            <a href="user-attendance.html">My Attendance</a>
+            <a href="user-announcement.html">View Announcement</a>
+            <a href="user-settings.html">Settings</a>
+            <a href="user-about.html">About Us</a>
+            <a href="user-help.html">Help</a>
+            <a href="index.php" style="font-weight:bold">Log Out</a>
+        </div>
+        <div class="content">
+            <h1>Profile Page</h1>
+            <div class="profile-picture">
+                <img src="https://via.placeholder.com/100" id="profileImg" alt="Profile Picture">
+                <div>
+                    <input type="file" id="uploadImg" accept="image/*" onchange="previewImage(event)">
+                </div>
+            </div>
+            <form class="profile-form">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" placeholder="Enter your age">
+                <label for="birthday">Birthday</label>
+                <input type="date" id="birthday" name="birthday">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" placeholder="Enter your address">
+                <label for="marital-status">Marital Status</label>
+                <select id="marital-status" name="marital-status">
+                    <option value="single">Single</option>
+                    <option value="married">Married</option>
+                    <option value="widowed">Widowed</option>
+                </select>
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.style.display = sidebar.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                const profileImg = document.getElementById('profileImg');
+                profileImg.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+</body>
+</html>
