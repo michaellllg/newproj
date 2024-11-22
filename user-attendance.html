@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #0f3e84;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        header .profile {
+            display: flex;
+            align-items: center;
+        }
+        header .profile img {
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            margin-right: 10px;
+        }
+        header .profile span {
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+        }
+        .container {
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #0f3e84;
+            color: white;
+            height: 100vh;
+            padding: 20px 0;
+            box-sizing: border-box;
+        }
+        .sidebar a {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .sidebar a:hover {
+            background-color: #175cc3;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .navbar .logo {
+            gap: 10px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        .navbar .logo img {
+            width: 40px;
+            border-radius: 50%;
+        }
+        .navbar .logo h2 {
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.7rem;
+        }
+        .chart-container, .calendar-container {
+            margin: 20px 0;
+            background: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .chart-container h3, .calendar-container h3 {
+            margin-bottom: 20px;
+            color: #0f3e84;
+        }
+        #calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+        .day {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+        }
+        .day.morning-present {
+            background-color: #c8e6c9;
+        }
+        .day.afternoon-present {
+            background-color: #bbdefb;
+        }
+        .day:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <button onclick="toggleSidebar()">☰</button>
+            <a href="#" class="logo">
+                <img src="images/logo.png" alt="logo">
+                <h2>CJCRSG</h2>
+            </a>
+        </div>
+        <div class="profile">
+            <img src="https://via.placeholder.com/35" alt="Profile Picture">
+            <span>Brittany Babotts</span>
+        </div>
+    </header>
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <a href="user.html">Home</a>
+            <a href="user-profile.html">Profile</a>
+            <a href="user-attendance.html">My Attendance</a>
+            <a href="user-announcement.html">View Announcement</a>
+            <a href="user-settings.html">Settings</a>
+            <a href="user-about.html">About Us</a>
+            <a href="user-help.html">Help</a>
+            <a href="index.php" style="font-weight:bold">Log Out</a>
+        </div>
+        <div class="content">
+            <!-- Graph Section -->
+            <div class="chart-container">
+                <h3>Weekly Attendance</h3>
+                <canvas id="attendanceChart"></canvas>
+            </div>
+            
+            <!-- Calendar Section -->
+            <div class="calendar-container">
+                <h3>Attendance Calendar</h3>
+                <div id="calendar"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.style.display = sidebar.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Bar Chart (Attendance Overview)
+        const ctx = document.getElementById('attendanceChart').getContext('2d');
+        const attendanceChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Sun 1', 'Sun 2', 'Sun 3', 'Sun 4'], // Replace with Sundays
+                datasets: [
+                    {
+                        label: 'Morning Service',
+                        data: [1, 1, 0, 1], // Replace with real data
+                        backgroundColor: '#c8e6c9'
+                    },
+                    {
+                        label: 'Afternoon Service',
+                        data: [1, 0, 1, 1], // Replace with real data
+                        backgroundColor: '#bbdefb'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' }
+                },
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        // Calendar (Attendance by Sundays)
+        const calendar = document.getElementById('calendar');
+        const sundays = [
+            { date: 1, morning: 'present', afternoon: 'absent' },
+            { date: 8, morning: 'absent', afternoon: 'present' },
+            { date: 15, morning: 'present', afternoon: 'present' },
+            { date: 22, morning: 'present', afternoon: 'absent' }
+        ]; // Example: Update with dynamic Sundays
+
+        for (let i = 1; i <= 30; i++) {
+            const dayElement = document.createElement('div');
+            const sunday = sundays.find(s => s.date === i);
+            dayElement.textContent = i;
+            dayElement.classList.add('day');
+            if (sunday) {
+                if (sunday.morning === 'present') dayElement.classList.add('morning-present');
+                if (sunday.afternoon === 'present') dayElement.classList.add('afternoon-present');
+            }
+            calendar.appendChild(dayElement);
+        }
+    </script>
+</body>
+</html>
