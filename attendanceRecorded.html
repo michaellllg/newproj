@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/attendanceRecorded.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <!-- Include QRious library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+           
+            <a href="#" class="logo">
+                <img src="images/logo.png" alt="logo">
+                <h2>CJCRSG</h2>
+            </a>
+           
+            <button onclick="goBack()" class="login-btn">← Go Back</button>
+        </nav>
+    </header>
+
+    <div class="message-container">
+        <h1 class="atten">Attendance is recorded!</h1>
+        <p class="dance">It will automatically go back in <span id="countdown">❣</span>.</p>
+      </div>
+
+
+      <script>
+        // JavaScript to handle countdown and navigate back
+        document.addEventListener("DOMContentLoaded", function () {
+          let countdown = 3; // Start countdown at 3 seconds
+          const countdownElement = document.getElementById("countdown");
+    
+          // Update the countdown every second
+          const interval = setInterval(() => {
+            countdownElement.textContent = countdown; // Update the number in the parentheses
+            countdown--; // Decrease countdown
+            if (countdown < 0) {
+              clearInterval(interval); // Stop the interval when countdown is complete
+              window.history.back(); // Navigate back to the previous page
+            }
+          }, 1000); // 1000ms = 1 second
+        });
+      </script>
+</body>
+</html>

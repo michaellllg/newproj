@@ -1,0 +1,633 @@
+/* Importing Google Fonts - Inter */
+@import url("https://fonts.googleapis.com/css2?family=sans-serif:opsz,wght@14..32,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(#eeeeff, #c8c7ff);
+}
+
+
+header {
+  background: #0f3e84;
+  position: sticky;
+  width: 100%;
+  margin-top: 10px;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  padding: 0 10px;
+}
+
+.navbar {
+  display: flex;
+  padding: 22px 0;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.navbar .hamburger-btn {
+  display: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.navbar .logo {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.navbar .logo img {
+  width: 40px;
+  border-radius: 50%;
+}
+
+.navbar .logo h2 {
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.7rem;
+}
+
+.navbar .links {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+  align-items: center;
+}
+
+.navbar .close-btn {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  display: none;
+  color: #000;
+  cursor: pointer;
+}
+
+.navbar .links a {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.1s ease;
+  position: relative;
+  top: 7px;
+}
+
+.navbar .links a:hover {
+  color: #19e8ff;
+}
+
+
+#userDropdown {
+    background-color: white;
+    color: #275360;
+    border: 1px solid #ccc;
+}
+
+#userDropdown .bi-person-circle {
+    color: #275360;
+    margin-right: 5px;
+}
+
+.form-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  max-width: 720px;
+  background: #fff;
+  border: 2px solid #fff;
+  transform: translate(-50%, -70%);
+}
+
+.show-popup .form-popup {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s ease, opacity 0.1s;
+}
+
+.form-popup .close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  color: #878484;
+  cursor: pointer;
+}
+
+.blur-bg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  transition: 0.1s ease;
+}
+
+.show-popup .blur-bg-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.form-popup .form-box {
+  display: flex;
+}
+
+.form-box .form-details {
+  width: 100%;
+  color: #fff;
+  max-width: 330px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login .form-details {
+  padding: 0 40px;
+  background: url("images/login-img.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.signup .form-details {
+  padding: 0 20px;
+  background: url("images/signup-img.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.form-box .form-content {
+  width: 100%;
+  padding: 35px;
+}
+
+.form-box h2 {
+  text-align: center;
+  margin-bottom: 29px;
+}
+
+form .input-field {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.input-field input {
+  height: 100%;
+  width: 100%;
+  background: none;
+  outline: none;
+  font-size: 0.95rem;
+  padding: 0 15px;
+  border: 1px solid #717171;
+  border-radius: 3px;
+}
+
+.input-field input:focus {
+  border: 1px solid #364687;
+}
+
+.input-field label {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  color: #4a4646;
+  pointer-events: none;
+  transition: 0.2s ease;
+}
+
+.input-field input:is(:focus, :valid) {
+  padding: 16px 15px 0;
+}
+
+.input-field input:is(:focus, :valid) ~ label {
+  transform: translateY(-120%);
+  color: #364687;
+  font-size: 0.75rem;
+}
+
+.form-box a {
+  color: #364687;
+  text-decoration: none;
+}
+
+.form-box a:hover {
+  text-decoration: underline;
+}
+
+form :where(.forgot-pass-link, .policy-text) {
+  display: inline-flex;
+  margin-top: 13px;
+  font-size: 0.95rem;
+}
+
+form button {
+  width: 100%;
+  color: #fff;
+  border: none;
+  outline: none;
+  padding: 14px 0;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 25px 0;
+  background: #364687;
+  transition: 0.2s ease;
+}
+
+form button:hover {
+  background: #0097a7;
+}
+
+.form-content .bottom-link {
+  text-align: center;
+}
+
+.form-popup .signup,
+.form-popup.show-signup .login {
+  display: none;
+}
+
+.form-popup.show-signup .signup {
+  display: flex;
+}
+
+.signup .policy-text {
+  display: flex;
+  margin-top: 14px;
+  align-items: center;
+}
+
+.signup .policy-text input {
+  width: 14px;
+  height: 14px;
+  margin-right: 7px;
+}
+
+footer {
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background: #111;
+}
+footer .content {
+  max-width: 1350px;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+footer .content p,
+a {
+  color: #fff;
+}
+footer .content .box {
+  width: 33%;
+  transition: all 0.4s ease;
+}
+footer .content .topic {
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 16px;
+}
+footer .content p {
+  text-align: justify;
+}
+footer .content .lower .topic {
+  margin: 24px 0 5px 0;
+}
+footer .content .lower i {
+  padding-right: 16px;
+}
+footer .content .middle {
+  padding-left: 80px;
+}
+footer .content .middle a {
+  line-height: 32px;
+}
+
+footer .content .media-icons a {
+  font-size: 16px;
+  height: 45px;
+  width: 45px;
+  display: inline-block;
+  text-align: center;
+  line-height: 43px;
+  border-radius: 5px;
+  border: 2px solid #222222;
+  margin: 30px 5px 0 0;
+  transition: all 0.3s ease;
+}
+.content .media-icons a:hover {
+  border-color: #364687;
+}
+footer .bottom {
+  width: 100%;
+  text-align: right;
+  color: #d9d9d9;
+  padding: 0 40px 5px 0;
+}
+footer .bottom a {
+  color: #06eb38;
+}
+footer a {
+  transition: all 0.3s ease;
+}
+footer a:hover {
+  color: #eb2f06;
+}
+@media (max-width: 1100px) {
+  footer .content .middle {
+    padding-left: 50px;
+  }
+}
+@media (max-width: 950px) {
+  footer .content .box {
+    width: 50%;
+  }
+  .content .right {
+    margin-top: 40px;
+  }
+}
+@media (max-width: 560px) {
+  footer {
+    position: relative;
+  }
+  footer .content .box {
+    width: 100%;
+    margin-top: 30px;
+  }
+  footer .content .middle {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 950px) {
+  .navbar :is(.hamburger-btn, .close-btn) {
+    display: block;
+  }
+
+  .navbar {
+    padding: 15px 0;
+  }
+
+  .navbar .logo img {
+    display: none;
+  }
+
+  .navbar .logo h2 {
+    font-size: 1.4rem;
+  }
+
+  .navbar .links {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    left: -100%;
+    display: block;
+    height: 100vh;
+    width: 100%;
+    padding-top: 60px;
+    text-align: center;
+    background: #fff;
+    transition: 0.2s ease;
+  }
+
+  .navbar .links.show-menu {
+    left: 0;
+  }
+
+  .navbar .links a {
+    display: inline-flex;
+    margin: 20px 0;
+    font-size: 1.2rem;
+    color: #000;
+  }
+
+  .navbar .links a:hover {
+    color: #364687;
+  }
+
+  .navbar .login-btn {
+    font-size: 0.9rem;
+    padding: 7px 10px;
+  }
+}
+
+@media (max-width: 760px) {
+  .form-popup {
+    width: 95%;
+  }
+
+  .form-box .form-details {
+    display: none;
+  }
+
+  .form-box .form-content {
+    padding: 30px 20px;
+  }
+}
+
+/* Container for Admin Section */
+.admin-container {
+  text-align: left; /* Align text to the left */
+  margin-top: 20px;
+  margin-left: 10x; /* Align to the left edge */
+  padding-top: 30px;
+  padding-right: 300px;
+ 
+}
+
+/* Greeting Label Styling */
+.admin-greeting {
+  font-size: 30px;
+  font-weight: bold;
+  color: #303858;
+  margin-bottom: 8px;
+  display: block; /* Ensure spacing below the label */
+}
+
+/* Description Label Styling */
+.admin-description {
+  font-size: 14px;
+  color: #60657b;
+  margin-bottom: 16px;
+  display: block; /* Ensure proper spacing */
+}
+
+/* Button Styling */
+.attendance-button {
+  font-size: 14px;
+  font-weight: bold;
+  color: #303858;
+  background-color: #a4b6ee;
+  border: 1px solid #d6e7f3;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Button Hover Effect */
+.attendance-button:hover {
+  background-color: #b4c6e4;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Flex Container for Layout */
+.container-wrapper {
+  display: flex;
+  gap: 4px; /* Space between containery and chartCard */
+  justify-content: flex-start; /* Align to the right edge */
+  align-items: flex-start; /* Align at the top */
+  margin: 30px auto; /* Center the container horizontally */
+  padding: 0 15px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  box-sizing: border-box;
+}
+
+
+
+
+.modal-dialog-top {
+  top: 10%; /* Adjust this value to control how far from the top the modal appears */
+  margin: 0 auto; /* Center horizontally */
+}
+
+
+@media (max-width: 1024px) {
+  .admin-container {
+    margin-left: 5px;
+    padding-right: 150px;
+  }
+
+  .container-wrapper {
+    gap: 10px;
+    padding: 0 10px;
+  }
+
+}
+
+
+
+/* For screens between 991px and 1399px */
+@media (min-width: 991px) and (max-width: 1399px) {
+  /* Admin container stays aligned to the left */
+  .admin-container {
+    text-align: left; /* Align text to the left */
+    margin-top: 20px;
+    margin-left: 10px; /* Ensure the container is on the left side */
+    padding-top: 30px;
+    padding-right: 10px; /* Adjust padding */
+  }
+
+  /* Flex container should align the widget and chart side by side */
+  .container-wrapper {
+    display: flex;
+    gap: 10px; /* Increase gap between the widget and chart */
+    justify-content: flex-start; /* Align to the left */
+    align-items: flex-start; /* Align at the top */
+    margin: 20px auto;
+    padding: 0 20px; /* Ensure proper padding on the sides */
+    flex-wrap: wrap; /* Allow wrapping if needed */
+    box-sizing: border-box;
+  }
+
+}
+ 
+
+  /* Ensure the greeting text and description are properly sized */
+  .admin-greeting {
+    font-size: 26px; /* Adjust font size */
+  }
+
+  .admin-description {
+    font-size: 14px; /* Adjust font size */
+  }
+
+  /* Adjust button size */
+  .attendance-button {
+    font-size: 14px;
+    padding: 10px 18px; /* Adjust padding for better fit */
+  }
+
+
+
+
+
+@media (max-width: 768px) {
+  .container-wrapper {
+    flex-direction: column; /* Stack vertically below 768px */
+    align-items: center;
+  }
+
+  
+
+  .admin-container {
+    margin-left: 5px;
+    padding-right: 0;
+    margin-bottom: 20px;
+  }
+
+
+}
+
+
+
+
+@media (max-width: 346px) {
+  /* Very small screens adjustments */
+  .container-wrapper {
+    flex-direction: column; /* Ensure vertical stacking on very small screens */
+  }
+
+ 
+}
+
+
+@media (max-width: 320px) {
+
+
+  .admin-container {
+    padding-right: 0; /* Remove extra padding */
+  }
+}
+
+@media (max-width: 200px) {
+
+  .admin-container {
+    font-size: 10px; /* Reduce font size for tiny screens */
+  }
+}
+
+
