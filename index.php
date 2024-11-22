@@ -31,10 +31,10 @@
           </a>
           <ul class="links">
               <span class="close-btn material-symbols-rounded">close</span>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Gallery</a></li>
-              <li><a href="#">About us</a></li>
-              <li><a href="#">Contact us</a></li>
+              <li><a href="#" class="navl">Home</a></li>
+              <li><a href="#" class="navl">Gallery</a></li>
+              <li><a href="#" class="navl">About us</a></li>
+              <li><a href="#" class="navl">Contact us</a></li>
           </ul>
           <button class="login-btn">LOG IN</button>
       </nav>
@@ -179,6 +179,20 @@
       </a>
     </div>
 
+    <br><br><br><br><br>
+    <center><h1>Galery</h1></center>
+    <br><br><br><br><br>
+    <center><h1>mission</h1><h1>vision</h1></center>
+    <br><br><br><br><br>
+
+
+    
+
+
+
+    
+
+
 
     <footer>
       <div class="content">
@@ -196,6 +210,7 @@
           <div class="email">
             <a href="#"><i class="fas fa-envelope">    </i>  abc@gmail.com</a>
           </div>
+          <br>
           <div class="topic">Follow us</div>
           <div class="media-icons">
             <a href="#"><i class="fab fa-facebook-f"></i></a>

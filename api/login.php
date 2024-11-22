@@ -1,6 +1,17 @@
 <?php
-// Define file path
-$xmlFile = '../xml/cjcrsg.xml';  // Correct the path here
+// Define database connection parameters
+$servername = "localhost";  // Adjust the server name as needed
+$username = "root";         // Adjust the username as needed
+$password = "";             // Adjust the password as needed
+$dbname = "cjcrsg";         // The name of your database
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -8,54 +19,62 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Load XML database
-    if (file_exists($xmlFile)) {
-        $xml = simplexml_load_file($xmlFile);
+    // Query to check if the email and password match any record in the accountinfo table
+    $sql = "SELECT memberID FROM accountinfo WHERE email = ? AND password = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $email, $password);
+    $stmt->execute();
+    $stmt->store_result();
 
-        // Search for matching email and password
-        foreach ($xml->tables->table as $table) {
-            if ((string)$table['name'] === 'accountinfo') {
-                foreach ($table->data->row as $account) {
-                    if ((string)$account['email'] === $email && (string)$account['password'] === $password) {
-                        // Successful login
-                        $memberID = (int)$account['memberID'];
+    // If a matching record is found
+    if ($stmt->num_rows > 0) {
+        $stmt->bind_result($memberID);
+        $stmt->fetch();
 
-                        // Get role from the `accountrole` table
-                        foreach ($xml->tables->table as $roleTable) {
-                            if ((string)$roleTable['name'] === 'accountrole') {
-                                foreach ($roleTable->data->row as $role) {
-                                    if ((int)$role['memberID'] === $memberID) {
-                                        $roleID = (int)$role['roleID'];
+        // Now, retrieve the roleID from the accountrole table
+        $sqlRole = "SELECT roleID FROM accountrole WHERE memberID = ?";
+        $stmtRole = $conn->prepare($sqlRole);
+        $stmtRole->bind_param("i", $memberID);
+        $stmtRole->execute();
+        $stmtRole->store_result();
 
-                                        // Get role type from the `role` table
-                                        foreach ($xml->tables->table as $roleTypeTable) {
-                                            if ((string)$roleTypeTable['name'] === 'role') {
-                                                foreach ($roleTypeTable->data->row as $roleType) {
-                                                    if ((int)$roleType['roleID'] === $roleID) {
-                                                        $roleTypeName = (string)$roleType['roletype'];
+        // If a role record is found
+        if ($stmtRole->num_rows > 0) {
+            $stmtRole->bind_result($roleID);
+            $stmtRole->fetch();
 
-                                                        // Redirect based on role, include memberID in URL
-                                                        if ($roleTypeName === 'Admin') {
-                                                            header('Location: ../dashboard.php?id=' . $memberID);  // Add memberID to URL
-                                                        } else {
-                                                            header('Location: ../home.html?id=' . $memberID);  // Add memberID to URL
-                                                        }
-                                                        exit;
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+            // Now, retrieve the role type from the role table
+            $sqlRoleType = "SELECT roletype FROM role WHERE roleID = ?";
+            $stmtRoleType = $conn->prepare($sqlRoleType);
+            $stmtRoleType->bind_param("i", $roleID);
+            $stmtRoleType->execute();
+            $stmtRoleType->store_result();
+
+            // If a role type is found
+            if ($stmtRoleType->num_rows > 0) {
+                $stmtRoleType->bind_result($roleTypeName);
+                $stmtRoleType->fetch();
+
+                // Start session and store memberID
+                session_start();
+                $_SESSION['memberID'] = $memberID;
+
+                // Redirect based on role type
+                if ($roleTypeName === 'Admin') {
+                    // Admin user, redirect to the dashboard
+                    header('Location: ../dashboard.php?id=' . $memberID);
+                } else {
+                    // Regular user, redirect to the home page
+                    header('Location: ../home.php?id=' . $memberID);
                 }
+                exit;
             }
         }
     }
 
-    // If no match found, display error
+    // If no match is found, display error
     echo "<script>alert('Invalid email or password. Please try again.'); window.location.href = '../index.php';</script>";
 }
+
+$conn->close();
 ?>

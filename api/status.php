@@ -1,31 +1,29 @@
 <?php
-// Load the XML file
-$xml = simplexml_load_file('xml/cjcrsg.xml');
+include 'api/login.php';
 
-// Check if the XML file is loaded correctly
-if ($xml === false) {
-    die('Error loading XML file');
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
 // Initialize the counters for active and inactive members
 $activeCount = 0;
 $inactiveCount = 0;
 
-// Loop through the tables in the XML to find the "member" table
-foreach ($xml->tables->table as $table) {
-    // Check if the current table is the "member" table
-    if ((string) $table['name'] == 'member') {
-        // Iterate over each row in the "member" table
-        foreach ($table->data->row as $row) {
-            // Check if 'status' attribute exists in the row
-            if (isset($row['status'])) {
-                // Check the status and count active and inactive members
-                if ((string) $row['status'] == 'Active') {
-                    $activeCount++;
-                } else if ((string) $row['status'] == 'Inactive') {
-                    $inactiveCount++;
-                }
-            }
+// Query to get the count of active and inactive members
+$sqlStatusCount = "SELECT status, COUNT(*) AS count FROM member GROUP BY status";
+$resultStatusCount = $conn->query($sqlStatusCount);
+
+// Check if there are results and assign counts
+if ($resultStatusCount->num_rows > 0) {
+    while ($row = $resultStatusCount->fetch_assoc()) {
+        if ($row['status'] == 'Active') {
+            $activeCount = $row['count'];
+        } else if ($row['status'] == 'Inactive') {
+            $inactiveCount = $row['count'];
         }
     }
 }
@@ -37,14 +35,27 @@ $totalCount = $activeCount + $inactiveCount;
 $activePercentage = ($totalCount > 0) ? ($activeCount / $totalCount) * 100 : 0;
 $inactivePercentage = ($totalCount > 0) ? ($inactiveCount / $totalCount) * 100 : 0;
 
-// Display the results in HTML format
+// Get the ID from the URL
+$id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
+// Default member name
+$memberName = 'Admin';
 
+// Query to find the member by ID and get their name
+$sqlMemberName = "SELECT name FROM member WHERE memberID = ?";
+$stmt = $conn->prepare($sqlMemberName);
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$stmt->store_result();
 
+// If the member is found
+if ($stmt->num_rows > 0) {
+    $stmt->bind_result($fullName);
+    $stmt->fetch();
+    // Extract the first name from the full name
+    $memberName = explode(' ', $fullName)[0];
+}
 
-
-
-
-
+// Close the database connection
+$conn->close();
 ?>
-

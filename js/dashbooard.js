@@ -19,7 +19,7 @@ hideMenuBtn.addEventListener("click", () =>  hamburgerBtn.click());
 const data = {
     labels: ['Week1', 'Week2', 'Week3', 'Week4',],
     datasets: [{
-      label: 'Weekly Sales',
+      label: 'Weekly Attendance',
       data: [18, 12, 6, 9,],
       data: [
     {id: 'Week1', financials: {

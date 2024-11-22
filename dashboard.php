@@ -34,14 +34,61 @@
           </a>
           <ul class="links">
               <span class="close-btn material-symbols-rounded">close</span>
-              <li><a href="#">Dashboard</a></li>
-              <li><a href="#">Member</a></li>
-              <li><a href="#">Attendance</a></li>
-              <li><a href="#">Event</a></li>
+              <li><a  href="dashboard.php?id=<?php echo $_GET['id']; ?>">Dashboard</a></li>
+              <li><a  href="member.php?id=<?php echo $_GET['id']; ?>">Member</a></li>
+              <li><a  href="record.php?id=<?php echo $_GET['id']; ?>">Attendance</a></li>
+              <li><a  href="event.php?id=<?php echo $_GET['id']; ?>">Event</a></li>
           </ul>
-          <button class="login-btn">LOG IN</button>
+                  <!-- Dropdown Menu -->
+        <div class="dropdown">
+        <button
+            class="btn dropdown-toggle"
+            type="button"
+            id="userDropdown"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            style="background-color: white; color: black; border: 1px solid #ccc;"
+        >
+            <i class="bi bi-person-circle" style="color: #275360; margin-right: 5px;"></i> 
+            <?php echo htmlspecialchars($memberName); ?>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+            <li><a class="dropdown-item" href="profile.php?id=<?php echo $_GET['id']; ?>">Profile</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a></li>
+
+        </ul>
+
+
+        <!-- Logout Confirmation Modal -->
+
+
+    </div>
+    
       </nav>
   </header>
+  <!-- Logout Confirmation Modal -->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="logoutModalLabel">Logout Confirmation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to logout?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <a href="api/logout.php" class="btn btn-primary">Yes</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
   
   <div class="form-popup"></div>
       
@@ -55,9 +102,9 @@
 
     <div class="container-wrapper">
         <div class="admin-container">
-  <label class="admin-greeting">Hi, Admin Hazel!</label>
+        <label class="admin-greeting">Hi, Admin <?php echo $memberName; ?>!</label>
   <label class="admin-description">Manage the attendance of CJC Members.</label>
-  <button class="attendance-button">Add Attendance</button>
+  <a href="attendance.php"><button class="attendance-button">Add Attendance</button></a>
 </div>
   <div class="containery">
     <div class="member-status-widget">
@@ -102,7 +149,7 @@
         <option value="2022">2022</option>
         <option value="2023">2023</option>
       </select>
-      <select id="financial" onchange="changeMonitoring()">
+      <select id="Month" onchange="changeMonitoring()">
         <option value="january">January</option>
         <option value="febuary">Febuary</option>
         <option value="march">March</option>
@@ -136,42 +183,52 @@
 
 
 
-
 <?php
-// Load the XML file
-$xml = simplexml_load_file('xml/cjcrsg.xml');
+// Define database connection parameters
+$servername = "localhost";  // Adjust the server name as needed
+$username = "root";         // Adjust the username as needed
+$password = "";             // Adjust the password as needed
+$dbname = "cjcrsg";         // The name of your database
 
-// Extract the 'accountinfo' and 'member' tables
-$accountinfoTable = $xml->xpath('//table[@name="accountinfo"]/data/row');
-$memberTable = $xml->xpath('//table[@name="member"]/data/row');
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Query to get the combined data from `accountinfo` and `member` tables
+$sql = "
+    SELECT 
+        a.memberID AS id, 
+        m.name, 
+        a.email, 
+        m.status
+    FROM 
+        accountinfo a
+    JOIN 
+        member m 
+    ON 
+        a.memberID = m.memberID
+";
+
+$result = $conn->query($sql);
 
 // Initialize an array to store the combined data
 $combinedData = [];
 
-foreach ($accountinfoTable as $accountRow) {
-    $memberID = (int)$accountRow['memberID'];
-    $email = (string)$accountRow['email'];
-
-    // Find the matching member in the 'member' table using memberID
-    foreach ($memberTable as $memberRow) {
-        if ((int)$memberRow['memberID'] === $memberID) {
-            $name = (string)$memberRow['name'];
-            $status = (string)$memberRow['status'];
-            
-            // Store the combined data
-            $combinedData[] = [
-                'id' => $memberID,
-                'name' => $name,
-                'email' => $email,
-                'status' => $status
-            ];
-            break;  // Stop looking for the member once we find the match
-        }
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $combinedData[] = $row;
     }
 }
 
-// Output the HTML table with the combined data
+// Close the database connection
+$conn->close();
 ?>
+
+<!-- HTML to display the table -->
 <div class="table-responsive">
     <table class="table table-striped table-bordered" id="dataTable">
         <thead class="table-black">
@@ -206,6 +263,10 @@ foreach ($accountinfoTable as $accountRow) {
                 echo "</tr>";
             }
             ?>
+        </tbody>
+    </table>
+</div>
+
         </tbody>
     </table>
 </div>
