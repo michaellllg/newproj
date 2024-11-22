@@ -244,23 +244,25 @@ $conn->close();
 <tbody>
     <?php
     foreach ($combinedData as $row) {
-        // Extract date and time parts from 'formatted_date'
-        $rowDate = date('Y-m-d', strtotime($row['formatted_date'])); // 'YYYY-MM-DD'
-        $rowTime = date('h:i A', strtotime($row['formatted_date'])); // 'hh:mm AM/PM'
+        // Use the formatted_date and formatted_time directly
+        $rowDate = date('Y-m-d', strtotime($row['formatted_date'])); // Extract 'YYYY-MM-DD'
+        $rowTime = $row['formatted_time']; // Use the pre-formatted time value
 
         echo "<tr data-date='" . $rowDate . "'>";
-        echo "<td>" . $row['memberID'] . "</td>";
-        echo "<td>" . $row['name'] . "</td>";
-        echo "<td>" . $rowDate . "</td>"; // Display Date
-        echo "<td>" . $rowTime . "</td>"; // Display Time
+        echo "<td>" . htmlspecialchars($row['memberID']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['name']) . "</td>";
+        echo "<td>" . htmlspecialchars($rowDate) . "</td>"; // Display Date
+        echo "<td>" . htmlspecialchars($rowTime) . "</td>"; // Display Time
         echo "<td>
-                <button class='btn btn-danger btn-sm'>Delete</button>
-                <button class='btn btn-warning btn-sm'>Report</button>
+    
+    <button class='btn btn-danger btn-sm delete-btn' data-id='" . $row['id'] . "'>Delete</button>
+    <button class='btn btn-warning btn-sm'>Report</button>
               </td>";
         echo "</tr>";
     }
     ?>
 </tbody>
+
 
 
 
@@ -275,93 +277,29 @@ $conn->close();
     </ul>
 </nav>
 <script>
-   document.getElementById('dateFilter').addEventListener('input', function () {
-    const selectedDate = this.value; // Get selected date in 'YYYY-MM-DD' format
-    const rows = document.querySelectorAll('#dataTable tbody tr'); // Get all rows
-
-    rows.forEach(row => {
-        const rowDate = row.getAttribute('data-date'); // Get the date from the data-date attribute
-
-        // Show rows that match the selected date or if no date is selected
-        if (!selectedDate || rowDate === selectedDate) {
-            row.style.display = ''; // Show row
-        } else {
-            row.style.display = 'none'; // Hide row
-        }
-    });
-});
-
-</script>
-<script>
-    // Function to handle the print button click
-    document.getElementById("printButton").addEventListener("click", function () {
-        var table = document.getElementById("dataTable"); // Get the table element
-        
-        // Hide the "Actions" column (the last column in the table)
-        var actionsColumnIndex = table.rows[0].cells.length - 1; // Last column index
-        for (var i = 0; i < table.rows.length; i++) {
-            table.rows[i].cells[actionsColumnIndex].style.display = 'none'; // Hide actions column
-        }
-
-        // Create a new window for printing
-        var printWindow = window.open('', '', 'height=800,width=600');
-        
-        // Add the table content into the print window's document
-        printWindow.document.write('<html><head><title>Cjc data</title>');
-        printWindow.document.write('<style>table {width: 100%; border-collapse: collapse;} th, td {padding: 8px 12px; text-align: left; border: 1px solid #ddd;} th {background-color: #f2f2f2;}</style>');
-        printWindow.document.write('</head><body>');
-        printWindow.document.write('<h2>Member Data</h2>');
-        printWindow.document.write(table.outerHTML); // Insert the table content
-        printWindow.document.write('</body></html>');
-        
-        // Wait for the content to be loaded before triggering the print dialog
-        printWindow.document.close(); // Close the document to finish loading
-        printWindow.print(); // Trigger the print dialog
-
-        // After printing, restore the "Actions" column visibility
-        setTimeout(function() {
-            for (var i = 0; i < table.rows.length; i++) {
-                table.rows[i].cells[actionsColumnIndex].style.display = ''; // Restore actions column
-            }
-        }, 1000); // Wait 1 second before restoring to ensure print dialog is triggered
-    });
-</script>
+    document.addEventListener('DOMContentLoaded', function () {
 
 
-
-    <!-- Bootstrap JS and Popper.js -->
-    
-    <script>
-        const rowsPerPage = 5;
-        let currentPage = 1;
-
-        // Search functionality
+        // Search by Name functionality
         document.getElementById('searchInput').addEventListener('input', function () {
-            filterTable();
-        });
-
-        // Filter functionality
-        document.getElementById('filterInput').addEventListener('change', function () {
-            filterTable();
-        });
-
-        function filterTable() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const filterTerm = document.getElementById('filterInput').value;
+            const searchTerm = this.value.toLowerCase();
             const rows = document.querySelectorAll('#dataTable tbody tr');
-            rows.forEach(row => {
-                const name = row.cells[0].innerText.toLowerCase();
-                const email = row.cells[1].innerText.toLowerCase();
-                const status = row.getAttribute('data-status');
-                const matchesSearch = name.includes(searchTerm) || email.includes(searchTerm);
-                const matchesFilter = !filterTerm || status === filterTerm;
-                row.style.display = matchesSearch && matchesFilter ? '' : 'none';
-            });
-            setupPagination();
-        }
 
-        // Sort functionality
-        const headers = document.querySelectorAll('#dataTable thead th[data-sort]');
+            rows.forEach(row => {
+                const name = row.cells[1].innerText.toLowerCase(); // Target the 'Name' column (index 1)
+
+                // Check if the search term matches the name column
+                const matchesSearch = name.includes(searchTerm);
+
+                // Show or hide the row based on the search term matching the name
+                row.style.display = matchesSearch ? '' : 'none';
+            });
+        });
+
+
+
+ // Sort functionality
+ const headers = document.querySelectorAll('#dataTable thead th[data-sort]');
         headers.forEach(header => {
             header.addEventListener('click', function () {
                 const sortKey = header.getAttribute('data-sort');
@@ -382,16 +320,94 @@ $conn->close();
             rows.forEach(row => tbody.appendChild(row));
         }
 
-        
 
 
-        
-       
-    </script>
+        // Filter by Date functionality
+        document.getElementById('dateFilter').addEventListener('input', function () {
+            const selectedDate = this.value; // Get selected date in 'YYYY-MM-DD' format
+            const rows = document.querySelectorAll('#dataTable tbody tr'); // Get all rows
+
+            rows.forEach(row => {
+                const rowDate = row.getAttribute('data-date'); // Get the date from the data-date attribute
+
+                // Show rows that match the selected date or if no date is selected
+                if (!selectedDate || rowDate === selectedDate) {
+                    row.style.display = ''; // Show row
+                } else {
+                    row.style.display = 'none'; // Hide row
+                }
+            });
+        });
+
+        // Print button functionality
+        document.getElementById("printButton").addEventListener("click", function () {
+            var table = document.getElementById("dataTable"); // Get the table element
+
+            // Hide the "Actions" column (the last column in the table)
+            var actionsColumnIndex = table.rows[0].cells.length - 1; // Last column index
+            for (var i = 0; i < table.rows.length; i++) {
+                table.rows[i].cells[actionsColumnIndex].style.display = 'none'; // Hide actions column
+            }
+
+            // Create a new window for printing
+            var printWindow = window.open('', '', 'height=800,width=600');
+
+            // Add the table content into the print window's document
+            printWindow.document.write('<html><head><title>cjcrsg attendance record</title>');
+            printWindow.document.write('<style>table {width: 100%; border-collapse: collapse;} th, td {padding: 8px 12px; text-align: left; border: 1px solid #ddd;} th {background-color: #f2f2f2;}</style>');
+            printWindow.document.write('</head><body>');
+            printWindow.document.write('<h2>CJCRSG Attendance records</h2>');
+            printWindow.document.write(table.outerHTML); // Insert the table content
+            printWindow.document.write('</body></html>');
+
+            // Wait for the content to be loaded before triggering the print dialog
+            printWindow.document.close(); // Close the document to finish loading
+            printWindow.print(); // Trigger the print dialog
+
+            // After printing, restore the "Actions" column visibility
+            setTimeout(function() {
+                for (var i = 0; i < table.rows.length; i++) {
+                    table.rows[i].cells[actionsColumnIndex].style.display = ''; // Restore actions column
+                }
+            }, 1000); // Wait 1 second before restoring to ensure print dialog is triggered
+        });
+    });
+</script>
 
 
 
-  
+  <script>
+   document.addEventListener('DOMContentLoaded', function () {
+    // Handle delete button click
+    document.querySelectorAll('.delete-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            const attendanceId = this.getAttribute('data-id'); // Get the ID of the attendance record
+            const row = this.closest('tr'); // Get the row that contains this button
+
+            if (confirm("Are you sure you want to delete this record?")) {
+                // Send AJAX request to delete the record
+                fetch('api/delete.php?id=' + attendanceId, {
+                    method: 'GET',
+                })
+                .then(response => response.text())
+                .then(data => {
+                    if (data === 'success') {
+                        // If the deletion is successful, remove the row from the table
+                        row.remove();
+                    } else {
+                        alert('Error deleting the record');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred while deleting');
+                });
+            }
+        });
+    });
+});
+
+  </script>
    
 
     

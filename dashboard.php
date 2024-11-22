@@ -249,21 +249,21 @@ $conn->close();
             </tr>
         </thead>
         <tbody>
-            <?php
-            foreach ($combinedData as $row) {
-                echo "<tr data-status='" . $row['status'] . "'>";
-                echo "<td>" . $row['id'] . "</td>";
-                echo "<td>" . $row['name'] . "</td>";
-                echo "<td>" . $row['email'] . "</td>";
-                echo "<td>" . $row['status'] . "</td>";
-                echo "<td>
-                        <button class='btn btn-primary btn-sm'>View</button>
-                        <button class='btn btn-warning btn-sm'>Report</button>
-                      </td>";
-                echo "</tr>";
-            }
-            ?>
-        </tbody>
+    <?php
+    foreach ($combinedData as $row) {
+        echo "<tr data-status='" . $row['status'] . "'>";
+        echo "<td>" . $row['id'] . "</td>";
+        echo "<td>" . $row['name'] . "</td>";
+        echo "<td>" . $row['email'] . "</td>";
+        echo "<td>" . $row['status'] . "</td>";
+        echo "<td>
+                <a href='profile.php?id=" . $row['id'] . "' class='btn btn-primary btn-sm'>View</a>
+                <button class='btn btn-warning btn-sm'>Report</button>
+              </td>";
+        echo "</tr>";
+    }
+    ?>
+</tbody>
     </table>
 </div>
 

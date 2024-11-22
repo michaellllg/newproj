@@ -110,13 +110,80 @@ $conn->close();
         </ul>
 
 
-        <!-- Logout Confirmation Modal -->
+        
 
 
     </div>
     
       </nav>
   </header>
+
+
+
+<!-- Add Member Modal -->
+<div class="modal fade" id="addMemberModal" tabindex="-1" role="dialog" aria-labelledby="addMemberModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addMemberModalLabel">Add New Member</h5>
+          <!-- Remove close button -->
+        </div>
+        <div class="modal-body">
+          <form id="addMemberForm">
+            <div class="form-group">
+              <label for="memberName">Name</label>
+              <input type="text" class="form-control" id="memberName" required>
+            </div>
+            <div class="form-group">
+                <label for="memberRole">Role</label>
+                <select class="form-control" id="memberRole" required>
+                    <option value="admin">Admin</option>
+                    <option value="member">Member</option>
+                    <option value="visitor">Visitor</option>
+                </select>
+            </div>
+            <div class="form-group">
+              <label for="memberStatus">Status</label>
+              <select class="form-control" id="memberStatus" required>
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="memberLifeStage">Life Stage</label>
+              <input type="text" class="form-control" id="memberLifeStage" required>
+            </div>
+            <div class="form-group">
+              <label for="memberEmail">Email</label>
+              <input type="email" class="form-control" id="memberEmail" required>
+            </div>
+            <div class="form-group">
+              <label for="memberPassword">Password</label>
+              <input type="password" class="form-control" id="memberPassword" required>
+            </div>
+            <div class="form-group">
+              <label for="memberPhone">Phone Number</label>
+              <input type="text" class="form-control" id="memberPhone" required>
+            </div>
+            <div class="form-group">
+              <label for="memberAddress">Address</label>
+              <input type="text" class="form-control" id="memberAddress" required>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="addMemberBtn">Add Member</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
   <!-- Logout Confirmation Modal -->
 <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable">
@@ -153,7 +220,8 @@ $conn->close();
             <label class="admin-description">
                 The CJCRSG have <?php echo $memberCount; ?> members.
             </label>
-            <button class="attendance-button">Add member</button>
+            <button class="attendance-button" data-toggle="modal" data-target="#addMemberModal">Add member</button>
+
         </div>
     </div> 
 
@@ -249,21 +317,21 @@ $conn->close();
             </tr>
         </thead>
         <tbody>
-            <?php
-            foreach ($combinedData as $row) {
-                echo "<tr data-status='" . $row['status'] . "'>";
-                echo "<td>" . $row['id'] . "</td>";
-                echo "<td>" . $row['name'] . "</td>";
-                echo "<td>" . $row['email'] . "</td>";
-                echo "<td>" . $row['status'] . "</td>";
-                echo "<td>
-                        <button class='btn btn-primary btn-sm'>View</button>
-                        <button class='btn btn-warning btn-sm'>Report</button>
-                      </td>";
-                echo "</tr>";
-            }
-            ?>
-        </tbody>
+    <?php
+    foreach ($combinedData as $row) {
+        echo "<tr data-status='" . $row['status'] . "'>";
+        echo "<td>" . $row['id'] . "</td>";
+        echo "<td>" . $row['name'] . "</td>";
+        echo "<td>" . $row['email'] . "</td>";
+        echo "<td>" . $row['status'] . "</td>";
+        echo "<td>
+                <a href='profile.php?id=" . $row['id'] . "' class='btn btn-primary btn-sm'>View</a>
+                <button class='btn btn-warning btn-sm'>Report</button>
+              </td>";
+        echo "</tr>";
+    }
+    ?>
+</tbody>
     </table>
 </div>
 
@@ -379,7 +447,105 @@ $conn->close();
        
     </script>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script type="module">
+    $(function () {
+        // Function to handle adding a new member
+        $('#addMemberBtn').click(function () {
+            // Get form data including the role
+            var formData = {
+                'name': $('#memberName').val(),
+                'status': $('#memberStatus').val(),
+                'life_stage': $('#memberLifeStage').val(),
+                'email': $('#memberEmail').val(),
+                'password': $('#memberPassword').val(),
+                'phone': $('#memberPhone').val(),
+                'address': $('#memberAddress').val(),
+                'role': $('#memberRole').val() // Include role data
+            };
 
+            // Send data to the server using AJAX
+            $.ajax({
+                type: 'POST',
+                url: 'api/addMember.php',
+                data: formData,
+                encode: true // No need to specify dataType for JSON response
+            })
+            .done(function (response) {
+                // Log the response from the server
+                console.log(response);
+                // Optionally, you can handle the response here, for example:
+                if (response.includes("successfully")) {
+                    // Clear form fields after successful insertion
+                    $('#addMemberForm')[0].reset();
+                    // Reload the page after successful addition
+                    location.reload();
+                }
+            })
+            .fail(function (data) {
+                console.error('Error:', data); // Log any errors
+            });
+        });
+
+        // Function to fetch users
+        async function getUsers() {
+            try {
+                let response = await fetch("http://localhost/newproj/api/db.php", {
+                    method: 'GET'
+                });
+                let responseData = await response.json();
+                console.log(responseData);
+
+                // Sort the members array by name in ascending order
+                responseData.members.sort((a, b) => {
+                    return a.name.localeCompare(b.name);
+                });
+
+               
+
+                // Append user data to table
+                responseData.members.forEach((member) => {
+                    $('.table-group').append(
+                        `
+                        <tr>
+                            <td><a href="profile.html?memberID=${member.memberID}"  style="color: black;" >${member.name}</a></td>
+                            <td>${member.status}</td>
+                            <td>${member.dateCreated}</td>
+                            <td>${member.lastUpdated}</td>
+                        </tr>
+                        `
+                    );
+                });
+
+                // Filter/search functionality
+                $('#search-input').on('keyup', function () {
+                    let searchText = $(this).val().trim().toLowerCase();
+                    $('.table-group tr').each(function () {
+                        let name = $(this).find('td:first').text().toLowerCase();
+                        if (name.includes(searchText)) {
+                            $(this).show();
+                        } else {
+                            $(this).hide();
+                        }
+                    });
+                });
+            } catch (error) {
+                console.error('Error fetching users:', error);
+            }
+        }
+
+         // Event listener for confirm logout button
+         $('#confirmLogout').click(function() {
+                // Redirect to the logout script
+                window.location.href = 'index.html';
+            });
+
+        getUsers(); // Call function to fetch users
+    });
+</script>
 
   
     <!-- Linking custom script -->

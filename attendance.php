@@ -38,13 +38,14 @@
 
       <!-- QR Code Scanner Section -->
       <div class="container" id="qrScanner" style="display: none;">
-        <h1>Scan QR Codes</h1>
+      <h1>Scan QR Codes</h1>
         <div class="section">
-          <div id="my-qr-reader"></div>
+            <div id="my-qr-reader">
+                
+            </div>
         </div>
         <div class="inputID"><a href="#" id="inputMemberID">Input Member ID</a></div>
-      </div>
-    </div>
+    
 
 <script src="js/html5-qr.js"></script>
 <script src="js/qrscanner.js"></script>
@@ -77,53 +78,57 @@
 
 
 <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const form = document.getElementById("attendance-form");
-        const errorTxt = document.querySelector(".error-txt");
+     document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("attendance-form");
+    const errorTxt = document.querySelector(".error-txt");
 
-        form.addEventListener("submit", function (e) {
-          e.preventDefault(); // Prevent default form submission
+    form.addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent default form submission
 
-          const memberID = document.getElementById("memberID").value.trim();
+        const memberID = document.getElementById("memberID").value.trim();
 
-          if (memberID !== "") {
+        if (memberID !== "") {
             fetch("http://localhost/newproj/api/insert.php", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ memberID: memberID }),
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ memberID: memberID }),
             })
-              .then((response) => {
-                if (!response.ok) {
-                  throw new Error("Network response was not ok");
-                }
-                return response.json();
-              })
-              .then((data) => {
-                // Check if response is not empty
-                if (data) {
-                  // Check if attendance recorded successfully
-                  if (data.success) {
-                    window.location.href = "attendanceRecorded.html";
-                  } else {
-                    // Handle other responses
-                    alert(data.message || "Error recording attendance");
-                  }
-                } else {
-                  throw new Error("Empty response received");
-                }
-              })
-              .catch((error) => {
-                // Handle fetch error
-                alert("Error: " + error.message);
-              });
-          } else {
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error("Network response was not ok");
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    // Check if response is not empty
+                    if (data) {
+                        // Check if attendance recorded successfully
+                        if (data.success) {
+                            // Clear the member ID input field after success
+                            document.getElementById("memberID").value = "";
+
+                            // Redirect to attendance recorded page
+                            window.location.href = "attendanceRecorded.html";
+                        } else {
+                            // Handle other responses
+                            alert(data.message || "Error recording attendance");
+                        }
+                    } else {
+                        throw new Error("Empty response received");
+                    }
+                })
+                .catch((error) => {
+                    // Handle fetch error
+                    alert("Error: " + error.message);
+                });
+        } else {
             // Display error if memberID is empty
             errorTxt.textContent = "Member ID can't be blank";
-          }
-        });
-      });
+        }
+    });
+});
     </script>
 </body>
 </html>

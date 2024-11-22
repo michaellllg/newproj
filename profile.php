@@ -11,6 +11,17 @@
     <!-- Include QRious library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
 </head>
+
+<style>
+    /* Custom styles for the confirmation modal */
+    #confirmationModal .modal-content {
+       
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Border shadow */
+            border: 3px solid black; /* Add a black border with 3px thickness */
+            width: 75%; /* Reduce the width by 1/4 (making it 75% of the original size) */
+            margin: auto; /* Center the modal */
+    }
+</style>
 <body>
     <header>
         <nav class="navbar">
@@ -169,12 +180,174 @@
         </div>
     </div>
 
+
+
+    <!-- Confirmation Modal -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmationModalLabel">Confirm Changes</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to save the changes?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="confirmSaveButton">Yes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
     <script>
     // JavaScript to navigate back when the button is clicked
     function goBack() {
       window.history.back(); // Navigate to the previous page
     }
   </script>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <!-- Include QRious library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+    let formData = {}; // Declare formData in a wider scope for reuse
+
+    $('#editProfileForm').submit(function (event) {
+        event.preventDefault(); // Prevent immediate submission
+
+        // Get form data
+        formData = {
+            memberID: getParameterByName('id'),
+            name: $('#editName').val(),
+            status: $('#editStatus').val(),
+            lifeStage: $('#editLifeStage').val(),
+            email: $('#editEmail').val(),
+            phone: $('#editPhone').val(),
+            address: $('#editAddress').val()
+        };
+
+        // Show the confirmation modal
+        $('#confirmationModal').modal('show');
+    });
+
+    // Handle confirmation modal "Yes" button
+    $('#confirmSaveButton').click(function () {
+        const memberID = formData.memberID;
+
+        // Send form data to server using AJAX
+        $.ajax({
+            type: 'POST',
+            url: 'api/update.php?memberID=' + memberID, // Include memberID in the URL
+            data: formData,
+            success: function (response) {
+                if (response.success) {
+                    // Update profile details displayed on the page
+                    $('#memberName').text(formData.name);
+                    $('#email').text(formData.email);
+                    $('#phone').text(formData.phone);
+                    $('#status').text(formData.status);
+                    $('#lifeStage').text(formData.lifeStage);
+                    $('#address').text(formData.address);
+                    $('#roleType').text(formData.roleType);
+
+                    // Hide both modals
+                $('#editProfileModal').modal('hide');
+                $('#confirmationModal').modal('hide');
+
+                // Manually remove the backdrop
+                $('.modal-backdrop').remove();
+                } else {
+                    console.error('Error updating profile:', response.error);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Error updating profile:', error);
+            }
+        });
+    });
+
+    // Helper function to parse URL parameters
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    // Fetch member data and other existing functionality remains unchanged
+
+            function generateQRCode(memberID) {
+            // Add two leading zeros to memberID
+            var paddedMemberID = ('00' + memberID).slice(-4);
+
+            var qr = new QRious({
+                value: paddedMemberID,
+                size: 128,
+                background: 'white',
+                foreground: 'black'
+            });
+
+            // Set the src attribute of the image to the data URL
+            $('#qrcode').attr('src', qr.toDataURL());
+        }
+
+            // Update the fetchMemberData function to handle the role type
+            function fetchMemberData() {
+                var memberID = getParameterByName('id');
+                if (memberID) {
+                    var xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            var data = JSON.parse(this.responseText);
+                            if (data.member) {
+                                var member = data.member;
+                                // Update the role type displayed in the <h6> element
+                                $('#memberName').text(member.name);
+                                $('#email').text(member.email);
+                                $('#phone').text(member.phone);
+                                $('#status').text(member.status);
+                                $('#lifeStage').text(member.life_stage);
+                                $('#address').text(member.address);
+                                $('#editName').val(member.name);
+                                $('#editStatus').val(member.status);
+                                $('#editLifeStage').val(member.life_stage);
+                                $('#editEmail').val(member.email);
+                                $('#editPhone').val(member.phone);
+                                $('#editAddress').val(member.address);
+                                $('#roleType').text(member.roletype); // Update the role type here
+                                // Generate QR code
+                                generateQRCode(memberID);
+                            }
+                        }
+                    };
+                    xhr.open('GET', 'api/db.php?memberID=' + memberID, true);
+                    xhr.send();
+                }
+            }
+
+            // Call fetchMemberData function when the edit profile modal is shown
+            $('#editProfileModal').on('show.bs.modal', function (event) {
+                fetchMemberData();
+            });
+
+            // Call fetchMemberData function when the page is loaded
+            fetchMemberData();
+        });
+    </script>
+
+    
   
 </body>
 </html>
