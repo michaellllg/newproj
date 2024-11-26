@@ -160,7 +160,7 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
 
 
-
+<div class="tablecon" style="color: red;">
 <!-- Search and Filter -->
 <div class="row mb-3 align-items-center">
     <div class="col-md-6">
@@ -271,12 +271,7 @@ $conn->close();
     </table>
 </div>
 
-<!-- Pagination -->
-<nav>
-    <ul class="pagination justify-content-center" id="pagination">
-        <!-- Pagination items will be dynamically created -->
-    </ul>
-</nav>
+</div>
 
     <!-- Your existing HTML code for the search, filter, and table remains unchanged -->
 

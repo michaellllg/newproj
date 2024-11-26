@@ -268,6 +268,7 @@ $conn->close();
 
     </table>
 </div>
+</div>
 
 
 <!-- Pagination -->
@@ -409,7 +410,8 @@ $conn->close();
 
   </script>
    
-
+    <!-- Linking custom script -->
+    <script src="js/dashbooard.js"></script>
     
   </body>
 </html>

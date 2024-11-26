@@ -630,4 +630,240 @@ footer a:hover {
   }
 }
 
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.edit-button, .delete-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #275360;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.edit-button i, .delete-button i {
+  margin-right: 5px;
+}
+
+.edit-button:hover, .delete-button:hover {
+  color: #ff5722;
+}
+
+
+/* Prevent Overflow */
+.main-container, .post-feed-container, .post-create-container {
+  overflow: hidden; /* Prevent overflow */
+}
+
+
+/* Ensure Flexbox layout adjusts properly */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh; /* Ensures the container always takes full height */
+  padding: 20px;
+  gap: 20px;
+}
+
+/* Adjust post feed container */
+.post-feed-container {
+  width: 100%;
+  max-width: 500px; 
+  margin-top: 20px;
+  margin-bottom: 0; /* Remove bottom margin to prevent extra space */
+}
+
+/* Post Create Container Styles */
+.post-create-container {
+    width: 100%;
+    max-width: 500px; /* Limit the width */
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post-create-container .post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.post-create-container .post-textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-top: 10px;
+    resize: none;
+}
+
+.post-create-container .image-upload {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.post-create-container .post-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #1877f2;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.post-create-container .post-button:hover {
+    background-color: #1558a7;
+}
+
+/* Post Feed Container Styles */
+.post-feed-container {
+    width: 100%;
+    max-width: 500px; /* Limit the width */
+    margin-top: 20px;
+}
+
+/* Post Item Styles */
+.post-item {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.post-item .post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.post-item .post-header .profile-img {
+    width: 30px;
+    height: 30px;
+}
+
+.post-item .post-header .profile-info {
+    margin-left: 10px;
+}
+
+.post-item .post-header .profile-info .name {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.post-item .post-header .profile-info .timestamp {
+    font-size: 12px;
+    color: #65676b;
+}
+
+.post-item p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.post-item img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* Edit and Delete Buttons */
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.edit-button, .delete-button {
+    background-color: #f0f0f0;
+    border: none;
+    color: #1877f2;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.edit-button:hover, .delete-button:hover {
+    background-color: #e1e1e1;
+}
+
+.edit-button:active, .delete-button:active {
+    background-color: #d1d1d1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    /* On smaller screens, set the containers to take full width */
+    .post-create-container,
+    .post-feed-container {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Adjust post-textarea height for mobile */
+    .post-create-container .post-textarea {
+        height: 120px; /* Make it a bit taller for easier typing */
+    }
+
+    /* Adjust buttons to full width on smaller screens */
+    .post-create-container .post-button {
+        width: 100%;
+    }
+
+    .post-create-container .image-upload {
+        width: 100%;
+    }
+
+    /* Adjust profile image size on small screens */
+    .post-item .post-header .profile-img {
+        width: 40px;
+        height: 40px;
+    }
+
+    /* Adjust post item padding for mobile */
+    .post-item {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* On very small screens (phones), adjust further */
+    .main-container {
+        padding: 10px;
+    }
+
+    .post-create-container .post-textarea {
+        height: 150px;
+    }
+
+    .post-create-container .post-button {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .post-item {
+        padding: 10px;
+    }
+}
+
 

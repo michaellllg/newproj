@@ -66,7 +66,7 @@ $conn->close();
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
 
-  </head>
+  </style>
  
   <body>
 
@@ -138,5 +138,244 @@ $conn->close();
 </div>
 
 
-  </body>
+<div class="form-popup"></div>
+      
+
+  
+
+
+<div class="main-container">
+        <!-- Create Post Container -->
+        <div class="post-create-container">
+            <textarea id="post-content" class="post-textarea" placeholder="Write something..."></textarea>
+            <input type="file" id="image-upload" class="image-upload">
+            <button class="post-button" onclick="createPost()">Post</button>
+        </div>
+
+        <!-- Post Feed Container -->
+        <div class="post-feed-container">
+            <div id="post-feed" class="post-feed"></div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        function createPost() {
+    const postText = document.getElementById("post-content").value;
+    const imageInput = document.getElementById("image-upload");
+    const imageFile = imageInput.files[0];
+
+    // Prevent posting if the textarea is empty and no image is selected
+    if (!postText.trim() && !imageFile) {
+        alert("Please write something or upload an image to post.");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('postText', postText);
+    if (imageFile) {
+        formData.append('postImage', imageFile);
+    }
+
+    fetch('api/post.php', {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json',
+        }
+    })
+    .then(response => {
+        return response.text(); // Capture raw response first
+    })
+    .then(data => {
+        try {
+            const jsonData = JSON.parse(data); // Try parsing as JSON
+            if (jsonData.success) {
+                loadPosts(); // Reload posts after successful post creation
+            } else {
+                alert('Error: ' + jsonData.error);
+            }
+        } catch (error) {
+            console.error('Error parsing JSON:', error);
+            console.log('Raw response:', data); // Log the raw response to identify the issue
+            alert('An unexpected error occurred. Please try again later.');
+        }
+    })
+    .catch(error => {
+        console.error('Error creating post:', error);
+    });
+}
+
+
+
+function loadPosts() {
+    fetch('api/loadPosts.php') // Fetching posts from the backend
+        .then(response => response.json()) // Parse JSON response
+        .then(posts => {
+            const postFeed = document.getElementById("post-feed");
+            postFeed.innerHTML = ''; // Clear current posts
+
+            posts.forEach(post => {
+                const postItem = document.createElement("div");
+                postItem.classList.add("post-item");
+
+                // Create post header with profile image and name
+                const postHeader = document.createElement("div");
+                postHeader.classList.add("post-header");
+
+                const profileImg = document.createElement("img");
+                profileImg.src = "images/logo.png"; // Placeholder for profile image
+                profileImg.classList.add("profile-img");
+                postHeader.appendChild(profileImg);
+
+                const profileInfo = document.createElement("div");
+                profileInfo.classList.add("profile-info");
+
+                const name = document.createElement("div");
+                name.classList.add("name");
+                name.textContent = "Church of Jesus Christ the Risen Son of God Phils. Inc"; // Static name for now
+                profileInfo.appendChild(name);
+
+                const timestamp = document.createElement("div");
+                timestamp.classList.add("timestamp");
+                const postTime = new Date(post.timestamp * 1000); // Convert timestamp to Date
+                timestamp.textContent = formatTime(postTime); // Function to format the timestamp
+                profileInfo.appendChild(timestamp);
+
+                postHeader.appendChild(profileInfo);
+                postItem.appendChild(postHeader);
+
+                // Add post text content
+                const postContent = document.createElement("p");
+                postContent.textContent = post.text;
+                postContent.classList.add("post-text");
+                postItem.appendChild(postContent);
+
+                // Check if there's an image and display it
+                if (post.image) {
+                    const img = document.createElement("img");
+                    img.src = 'uploads/' + post.image;
+                    img.classList.add("post-image");
+                    postItem.appendChild(img);
+                }
+
+                // Add footer with edit and delete
+                const postFooter = document.createElement("div");
+                postFooter.classList.add("post-footer");
+
+                // Edit button
+                const editButton = document.createElement("button");
+                editButton.classList.add("edit-button");
+                editButton.innerHTML = '<i class="fas fa-edit"></i> Edit';
+
+                editButton.addEventListener("click", () => {
+                    const newText = prompt("Edit your post:", post.text);
+                    if (newText && newText.trim() !== "") {
+                        // Call API to update the post
+                        fetch('api/editPost.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ text: newText, timestamp: post.timestamp }),
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    postContent.textContent = newText; // Update text in the DOM
+                                    alert("Post updated successfully!");
+                                } else {
+                                    alert("Failed to update post: " + data.error);
+                                }
+                            })
+                            .catch(error => console.error('Error editing post:', error));
+                    }
+                });
+
+                postFooter.appendChild(editButton);
+
+                // Delete button
+                const deleteButton = document.createElement("button");
+                deleteButton.classList.add("delete-button");
+                deleteButton.innerHTML = '<i class="fas fa-trash"></i> Delete';
+
+                deleteButton.addEventListener("click", () => {
+                    if (confirm("Are you sure you want to delete this post?")) {
+                        // Call API to delete the post
+                        fetch('api/deletePost.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ timestamp: post.timestamp }),
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    postItem.remove(); // Remove post from DOM
+                                    alert("Post deleted successfully!");
+                                } else {
+                                    alert("Failed to delete post: " + data.error);
+                                }
+                            })
+                            .catch(error => console.error('Error deleting post:', error));
+                    }
+                });
+
+                postFooter.appendChild(deleteButton);
+
+                postItem.appendChild(postFooter);
+
+                // Append the new post to the feed
+                postFeed.insertBefore(postItem, postFeed.firstChild);
+            });
+        })
+        .catch(error => {
+            console.error('Error loading posts:', error);
+        });
+}
+
+
+function formatTime(date) {
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const day = date.getDate();
+    const month = date.getMonth() + 1;  // Months are zero-indexed
+    const year = date.getFullYear();
+    return `${month}/${day}/${year} ${hours}:${minutes < 10 ? '0' + minutes : minutes}`;
+}
+
+// Call loadPosts when the page is loaded
+document.addEventListener("DOMContentLoaded", loadPosts);
+
+
+
+
+function editPost(timestamp, newText) {
+    console.log("Editing post with timestamp:", timestamp); // Debug log
+    fetch('api/editPost.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ timestamp, text: newText })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Post updated successfully!');
+        } else {
+            console.error('Failed to update post:', data.error);
+            alert('Error: ' + data.error);
+        }
+    })
+    .catch(error => console.error('Error editing post:', error));
+}
+
+
+</script>
+
+    <!-- Linking custom script -->
+    <script src="js/dashbooard.js"></script>
+</body>
 </html>

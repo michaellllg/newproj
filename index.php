@@ -32,9 +32,9 @@
           <ul class="links">
               <span class="close-btn material-symbols-rounded">close</span>
               <li><a href="#" class="navl">Home</a></li>
-              <li><a href="#" class="navl">Gallery</a></li>
-              <li><a href="#" class="navl">About us</a></li>
-              <li><a href="#" class="navl">Contact us</a></li>
+              <li><a href="#image-gallery" class="navl">Gallery</a></li>
+              <li><a href="#about" class="navl">About</a></li>
+              <li><a href="#contact-us" class="navl">Contact us</a></li>
           </ul>
           <button class="login-btn">LOG IN</button>
       </nav>
@@ -179,16 +179,171 @@
       </a>
     </div>
 
-    <br><br><br><br><br>
-    <center><h1>Galery</h1></center>
-    <br><br><br><br><br>
-    <center><h1>mission</h1><h1>vision</h1></center>
-    <br><br><br><br><br>
+
+    <div class="welcome">
+      <br>
+<h1>Welcome to Church of Jesus Christ the Risen Son of God Phils. Inc</h1><br>
+<h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis voluptas labore ipsa excepturi voluptatibus officiis maxime ration.</h5>
+    </div>
+    <br>
+
+    <section>
+    <div class="lightBox">
+      <div class="lightBox_content">
+        <i class="fas fa-times close"></i>
+        <div class="logo_icons">
+          <a href="#">
+          <img class="logoImg" src="images/logo.png" alt="">
+            <div class="text_content">
+              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
+              <span class="followers">CJCRSG</span>
+            </div>
+          </a>
+          
+        </div>
+        <div class="showImg">
+          <div class="image">
+           <img src="images/img1.jpg" alt=""> 
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="image-gallery">
+      <header style="position: relative; z-index: 0;" id="image-gallery"> Church Gallery</header>
+      <div class="image-container">
+        <div class="image-box">
+          <img class="gImg" src="images/img10.jpg" alt="">
+          <div class="logo_icons">
+            <a href="#">
+              <img class="logoImg" src="images/logo.png" alt="">
+              <div class="text_content">
+              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
+              <span class="followers">CJCRSG</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="image-box">
+          <img class="gImg" src="images/img6.jpg" alt="">
+          <div class="logo_icons">
+            <a href="#">
+              <img class="logoImg" src="images/logo.png" alt="">
+              <div class="text_content">
+              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
+              <span class="followers">CJCRSG</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="image-box">
+          <img class="gImg" src="images/img8.jpg" alt="">
+          <div class="logo_icons">
+            <a href="#">
+              <img class="logoImg" src="images/logo.png" alt="">
+              <div class="text_content">
+              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
+              <span class="followers">CJCRSG</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="image-box">
+          <img class="gImg" src="images/img9.jpg" alt="">
+          <div class="logo_icons">
+            <a href="#">
+              <img class="logoImg" src="images/logo.png" alt="">
+              <div class="text_content">
+              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
+              <span class="followers">CJCRSG</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="image-box">
+          <img class="gImg" src="images/img7.jpg" alt="">
+          <div class="logo_icons">
+            <a href="#">
+              <img class="logoImg" src="images/logo.png" alt="">
+              <div class="text_content">
+              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
+              <span class="followers">CJCRSG</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="image-box">
+          <img class="gImg" src="images/img11.jpg" alt="">
+          <div class="logo_icons">
+            <a href="#">
+              <img class="logoImg" src="images/logo.png" alt="">
+              <div class="text_content">
+              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
+              <span class="followers">CJCRSG</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="image-box">
+          <img class="gImg" src="images/img12.jpg" alt="">
+          <div class="logo_icons">
+            <a href="#">
+              <img class="logoImg" src="images/logo.png" alt="">
+              <div class="text_content">
+              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
+              <span class="followers">CJCRSG</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="image-box">
+          <img class="gImg" src="images/img13.jpg" alt="">
+          <div class="logo_icons">
+            <a href="#">
+              <img class="logoImg" src="images/logo.png" alt="">
+              <div class="text_content">
+              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
+              <span class="followers">CJCRSG</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="image-box">
+          <img class="gImg" src="images/img14.jpg" alt="">
+          <div class="logo_icons">
+            <a href="#">
+              <img class="logoImg" src="images/logo.png" alt="">
+              <div class="text_content">
+              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
+              <span class="followers">CJCRSG</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="image-box">
+          <img class="gImg" src="images/img15.jpg" alt="">
+          <div class="logo_icons">
+            <a href="#">
+              <img class="logoImg" src="images/logo.png" alt="">
+              <div class="text_content">
+              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
+              <span class="followers">CJCRSG</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+     
+  </section>
 
 
-    
 
-
+  <div class="mision-vision" id="about" >
+    <h1>Mision</h1><br>
+    <h3>To share the gospel of the kingdom, to make disciples of Christ and to plant churches in the Philippines and all over the world.</h3>
+    <br><br>
+    <h1>Vision</h1><br>
+    <h3>To bring people to God.</h3>
+  </div>
 
     
 
@@ -199,23 +354,23 @@
         <div class="left box">
           <div class="upper">
             <div class="topic">About us</div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque accusantium similique dolor quod facilis excepturi repudiandae nemo laborum placeat temporibus, voluptatibus illum saepe deserunt aut natus recusandae nobis numquam vitae.</p>
+            <p>Introducing our church organization, where our guiding principle is "Gospel First." Inspired by Luke 9:6 (AMP), we prioritize spreading the Gospel and healing the sick in every community we touch. Through passionate preaching and compassionate care, we emulate Christ's ministry, bringing hope and transformation wherever we go.</p>
           </div>
         </div>
         <div class="middle box">
-          <div class="topic">Contact us</div>
+          <div class="topic" id="contact-us">Contact us</div>
           <div class="phone">
-            <a href="#"><i class="fas fa-phone-volume"></i>   +007 9089 6767</a>
+            <a href="#"><i class="fas fa-phone-volume"></i>   +637 9089 6767</a>
           </div>
           <div class="email">
-            <a href="#"><i class="fas fa-envelope">    </i>  abc@gmail.com</a>
+            <a href="#"><i class="fas fa-envelope">    </i>  cjcrsg@gmail.com</a>
           </div>
           <br>
           <div class="topic">Follow us</div>
           <div class="media-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook-messenger"></i></a>
+            <a href="https://www.facebook.com/cjcrsg"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/cjc.rsg/"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.messenger.com/t/268149390030881"><i class="fab fa-facebook-messenger"></i></a>
           </div>
         </div>
         <div class="right box">
@@ -239,5 +394,25 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    <script>
+  let body = document.querySelector("body"),
+      lightBox = document.querySelector(".lightBox"),
+      img = document.querySelectorAll(".gImg"),
+      showImg = lightBox.querySelector(".showImg img"),
+      close = lightBox .querySelector(".close");
+     for (let image of img) {
+       image.addEventListener("click", ()=>{
+         showImg.src = image.src;
+         lightBox.style.display = "block";
+         body.style.overflow = "hidden";
+         close.onclick = ()=>{
+           lightBox.style.display = "none";
+           body.style.overflow = "visible";
+         };
+       });
+     }
+  </script>
   </body>
 </html>
