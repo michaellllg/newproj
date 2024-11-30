@@ -110,7 +110,7 @@
     <div class="member-status-widget">
       <div class="header">
         <span class="title">Member Status</span>
-        <button class="filter-button">All ▼</button>
+        <button class="filter-button">• • •</button>
       </div>
       <div class="progress-bar">
         <div class="inactive-bar" style="width: <?php echo round($inactivePercentage); ?>%;"></div>
@@ -144,16 +144,28 @@
     <div class="chartBox">
       <canvas id="myChart"></canvas>
       <select id="year" onchange="changeMonitoring()">
-        <option value="2020">2020</option>
-        <option value="2021">2021</option>
-        <option value="2022">2022</option>
-        <option value="2023">2023</option>
-      </select>
-      <select id="Month" onchange="changeMonitoring()">
-        <option value="january">January</option>
-        <option value="febuary">Febuary</option>
-        <option value="march">March</option>
-      </select>
+    <option value="2020">2020</option>
+    <option value="2021">2021</option>
+    <option value="2022">2022</option>
+    <option value="2023">2023</option>
+    <option value="2024">2024</option> <!-- Default year -->
+</select>
+
+<select id="Month" onchange="changeMonitoring()">
+    <option value="01">January</option>
+    <option value="02">February</option>
+    <option value="03">March</option>
+    <option value="04">April</option>
+    <option value="05">May</option>
+    <option value="06">June</option>
+    <option value="07">July</option>
+    <option value="08">August</option>
+    <option value="09">September</option>
+    <option value="10">October</option>
+    <option value="11">November</option>
+    <option value="12">December</option>
+</select>
+
     </div>
   </div>
 </div>
@@ -233,7 +245,7 @@ $conn->close();
     <table class="table table-striped table-bordered" id="dataTable">
         <thead class="table-black">
             <tr>
-                <th scope="col" data-sort="name">ID
+                <th scope="col" style="width: 10%;" data-sort="name">ID
                     <span class="sort-icon">&#9650;&#9660;</span>
                 </th>
                 <th scope="col" data-sort="name">Name
@@ -245,24 +257,24 @@ $conn->close();
                 <th scope="col" data-sort="status">Status
                     <span class="sort-icon">&#9650;&#9660;</span>
                 </th>
-                <th scope="col" style="width: 15%;">Actions</th>
+                <th scope="col" style="width: 8%;">Action</th>
             </tr>
         </thead>
         <tbody>
-    <?php
-    foreach ($combinedData as $row) {
-        echo "<tr data-status='" . $row['status'] . "'>";
-        echo "<td>" . $row['id'] . "</td>";
-        echo "<td>" . $row['name'] . "</td>";
-        echo "<td>" . $row['email'] . "</td>";
-        echo "<td>" . $row['status'] . "</td>";
-        echo "<td>
-                <a href='profile.php?id=" . $row['id'] . "' class='btn btn-primary btn-sm'>View</a>
-                <button class='btn btn-warning btn-sm'>Report</button>
-              </td>";
-        echo "</tr>";
-    }
-    ?>
+        <?php
+foreach ($combinedData as $row) {
+    echo "<tr data-status='" . $row['status'] . "'>";
+    echo "<td>" . $row['id'] . "</td>";
+    echo "<td>" . $row['name'] . "</td>";
+    echo "<td>" . $row['email'] . "</td>";
+    echo "<td>" . $row['status'] . "</td>";
+    echo "<td style='width: 8%; text-align: center;'>"; // Reduced width and aligned center
+    echo "<a href='profile.php?id=" . $row['id'] . "' class='btn btn-primary btn-sm'>View</a>";
+    echo "</td>";
+    echo "</tr>";
+}
+?>
+
 </tbody>
     </table>
 </div>

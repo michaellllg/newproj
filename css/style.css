@@ -881,8 +881,8 @@ footer a:hover{
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 95%;
+  height: 85%;
   border: 0; /* Optional: Removes border */
   border-radius: 3px; /* Optional: Keeps border-radius on the iframe */
 }
@@ -934,6 +934,7 @@ section .lightBox{
   position: relative;
   z-index: 2;
   display: none;
+  margin-top: 50px;
 }
 .lightBox .lightBox_content{
   position: fixed;

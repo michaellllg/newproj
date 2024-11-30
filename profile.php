@@ -1,3 +1,79 @@
+<?php
+error_reporting(E_ALL); // Enable all error reporting for debugging
+
+// Connect to the database
+$db = mysqli_connect("localhost", "root", "", "cjcrsg");
+
+// Check if the database connection is successful
+if (!$db) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+
+$memberID = isset($_GET['id']) ? (int) $_GET['id'] : 0; // Default to 0 if id is not set
+
+// Initialize an image path variable
+$imagePath = 'https://dummyimage.com/600x400/000/fff'; // Default placeholder
+
+// Fetch the stored image path from the database
+if ($memberID > 0) {
+    $query = "SELECT image FROM accountinfo WHERE memberID = $memberID";
+    $result = mysqli_query($db, $query);
+
+    if ($result && $data = mysqli_fetch_assoc($result)) {
+        if (!empty($data['image'])) {
+            $imagePath = './uploads/' . $data['image']; // Use the stored image path
+        }
+    }
+}
+if (isset($_FILES['uploadfile']) && $memberID > 0) {
+    $filename = $_FILES["uploadfile"]["name"];
+    $tempname = $_FILES["uploadfile"]["tmp_name"];
+    $folder = "uploads/" . $filename;  // Path to the 'uploads' folder
+
+    // Escape special characters in the filename to prevent SQL injection
+    $filename = mysqli_real_escape_string($db, $filename);
+
+    // Fetch the current image path from the database
+    $query = "SELECT image FROM accountinfo WHERE memberID = $memberID";
+    $result = mysqli_query($db, $query);
+    $currentImage = null;
+
+    if ($result && $data = mysqli_fetch_assoc($result)) {
+        $currentImage = $data['image']; // Get the current image name
+    }
+
+    // Update the image column for the given memberID
+    $sql = "UPDATE accountinfo SET image='$filename' WHERE memberID = $memberID";
+
+    // Execute the query and check for errors
+    if (mysqli_query($db, $sql)) {
+        $msg = "Image updated successfully in the database!";
+
+        // If there's an old image, delete it from the uploads folder
+        if ($currentImage && file_exists("uploads/" . $currentImage)) {
+            unlink("uploads/" . $currentImage);
+        }
+
+        // Move the uploaded image into the 'uploads' folder
+        if (move_uploaded_file($tempname, $folder)) {
+            $msg .= " New image uploaded successfully to folder!";
+        } else {
+            $msg .= " Failed to upload new image to folder!";
+        }
+    } else {
+        $msg = "Error updating image in the database: " . mysqli_error($db);
+    }
+
+    // Return response
+    echo json_encode(['message' => $msg]);
+    exit;
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,10 +93,17 @@
     #confirmationModal .modal-content {
        
             box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3); /* Border shadow */
-            border: 3px solid black; /* Add a black border with 3px thickness */
+
             width: 75%; /* Reduce the width by 1/4 (making it 75% of the original size) */
             margin: auto; /* Center the modal */
     }
+
+
+/* Dimmed effect for modals underneath */
+.modal.dimmed {
+    filter: brightness(50%); /* Darkens the modal to simulate dimming */
+}
+
 </style>
 <body>
     <header>
@@ -41,14 +124,46 @@
         <form method="post">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="profile-img">
-                        <img src="https://dummyimage.com/600x400/000/fff" alt=""/>
-                        <div class="file btn btn-lg btn-primary">
-                            Change Photo
-                            <input type="file" name="file"/>
-                        </div>
-                    </div>
+                <div class="profile-img">
+            <!-- Dynamically set the src attribute based on the PHP variable -->
+            <img id="displayedImage" src="<?php echo $imagePath; ?>" alt="" style="max-width: 300px; margin: 10px;" />
+            <div class="file btn btn-lg btn-primary">
+                Change Photo
+                <input type="file" id="uploadfile" name="file" />
+            </div>
+        </div>
                 </div>
+
+
+                <script>
+        document.getElementById('uploadfile').addEventListener('change', function () {
+            const formData = new FormData();
+            formData.append('uploadfile', this.files[0]);
+
+            // Preview the selected image
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('displayedImage').src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+
+            // Upload the file to the server
+            fetch('', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    // Optionally reload the page to reflect database changes
+                    location.reload();
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
                 <div class="col-md-6">
                     <div class="profile-head">
                         <h5>
@@ -346,6 +461,43 @@
             fetchMemberData();
         });
     </script>
+
+
+<script>
+$(document).ready(function () {
+    // Open the confirmation modal and dim the Edit Profile Modal
+    $('#editProfileForm').submit(function (event) {
+        event.preventDefault();
+
+        // Show the confirmation modal
+        $('#confirmationModal').modal({
+            backdrop: 'static', // Prevent closing when clicking outside
+            keyboard: false     // Prevent closing with ESC key
+        });
+
+        // Dim the Edit Profile Modal
+        $('#editProfileModal').addClass('dimmed');
+
+        // Ensure proper stacking of the backdrops
+        $('#confirmationModal').on('shown.bs.modal', function () {
+            $('.modal-backdrop').not('.stacked-backdrop').addClass('stacked-backdrop').css('z-index', 1048);
+        });
+    });
+
+    // Remove dimming when confirmation modal is closed
+    $('#confirmationModal').on('hidden.bs.modal', function () {
+        $('#editProfileModal').removeClass('dimmed'); // Remove dimming from the Edit Profile Modal
+        $('.stacked-backdrop').removeClass('stacked-backdrop'); // Reset backdrop stacking
+    });
+
+    // Close both modals when saving changes
+    $('#confirmSaveButton').click(function () {
+        $('#confirmationModal').modal('hide'); // Hide confirmation modal
+        $('#editProfileModal').modal('hide'); // Optionally hide Edit Profile Modal
+    });
+});
+
+</script>
 
     
   

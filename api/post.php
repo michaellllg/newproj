@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Add new post to the XML
         $post = $xml->addChild('post');
-        $post->addChild('text', htmlspecialchars($_POST['postText']));
+        $post->addChild('text', htmlspecialchars($_POST['postText'])); // Sanitize input
         $post->addChild('timestamp', time());
 
         // Handle file upload (if any)
@@ -58,4 +58,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Always return a JSON response
     echo json_encode($response);
     exit; // Make sure nothing else is output
+} else {
+    // Display posts
+    if (file_exists($xmlFile)) {
+        $xml = simplexml_load_file($xmlFile);
+
+        foreach ($xml->post as $post) {
+            // Get post text and preserve tab spaces
+            $text = str_replace("\t", '&nbsp;&nbsp;&nbsp;&nbsp;', htmlspecialchars($post->text));
+
+            // Output post with tabs preserved using CSS
+            echo '<div style="white-space: pre-wrap;">' . $text . '</div>';
+
+            // Display image if available
+            if (!empty($post->image)) {
+                echo '<img src="../uploads/' . htmlspecialchars($post->image) . '" alt="Post Image" />';
+            }
+
+            // Display timestamp
+            echo '<p>Posted on: ' . date('Y-m-d H:i:s', (int)$post->timestamp) . '</p>';
+        }
+    } else {
+        echo '<p>No posts available.</p>';
+    }
 }
+
+

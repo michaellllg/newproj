@@ -149,7 +149,8 @@ $conn->close();
         <div class="post-create-container">
             <textarea id="post-content" class="post-textarea" placeholder="Write something..."></textarea>
             <input type="file" id="image-upload" class="image-upload">
-            <button class="post-button" onclick="createPost()">Post</button>
+            <button class="post-button" type="button" onclick="createPost()">Post</button>
+
         </div>
 
         <!-- Post Feed Container -->
@@ -162,7 +163,7 @@ $conn->close();
 
 
     <script>
-        function createPost() {
+       function createPost() {
     const postText = document.getElementById("post-content").value;
     const imageInput = document.getElementById("image-upload");
     const imageFile = imageInput.files[0];
@@ -193,7 +194,7 @@ $conn->close();
         try {
             const jsonData = JSON.parse(data); // Try parsing as JSON
             if (jsonData.success) {
-                loadPosts(); // Reload posts after successful post creation
+                window.location.reload(); // Refresh the page after successful post creation
             } else {
                 alert('Error: ' + jsonData.error);
             }
@@ -207,6 +208,7 @@ $conn->close();
         console.error('Error creating post:', error);
     });
 }
+
 
 
 
@@ -247,11 +249,10 @@ function loadPosts() {
                 postHeader.appendChild(profileInfo);
                 postItem.appendChild(postHeader);
 
-                // Add post text content
                 const postContent = document.createElement("p");
-                postContent.textContent = post.text;
-                postContent.classList.add("post-text");
-                postItem.appendChild(postContent);
+postContent.innerHTML = post.text.replace(/\n/g, '<br>'); // Replace newlines with <br> tags
+postContent.classList.add("post-text");
+postItem.appendChild(postContent);
 
                 // Check if there's an image and display it
                 if (post.image) {

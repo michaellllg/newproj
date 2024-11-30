@@ -183,7 +183,7 @@
     <div class="welcome">
       <br>
 <h1>Welcome to Church of Jesus Christ the Risen Son of God Phils. Inc</h1><br>
-<h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis voluptas labore ipsa excepturi voluptatibus officiis maxime ration.</h5>
+<h5 id="image-gallery">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis voluptas labore ipsa excepturi voluptatibus officiis maxime ration.</h5>
     </div>
     <br>
 
@@ -192,7 +192,7 @@
       <div class="lightBox_content">
         <i class="fas fa-times close"></i>
         <div class="logo_icons">
-          <a href="#">
+          <a>
           <img class="logoImg" src="images/logo.png" alt="">
             <div class="text_content">
               <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
@@ -209,12 +209,12 @@
       </div>
     </div>
     <div class="image-gallery">
-      <header style="position: relative; z-index: 0;" id="image-gallery"> Church Gallery</header>
+      <header style="position: relative; z-index: 0;" > Church Gallery</header>
       <div class="image-container">
         <div class="image-box">
           <img class="gImg" src="images/img10.jpg" alt="">
           <div class="logo_icons">
-            <a href="#">
+            <a>
               <img class="logoImg" src="images/logo.png" alt="">
               <div class="text_content">
               <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
@@ -226,7 +226,7 @@
         <div class="image-box">
           <img class="gImg" src="images/img6.jpg" alt="">
           <div class="logo_icons">
-            <a href="#">
+            <a>
               <img class="logoImg" src="images/logo.png" alt="">
               <div class="text_content">
               <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
@@ -238,7 +238,7 @@
         <div class="image-box">
           <img class="gImg" src="images/img8.jpg" alt="">
           <div class="logo_icons">
-            <a href="#">
+            <a>
               <img class="logoImg" src="images/logo.png" alt="">
               <div class="text_content">
               <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
@@ -250,7 +250,7 @@
         <div class="image-box">
           <img class="gImg" src="images/img9.jpg" alt="">
           <div class="logo_icons">
-            <a href="#">
+            <a>
               <img class="logoImg" src="images/logo.png" alt="">
               <div class="text_content">
               <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
@@ -262,7 +262,7 @@
         <div class="image-box">
           <img class="gImg" src="images/img7.jpg" alt="">
           <div class="logo_icons">
-            <a href="#">
+            <a>
               <img class="logoImg" src="images/logo.png" alt="">
               <div class="text_content">
               <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
@@ -274,7 +274,7 @@
         <div class="image-box">
           <img class="gImg" src="images/img11.jpg" alt="">
           <div class="logo_icons">
-            <a href="#">
+            <a>
               <img class="logoImg" src="images/logo.png" alt="">
               <div class="text_content">
               <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
@@ -286,7 +286,7 @@
         <div class="image-box">
           <img class="gImg" src="images/img12.jpg" alt="">
           <div class="logo_icons">
-            <a href="#">
+            <a>
               <img class="logoImg" src="images/logo.png" alt="">
               <div class="text_content">
               <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
@@ -298,7 +298,7 @@
         <div class="image-box">
           <img class="gImg" src="images/img13.jpg" alt="">
           <div class="logo_icons">
-            <a href="#">
+            <a>
               <img class="logoImg" src="images/logo.png" alt="">
               <div class="text_content">
               <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
@@ -310,7 +310,7 @@
         <div class="image-box">
           <img class="gImg" src="images/img14.jpg" alt="">
           <div class="logo_icons">
-            <a href="#">
+            <a>
               <img class="logoImg" src="images/logo.png" alt="">
               <div class="text_content">
               <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
@@ -322,7 +322,7 @@
         <div class="image-box">
           <img class="gImg" src="images/img15.jpg" alt="">
           <div class="logo_icons">
-            <a href="#">
+            <a>
               <img class="logoImg" src="images/logo.png" alt="">
               <div class="text_content">
               <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
@@ -332,12 +332,13 @@
           </div>
         </div>
 
-     
+     <br  id="about">
   </section>
 
 
 
-  <div class="mision-vision" id="about" >
+
+  <div class="mision-vision">
     <h1>Mision</h1><br>
     <h3>To share the gospel of the kingdom, to make disciples of Christ and to plant churches in the Philippines and all over the world.</h3>
     <br><br>

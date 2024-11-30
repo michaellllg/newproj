@@ -2,8 +2,19 @@
 <posts>
   <formatOutput>1</formatOutput>
   <post>
-    <text>Hello, World!</text>
-    <timestamp>1732614879</timestamp>
-    <image>post_67459adf8d26b.png</image>
+    <text>hello world!</text>
+    <timestamp>1732620851</timestamp>
+    <image>post_6745b2338392e.jpg</image>
   </post>
+  <post>
+    <text>hello world!</text>
+    <timestamp>1732762556</timestamp>
+    <image>post_6747dbbcce0ac.jpg</image>
+  </post>
+  <post>
+    <text>hello, world!</text>
+    <timestamp>1732933416</timestamp>
+  </post>
+  
+  
 </posts>

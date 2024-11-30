@@ -226,7 +226,7 @@ $conn->close();
     <table class="table table-striped table-bordered" id="dataTable">
     <thead class="table-black">
     <tr>
-        <th scope="col" data-sort="name">Member ID
+        <th scope="col" style="width: 11%;" data-sort="name">Member ID
             <span class="sort-icon">&#9650;&#9660;</span>
         </th>
         <th scope="col" data-sort="name">Name
@@ -238,7 +238,7 @@ $conn->close();
         <th scope="col" data-sort="time">Time
             <span class="sort-icon">&#9650;&#9660;</span>
         </th>
-        <th scope="col" style="width: 15%;">Actions</th>
+        <th scope="col" style="width: 8%;">Action</th>
     </tr>
 </thead>
 <tbody>
@@ -253,10 +253,9 @@ $conn->close();
         echo "<td>" . htmlspecialchars($row['name']) . "</td>";
         echo "<td>" . htmlspecialchars($rowDate) . "</td>"; // Display Date
         echo "<td>" . htmlspecialchars($rowTime) . "</td>"; // Display Time
-        echo "<td>
+        echo "<td style='width: 8%; text-align: center;'>
     
     <button class='btn btn-danger btn-sm delete-btn' data-id='" . $row['id'] . "'>Delete</button>
-    <button class='btn btn-warning btn-sm'>Report</button>
               </td>";
         echo "</tr>";
     }

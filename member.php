@@ -204,6 +204,26 @@ $conn->close();
 </div>
 
 
+<!-- Confirmation Modal -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmationModalLabel">Confirm Add Member</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to add this member?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary" id="confirmAddMemberBtn">Yes, Add Member</button>
+            </div>
+        </div>
+    </div>
+</div>
 
   
   <div class="form-popup"></div>
@@ -301,7 +321,7 @@ $conn->close();
     <table class="table table-striped table-bordered" id="dataTable">
         <thead class="table-black">
             <tr>
-                <th scope="col" data-sort="name">ID
+                <th scope="col" style="width: 10%" data-sort="name">ID
                     <span class="sort-icon">&#9650;&#9660;</span>
                 </th>
                 <th scope="col" data-sort="name">Name
@@ -313,7 +333,7 @@ $conn->close();
                 <th scope="col" data-sort="status">Status
                     <span class="sort-icon">&#9650;&#9660;</span>
                 </th>
-                <th scope="col" style="width: 15%;">Actions</th>
+                <th scope="col" style="width: 8%;">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -324,13 +344,12 @@ $conn->close();
         echo "<td>" . $row['name'] . "</td>";
         echo "<td>" . $row['email'] . "</td>";
         echo "<td>" . $row['status'] . "</td>";
-        echo "<td>
-                <a href='profile.php?id=" . $row['id'] . "' class='btn btn-primary btn-sm'>View</a>
-                <button class='btn btn-warning btn-sm'>Report</button>
-              </td>";
-        echo "</tr>";
-    }
-    ?>
+        echo "<td style='width: 8%; text-align: center;'>"; // Reduced width and aligned center
+    echo "<a href='profile.php?id=" . $row['id'] . "' class='btn btn-primary btn-sm'>View</a>";
+    echo "</td>";
+    echo "</tr>";
+}
+?>
 </tbody>
     </table>
 </div>
@@ -452,32 +471,43 @@ $conn->close();
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 <script type="module">
-    $(function () {
-        // Function to handle adding a new member
-        $('#addMemberBtn').click(function () {
-            // Get form data including the role
-            var formData = {
-                'name': $('#memberName').val(),
-                'status': $('#memberStatus').val(),
-                'life_stage': $('#memberLifeStage').val(),
-                'email': $('#memberEmail').val(),
-                'password': $('#memberPassword').val(),
-                'phone': $('#memberPhone').val(),
-                'address': $('#memberAddress').val(),
-                'role': $('#memberRole').val() // Include role data
-            };
 
+$(function () {
+    // Function to handle adding a new member
+    $('#addMemberBtn').click(function () {
+        // Get form data
+        var formData = {
+            'name': $('#memberName').val(),
+            'status': $('#memberStatus').val(),
+            'life_stage': $('#memberLifeStage').val(),
+            'email': $('#memberEmail').val(),
+            'password': $('#memberPassword').val(),
+            'phone': $('#memberPhone').val(),
+            'address': $('#memberAddress').val(),
+            'role': $('#memberRole').val() // Include role data
+        };
+
+        // Validate input fields
+        if (!formData.name || !formData.status || !formData.life_stage || !formData.email || !formData.password || !formData.phone || !formData.address) {
+            alert("All fields are required. Please fill in all the fields.");
+            return; // Stop the process if fields are blank
+        }
+
+        // Show confirmation modal
+        $('#confirmationModal').modal('show');
+        
+        // Handle the confirmation action
+        $('#confirmAddMemberBtn').click(function() {
             // Send data to the server using AJAX
             $.ajax({
                 type: 'POST',
                 url: 'api/addMember.php',
                 data: formData,
-                encode: true // No need to specify dataType for JSON response
+                encode: true
             })
             .done(function (response) {
                 // Log the response from the server
                 console.log(response);
-                // Optionally, you can handle the response here, for example:
                 if (response.includes("successfully")) {
                     // Clear form fields after successful insertion
                     $('#addMemberForm')[0].reset();
@@ -488,7 +518,12 @@ $conn->close();
             .fail(function (data) {
                 console.error('Error:', data); // Log any errors
             });
+
+            // Close the confirmation modal
+            $('#confirmationModal').modal('hide');
         });
+    });
+
 
         // Function to fetch users
         async function getUsers() {
@@ -544,9 +579,9 @@ $conn->close();
             });
 
         getUsers(); // Call function to fetch users
+
     });
 </script>
-
   
     <!-- Linking custom script -->
     <script src="js/dashbooard.js"></script>
