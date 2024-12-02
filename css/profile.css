@@ -15,7 +15,6 @@ body {
 }
 
 
-
 header {
     background: #0f3e84;
     position: sticky;
@@ -175,14 +174,14 @@ header {
     text-align: center;
 }
 .profile-img img{
-    width: 70%;
+    width: 50%;
     height: 100%;
 }
 .profile-img .file {
     position: relative;
     overflow: hidden;
     margin-top: -20%;
-    width: 70%;
+    width: 58%;
     border: none;
     border-radius: 0;
     font-size: 15px;
@@ -256,4 +255,3 @@ header {
     font-weight: 600;
     color: #0062cc;
 }
-  

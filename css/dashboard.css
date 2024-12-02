@@ -485,7 +485,7 @@ form button:hover {
 .active-bar {
   position: absolute;
   height: 100%;
-  background-color: #5c5acb;
+  background-color: #3E519C;
   border-radius: 0 6px 6px 0;
 }
 
@@ -524,7 +524,7 @@ form button:hover {
 }
 
 .status-dot.active {
-  background-color: #5c5acb;
+  background-color: #3E519C;
 }
 
 .status-dot.inactive {

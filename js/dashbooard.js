@@ -13,10 +13,26 @@ hamburgerBtn.addEventListener("click", () => {
 hideMenuBtn.addEventListener("click", () =>  hamburgerBtn.click());
 
 
-//chartjs
+// Set the current month and year as default selections
+window.onload = () => {
+  const yearSelect = document.getElementById('year');
+  const monthSelect = document.getElementById('Month');
+
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth() + 1; // Months are 0-indexed in JavaScript
+
+  // Set the default values
+  yearSelect.value = currentYear;
+  monthSelect.value = currentMonth;
+
+  // Fetch the data for the current month and year
+  fetchAttendanceData(currentYear, currentMonth);
+};
+
 // Fetch the data based on selected year and month
 function fetchAttendanceData(year, month) {
-  return fetch(`../api/attendance.php?year=${year}&month=${month}`)
+  return fetch(`api/chart.php?year=${year}&month=${month}`)
       .then(response => response.json())
       .then(data => {
           // Process and update the chart data
@@ -24,13 +40,13 @@ function fetchAttendanceData(year, month) {
       });
 }
 
-// Update the chart with new data
 function updateChart(data) {
-  const weeks = data.map(item => item.week);
+  // Use the weeks as they are (no subtraction)
+  const weeks = data.map(item => item.week);  // No change, keep the original week numbers
   const attendance = data.map(item => item.attendance);
-  
+
   // Update the chart labels and data
-  myChart.data.labels = weeks;
+  myChart.data.labels = weeks.map(week => `Week ${week}`);  // Display 'Week 1', 'Week 2', etc.
   myChart.data.datasets[0].data = attendance;
   myChart.update();
 }
@@ -51,18 +67,12 @@ const data = {
       label: 'Weekly Attendance',
       data: [0, 0, 0, 0],  // Default data
       backgroundColor: [
-          'rgba(255, 26, 104, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)'
-      ],
-      borderColor: [
-          'rgba(255, 26, 104, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)'
-      ],
-      borderWidth: 1
+        '#364687', // Week 1: Solid #364687
+        '#6D7EC5', // Week 2: Solid #6D7EC5
+        '#364687', // Week 3: Solid #364687
+        '#6D7EC5'  // Week 4: Solid #6D7EC5
+    ],
+    borderWidth: 1
   }]
 };
 
@@ -84,7 +94,3 @@ const myChart = new Chart(
   document.getElementById('myChart'),
   config
 );
-
-// Initially load data for default year and month
-fetchAttendanceData('2024', 'nov');
-

@@ -104,6 +104,7 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
     filter: brightness(50%); /* Darkens the modal to simulate dimming */
 }
 
+
 </style>
 <body>
     <header>
@@ -126,7 +127,8 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
                 <div class="col-md-4">
                 <div class="profile-img">
             <!-- Dynamically set the src attribute based on the PHP variable -->
-            <img id="displayedImage" src="<?php echo $imagePath; ?>" alt="" style="max-width: 300px; margin: 10px;" />
+           <img id="displayedImage" src="<?php echo $imagePath; ?>" alt="" style="width: 200px; height: 150px; margin: 10px;" />
+
             <div class="file btn btn-lg btn-primary">
                 Change Photo
                 <input type="file" id="uploadfile" name="file" />
@@ -240,7 +242,32 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
                         </div>
 
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <img id="qrcode"></img>
+<!-- QR Code Modal Trigger Button -->
+<button type="button" class="btn btn-primary" id="generateQRCodeBtn">View your QR Code</button>
+
+<!-- QR Code Modal -->
+<div class="modal fade" id="qrCodeModal" tabindex="-1" role="dialog" aria-labelledby="qrCodeModalLabel" aria-hidden="true" style="max-width: 20%; margin: auto;">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="qrCodeModalLabel">Your QR Code</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        <!-- QR Code Image -->
+        <img id="qrCodeImage" src="" alt="QR Code" class="img-fluid" />
+        <br />
+        <!-- Download Button -->
+        <a href="" id="downloadQRCodeBtn" class="btn btn-success mt-2" download="qrcode.png">Download</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
                         </div>
                     </div>
                 </div>
@@ -331,6 +358,9 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <!-- Include QRious library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+
+
 
     <script>
         $(document).ready(function () {
@@ -401,22 +431,40 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
         return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
 
-    // Fetch member data and other existing functionality remains unchanged
 
-            function generateQRCode(memberID) {
-            // Add two leading zeros to memberID
-            var paddedMemberID = ('00' + memberID).slice(-4);
+    // Event listener for the button click to trigger QR code generation
+    document.getElementById('generateQRCodeBtn').addEventListener('click', function () {
+        var memberID = getParameterByName('id'); // Replace with your actual member ID logic
+        generateQRCode(memberID); // Call function to generate QR code
 
-            var qr = new QRious({
-                value: paddedMemberID,
-                size: 128,
-                background: 'white',
-                foreground: 'black'
-            });
+        // Show the modal with the QR code
+        $('#qrCodeModal').modal('show');
+    });
 
-            // Set the src attribute of the image to the data URL
-            $('#qrcode').attr('src', qr.toDataURL());
-        }
+    // Function to get URL parameter by name
+    function getParameterByName(name) {
+        var urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name) || '';
+    }
+
+    // Function to generate QR code using QRious library
+    function generateQRCode(memberID) {
+        // Ensure memberID is always 4 digits, padding with zeros if necessary
+        var paddedMemberID = ('00' + memberID).slice(-4);
+
+        var qr = new QRious({
+            value: paddedMemberID, // QR code content
+            size: 512, // Size of the QR code
+            background: 'white',
+            foreground: 'black'
+        });
+
+        // Update the modal with the generated QR code
+        document.getElementById('qrCodeImage').src = qr.toDataURL();
+
+        // Set the download link for the QR code image
+        document.getElementById('downloadQRCodeBtn').href = qr.toDataURL();
+    }
 
             // Update the fetchMemberData function to handle the role type
             function fetchMemberData() {

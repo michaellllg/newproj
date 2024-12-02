@@ -66,7 +66,17 @@ $conn->close();
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
   </head>
- 
+  <style>
+    .custom-view-btn {
+    background-color: #435186;
+    color: white;
+    border: none;
+}
+.custom-view-btn:hover {
+    background-color: #5b6aa8; /* Slightly darker shade for hover effect */
+}
+
+ </style>
   <body>
 
 
@@ -197,7 +207,8 @@ $conn->close();
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-        <a href="api/logout.php" class="btn btn-primary">Yes</a>
+        <a href="api/logout.php" class="btn btn-primary" style="background-color: #465CB1; border-color: #465CB1; color: white;">Yes</a>
+
       </div>
     </div>
   </div>
@@ -345,7 +356,7 @@ $conn->close();
         echo "<td>" . $row['email'] . "</td>";
         echo "<td>" . $row['status'] . "</td>";
         echo "<td style='width: 8%; text-align: center;'>"; // Reduced width and aligned center
-    echo "<a href='profile.php?id=" . $row['id'] . "' class='btn btn-primary btn-sm'>View</a>";
+        echo "<a href='profile.php?id=" . $row['id'] . "' class='btn btn-sm custom-view-btn'>View</a>";
     echo "</td>";
     echo "</tr>";
 }

@@ -65,8 +65,40 @@ $conn->close();
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
+    <style>
+/* Style for the Post button */
+.post-button {
+    background-color: #3E519C !important;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.post-button:hover {
+background-color: #344687 !important; /* Darker shade for hover effect */
+}
 
-  </style>
+/* Style for the Edit and Delete buttons */
+.edit-button
+{
+
+    border: none;
+    color: #3E519C;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-button{
+    color: maroon;
+}
+
+</style>
+
+</style>
+
+
  
   <body>
 
@@ -131,7 +163,7 @@ $conn->close();
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-        <a href="api/logout.php" class="btn btn-primary">Yes</a>
+        <a href="api/logout.php" class="btn btn-primary" style="background-color: #465CB1; border-color: #465CB1; color: white;">Yes</a>
       </div>
     </div>
   </div>

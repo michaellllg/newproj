@@ -67,7 +67,20 @@ $conn->close();
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/logout.js"></script>
   </head>
- 
+  <style>
+.btn-maroon {
+    background-color: maroon;
+    border-color: maroon;
+    color: white;
+}
+.btn-maroon:hover {
+    background-color: darkred; /* Slightly darker shade for hover effect */
+    border-color: darkred;
+    color: #FA8028;
+}
+</style>
+
+
   <body>
 
 
@@ -130,7 +143,7 @@ $conn->close();
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-        <a href="api/logout.php" class="btn btn-primary">Yes</a>
+        <a href="api/logout.php" class="btn btn-primary" style="background-color: #465CB1; border-color: #465CB1; color: white;">Yes</a>
       </div>
     </div>
   </div>
@@ -255,7 +268,8 @@ $conn->close();
         echo "<td>" . htmlspecialchars($rowTime) . "</td>"; // Display Time
         echo "<td style='width: 8%; text-align: center;'>
     
-    <button class='btn btn-danger btn-sm delete-btn' data-id='" . $row['id'] . "'>Delete</button>
+   <button class='btn btn-maroon btn-sm delete-btn' data-id='" . $row['id'] . "'>Delete</button>
+
               </td>";
         echo "</tr>";
     }
