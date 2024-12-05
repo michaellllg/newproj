@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
   </head>
   <body>
 
@@ -76,9 +80,18 @@
             <div class="form-content">
                 <h2>SIGNUP</h2>
                 <form action="#">
+                <div class="input-field">
+                        <input type="text" required>
+                        <label>Enter your full name</label>
+                    </div>
                     <div class="input-field">
                         <input type="text" required>
                         <label>Enter your email</label>
+                    </div>
+                    
+                    <div class="input-field">
+                        <input type="password" required>
+                        <label>Create password</label>
                     </div>
                     <div class="input-field">
                         <input type="password" required>
@@ -150,6 +163,7 @@
         </form>
       </div>
     </div>
+
 
 
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -385,7 +399,6 @@
         <p>Copyright © 2024 <a href="#">CJCRSG</a> All rights reserved</p>
       </div>
     </footer>
-    
     <!-- Linking Emoji Mart script for emoji picker -->
     <script src="https://cdn.jsdelivr.net/npm/emoji-mart@latest/dist/browser.js"></script>
 
