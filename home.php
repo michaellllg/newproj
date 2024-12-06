@@ -17,15 +17,17 @@
         background-attachment: fixed; /* Keeps the image fixed during scrolling */
         font-family: Arial, sans-serif; /* Apply a clean font style */
     }
+    
   .container {
   text-align: center;
   background-color: #f2f2f2;
-  padding: 30px;
+  padding: 50px;
   border: 5px solid #0f3e84; ;
   border-radius: 10px;
   box-shadow: 0 0 25px rgba(0, 0, 0, .1);
-  width: 500px !important;
+  width: 550px !important;
   margin: right;
+  margin-top: 5px; /* Adjust this value to move it lower */
   position: relative;
   top: 30px;
 }
@@ -41,10 +43,35 @@
 }
 
 
+/* Welcome section */
+.welcome-section {
+    text-align: left;
+    padding: 50px 20px;
+    margin: 0 auto;
+    margin-left: 10px;
+    max-width: 800px;
+    background-color: white;
+}
+
+.welcome-section h1 {
+    color: #0f3e84;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.welcome-section p {
+    font-size: 1rem;
+    color: #666;
+}
+
+
 </style>
 <body>
 <?php include('nav.php'); ?>
-
+<div class="welcome-section">
+            <h1>Hello, User 123!</h1>
+            <p>Here is your daily verse to keep you motivated.</p>
+        </div>
 <div class="container">
     <h1>Daily Bible Verse</h1>
     <div id="verse-container">
