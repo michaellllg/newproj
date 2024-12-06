@@ -88,7 +88,6 @@ background-color: #344687 !important; /* Darker shade for hover effect */
 
 </style>
 <body>
-<<<<<<< HEAD
     <header>
         <?php include('nav.php'); ?>
     </header>
@@ -99,7 +98,6 @@ background-color: #344687 !important; /* Darker shade for hover effect */
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-=======
 
 
 <div class="main-container">
