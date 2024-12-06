@@ -131,6 +131,8 @@ header {
     color: #fff;
     font-weight: 600;
     font-size: 1.7rem;
+    position: relative;
+    top: .3rem !important;
   }
   
   .navbar .links {

@@ -36,7 +36,6 @@
 <body>
 <?php include('nav.php'); ?>
 
-<h1>hello</h1>
 <div class="container">
     <h1>Daily Bible Verse</h1>
     <div id="verse-container">
