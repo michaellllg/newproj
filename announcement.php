@@ -275,6 +275,5 @@ function editPost(timestamp, newText) {
 
 </script>
 
->>>>>>> c29f2c7c27a5a8293f7e4d4546c71e3e677d2204
 </body>
 </html>
