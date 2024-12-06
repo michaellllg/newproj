@@ -391,7 +391,8 @@
         <div class="right box">
           <div class="topic">Location</div>
           <div class="iframe-wrapper">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12999.10312931178!2d121.14604000000001!3d14.106640000000002!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd6599540dff9b%3A0x3f6f45e5791f444!2sCJCRSG!5e1!3m2!1sen!2sph!4v1731659125091!5m2!1sen!2sph" width="400" height="200" style="border: 2px solid white; border-radius: 3px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12999.10312931178!2d121.14604000000001!3d14.106640000000002!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd6599540dff9b%3A0x3f6f45e5791f444!2sCJCRSG!5e1!3m2!1sen!2sph!4v1731659125091!5m2!1sen!2sph" width="400" height="200" style="border: 2px solid black
+    ; border-radius: 3px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
         </div>
       </div>
