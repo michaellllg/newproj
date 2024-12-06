@@ -96,7 +96,7 @@ background-color: #344687 !important; /* Darker shade for hover effect */
 
 </style>
 
-</style>
+
 
 
  
