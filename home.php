@@ -69,7 +69,7 @@
 <body>
 <?php include('nav.php'); ?>
 <div class="welcome-section">
-            <h1>Hello, User 123!</h1>
+            <h1>Hello, <?php echo $memberName; ?>!</h1>
             <p>Here is your daily verse to keep you motivated.</p>
         </div>
 <div class="container">

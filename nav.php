@@ -1,3 +1,6 @@
+<?php include 'api/status.php'; ?>
+
+
 <?php
 include 'api/login.php';
 
