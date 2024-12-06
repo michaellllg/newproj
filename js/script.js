@@ -59,8 +59,8 @@ const userData = {
 // Store chat history
 const chatHistory = [{
     role: "model",
-    parts: [{ text: "Your name is Solomon, after King Solomon in the Bible. Respond like a wise human. Do not respond that you are an AI trained to respond, and only reply in modern Tagalog." }],
- }];
+      parts: [{ text: "Your name is Solomon, after King Solomon in the Bible. Respond like a wise human. Do not respond that you are an AI trained to respond, and only reply in modern Tagalog." }],
+  }];
 const initialInputHeight = messageInput.scrollHeight;
 
 // Create message element with dynamic classes and return it
