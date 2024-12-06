@@ -59,8 +59,12 @@ header {
   font-weight: 600;
   font-size: 1.7rem;
   position: relative;
+<<<<<<< HEAD
   top: 20px;
 
+=======
+  top: .3rem !important;
+>>>>>>> e7b46222bf13423f070e5e5cbe346a8d374b95d2
 }
 
 .navbar .links {

@@ -99,7 +99,7 @@ $conn->close();
             <span class="close-btn material-symbols-rounded">close</span>
             <li><a href="home.php?id=<?php echo $_GET['id']; ?>">Home</a></li>
             <li><a href="myattendance.php?id=<?php echo $_GET['id']; ?>">Attendance</a></li>
-            <li><a href="announcement.php?id=<?php echo $_GET['id']; ?>">Anouncement</a></li>
+            <li><a href="announcement.php?id=<?php echo $_GET['id']; ?>">Announcement</a></li>
         </ul>
 
           <!-- Dropdown Menu -->

@@ -163,7 +163,7 @@ $conn->close();
 <div class="container-wrapper">
 <div class="admin-container">
   <label class="admin-greeting">Attendance Record!</label>
-  <label class="admin-description">Lorem ipsum dolor sit amet consectetur adipisicing elit.</label>
+  <label class="admin-description">Manage the Recorded Attendance.</label>gi
 </div>
 </div>
         

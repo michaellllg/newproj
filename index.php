@@ -52,7 +52,7 @@
                 <p>Please log in using your personal information to stay connected with us.</p>
             </div>
             <div class="form-content">
-                <h2>LOGIN</h2>
+                <h2>LOG IN</h2>
                 <!-- Login Form -->
                 <form action="api/login.php" method="POST">
     <div class="input-field">
@@ -68,7 +68,7 @@
                 </form>
                 <div class="bottom-link">
                     Don't have an account?
-                    <a href="#" id="signup-link">Signup</a>
+                    <a href="#" id="signup-link">Sign up</a>
                 </div>
             </div>
         </div>
@@ -78,7 +78,7 @@
                 <p>To become a part of our community, please sign up using your personal information.</p>
             </div>
             <div class="form-content">
-                <h2>SIGNUP</h2>
+                <h2>SIGN UP</h2>
                 <form action="#">
                 <div class="input-field">
                         <input type="text" required>
@@ -128,7 +128,7 @@
               d="M738.3 287.6H285.7c-59 0-106.8 47.8-106.8 106.8v303.1c0 59 47.8 106.8 106.8 106.8h81.5v111.1c0 .7.8 1.1 1.4.7l166.9-110.6 41.8-.8h117.4l43.6-.4c59 0 106.8-47.8 106.8-106.8V394.5c0-59-47.8-106.9-106.8-106.9zM351.7 448.2c0-29.5 23.9-53.5 53.5-53.5s53.5 23.9 53.5 53.5-23.9 53.5-53.5 53.5-53.5-23.9-53.5-53.5zm157.9 267.1c-67.8 0-123.8-47.5-132.3-109h264.6c-8.6 61.5-64.5 109-132.3 109zm110-213.7c-29.5 0-53.5-23.9-53.5-53.5s23.9-53.5 53.5-53.5 53.5 23.9 53.5 53.5-23.9 53.5-53.5 53.5zM867.2 644.5V453.1h26.5c19.4 0 35.1 15.7 35.1 35.1v121.1c0 19.4-15.7 35.1-35.1 35.1h-26.5zM95.2 609.4V488.2c0-19.4 15.7-35.1 35.1-35.1h26.5v191.3h-26.5c-19.4 0-35.1-15.7-35.1-35.1zM561.5 149.6c0 23.4-15.6 43.3-36.9 49.7v44.9h-30v-44.9c-21.4-6.5-36.9-26.3-36.9-49.7 0-28.6 23.3-51.9 51.9-51.9s51.9 23.3 51.9 51.9z"
             />
           </svg>
-          <h2 class="logo-text">Mr. Solomon</h2>
+          <h2 class="logo-text">Solomon</h2>
         </div>
         <button id="close-chatbot" class="material-symbols-rounded">keyboard_arrow_down</button>
       </div>
@@ -174,13 +174,13 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="images/img1.png" alt="First slide">
+          <img class="d-block w-100" src="images/1.gif" alt="First slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="images/img2.jpg" alt="Second slide">
+          <img class="d-block w-100" src="images/2.png" alt="Second slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="images/img4.jpg" alt="Third slide">
+          <img class="d-block w-100" src="images/3.png" alt="Third slide">
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -196,8 +196,8 @@
 
     <div class="welcome">
       <br>
-<h1>Welcome to Church of Jesus Christ the Risen Son of God Phils. Inc</h1><br>
-<h5 id="image-gallery">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis voluptas labore ipsa excepturi voluptatibus officiis maxime ration.</h5>
+<h1>Welcome to Church of Jesus Christ the Risen Son of God Phils. Inc.</h1><br>
+<h5 id="image-gallery">Together, we grow in worship, fellowship, and service, sharing the light of Christ and building a community rooted in grace and hope.</h5>
     </div>
     <br>
 
@@ -209,7 +209,7 @@
           <a>
           <img class="logoImg" src="images/logo.png" alt="">
             <div class="text_content">
-              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
+              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc. </span>
               <span class="followers">CJCRSG</span>
             </div>
           </a>
@@ -231,7 +231,7 @@
             <a>
               <img class="logoImg" src="images/logo.png" alt="">
               <div class="text_content">
-              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
+              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc. </span>
               <span class="followers">CJCRSG</span>
               </div>
             </a>
@@ -243,7 +243,7 @@
             <a>
               <img class="logoImg" src="images/logo.png" alt="">
               <div class="text_content">
-              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
+              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc. </span>
               <span class="followers">CJCRSG</span>
               </div>
             </a>
@@ -255,7 +255,7 @@
             <a>
               <img class="logoImg" src="images/logo.png" alt="">
               <div class="text_content">
-              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
+              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc. </span>
               <span class="followers">CJCRSG</span>
               </div>
             </a>
@@ -267,7 +267,7 @@
             <a>
               <img class="logoImg" src="images/logo.png" alt="">
               <div class="text_content">
-              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
+              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc. </span>
               <span class="followers">CJCRSG</span>
               </div>
             </a>
@@ -279,7 +279,7 @@
             <a>
               <img class="logoImg" src="images/logo.png" alt="">
               <div class="text_content">
-              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
+              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc. </span>
               <span class="followers">CJCRSG</span>
               </div>
             </a>
@@ -291,7 +291,7 @@
             <a>
               <img class="logoImg" src="images/logo.png" alt="">
               <div class="text_content">
-              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
+              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc. </span>
               <span class="followers">CJCRSG</span>
               </div>
             </a>
@@ -303,7 +303,7 @@
             <a>
               <img class="logoImg" src="images/logo.png" alt="">
               <div class="text_content">
-              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
+              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc. </span>
               <span class="followers">CJCRSG</span>
               </div>
             </a>
@@ -315,7 +315,7 @@
             <a>
               <img class="logoImg" src="images/logo.png" alt="">
               <div class="text_content">
-              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
+              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc. </span>
               <span class="followers">CJCRSG</span>
               </div>
             </a>
@@ -327,7 +327,7 @@
             <a>
               <img class="logoImg" src="images/logo.png" alt="">
               <div class="text_content">
-              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
+              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc. </span>
               <span class="followers">CJCRSG</span>
               </div>
             </a>
@@ -339,7 +339,7 @@
             <a>
               <img class="logoImg" src="images/logo.png" alt="">
               <div class="text_content">
-              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc </span>
+              <span class="name">Church of Jesus Christ the Risen Son of God Phils. Inc. </span>
               <span class="followers">CJCRSG</span>
               </div>
             </a>
@@ -353,7 +353,7 @@
 
 
   <div class="mision-vision">
-    <h1>Mision</h1><br>
+    <h1>Mission</h1><br>
     <h3>To share the gospel of the kingdom, to make disciples of Christ and to plant churches in the Philippines and all over the world.</h3>
     <br><br>
     <h1>Vision</h1><br>
@@ -391,7 +391,8 @@
         <div class="right box">
           <div class="topic">Location</div>
           <div class="iframe-wrapper">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12999.10312931178!2d121.14604000000001!3d14.106640000000002!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd6599540dff9b%3A0x3f6f45e5791f444!2sCJCRSG!5e1!3m2!1sen!2sph!4v1731659125091!5m2!1sen!2sph" width="400" height="200" style="border: 2px solid white; border-radius: 3px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12999.10312931178!2d121.14604000000001!3d14.106640000000002!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd6599540dff9b%3A0x3f6f45e5791f444!2sCJCRSG!5e1!3m2!1sen!2sph!4v1731659125091!5m2!1sen!2sph" width="400" height="200" style="border: 2px solid black
+    ; border-radius: 3px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
         </div>
       </div>

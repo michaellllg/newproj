@@ -564,7 +564,7 @@ header {
 .form-box .form-details {
     width: 100%;
     color: #fff;
-    max-width: 330px;
+    max-width: 400px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -574,14 +574,14 @@ header {
 
 .login .form-details {
     padding: 0 40px;
-    background: url("../images/img1.png");
+    background: url("../images/Sign up picture.png");
     background-position: center;
     background-size: cover;
 }
 
 .signup .form-details {
     padding: 0 20px;
-    background: url("../images/img3.jpg");
+    background: url("../images/Sign up picture.png");
     background-position: center;
     background-size: cover;
 }
@@ -706,7 +706,7 @@ footer{
   width: 100%;
   bottom: 0;
   left: 0;
-  background: #111;
+  background: #fff;
 }
 footer .content{
   max-width: 1350px;
@@ -717,7 +717,7 @@ footer .content{
   justify-content: space-between;
 }
 footer .content p,a{
-  color: #fff;
+  color: #000;
 }
 footer .content .box{
   width: 33%;
@@ -726,7 +726,7 @@ footer .content .box{
 footer .content .topic{
   font-size: 22px;
   font-weight: 600;
-  color: #fff;
+  color: #000;
   margin-bottom: 16px;
 }
 footer .content p{
@@ -763,11 +763,11 @@ footer .content .media-icons a{
 footer .bottom{
   width: 100%;
   text-align: right;
-  color: #d9d9d9;
+  color: #2c2b2b;
   padding: 0 40px 5px 0;
 }
 footer .bottom a{
-  color: #06eb38;
+  color: #0630eb;
 }
 footer a{
   transition: all 0.3s ease;
