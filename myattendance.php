@@ -178,8 +178,187 @@ $conn->close();
             font-size: 32px;
             margin-bottom: 20px; /* Adds space between the title and the graph */
             position: relative;
-            top:150px;
+            top:-100px;
         }
+
+
+        
+/* Container for Admin Section */
+.admin-container {
+  text-align: left; /* Align text to the left */
+  margin-top: 20px;
+  margin-left: 100px; /* Align to the left edge */
+  padding-top: 30px;
+  padding-right: 300px;
+  position: relative;
+  top: 50px;
+
+ 
+}
+
+/* Greeting Label Styling */
+.admin-greeting {
+  font-size: 30px;
+  font-weight: bold;
+  color: #303858;
+  margin-bottom: 8px;
+  display: block; /* Ensure spacing below the label */
+}
+
+/* Description Label Styling */
+.admin-description {
+  font-size: 14px;
+  color: #60657b;
+  margin-bottom: 16px;
+  display: block; /* Ensure proper spacing */
+}
+
+/* Button Styling */
+.attendance-button {
+  font-size: 14px;
+  font-weight: bold;
+  color: #303858;
+  background-color: #a4b6ee;
+  border: 1px solid #d6e7f3;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Button Hover Effect */
+.attendance-button:hover {
+  background-color: #b4c6e4;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Flex Container for Layout */
+.container-wrapper {
+  display: flex;
+  gap: 4px; /* Space between containery and chartCard */
+  justify-content: flex-start; /* Align to the right edge */
+  align-items: flex-start; /* Align at the top */
+  margin: 30px auto; /* Center the container horizontally */
+  padding: 0 15px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  box-sizing: border-box;
+}
+
+
+
+
+.modal-dialog-top {
+  top: 10%; /* Adjust this value to control how far from the top the modal appears */
+  margin: 0 auto; /* Center horizontally */
+}
+
+
+@media (max-width: 1024px) {
+  .admin-container {
+    margin-left: 5px;
+    padding-right: 150px;
+  }
+
+  .container-wrapper {
+    gap: 10px;
+    padding: 0 10px;
+  }
+
+}
+
+
+
+/* For screens between 991px and 1399px */
+@media (min-width: 991px) and (max-width: 1399px) {
+  /* Admin container stays aligned to the left */
+  .admin-container {
+    text-align: left; /* Align text to the left */
+    margin-top: 20px;
+    margin-left: 10px; /* Ensure the container is on the left side */
+    padding-top: 30px;
+    padding-right: 10px; /* Adjust padding */
+  }
+
+  /* Flex container should align the widget and chart side by side */
+  .container-wrapper {
+    display: flex;
+    gap: 10px; /* Increase gap between the widget and chart */
+    justify-content: flex-start; /* Align to the left */
+    align-items: flex-start; /* Align at the top */
+    margin: 20px auto;
+    padding: 0 20px; /* Ensure proper padding on the sides */
+    flex-wrap: wrap; /* Allow wrapping if needed */
+    box-sizing: border-box;
+  }
+
+}
+ 
+
+  /* Ensure the greeting text and description are properly sized */
+  .admin-greeting {
+    font-size: 26px; /* Adjust font size */
+  }
+
+  .admin-description {
+    font-size: 14px; /* Adjust font size */
+  }
+
+  /* Adjust button size */
+  .attendance-button {
+    font-size: 14px;
+    padding: 10px 18px; /* Adjust padding for better fit */
+  }
+
+
+
+
+
+@media (max-width: 768px) {
+  .container-wrapper {
+    flex-direction: column; /* Stack vertically below 768px */
+    align-items: center;
+  }
+
+  
+
+  .admin-container {
+    margin-left: 5px;
+    padding-right: 0;
+    margin-bottom: 20px;
+  }
+
+
+}
+
+
+
+
+@media (max-width: 346px) {
+  /* Very small screens adjustments */
+  .container-wrapper {
+    flex-direction: column; /* Ensure vertical stacking on very small screens */
+  }
+
+ 
+}
+
+
+@media (max-width: 320px) {
+
+
+  .admin-container {
+    padding-right: 0; /* Remove extra padding */
+  }
+}
+
+@media (max-width: 200px) {
+
+  .admin-container {
+    font-size: 10px; /* Reduce font size for tiny screens */
+  }
+}
     </style>
 </head>
 <body>
@@ -187,6 +366,12 @@ $conn->close();
 
 
 <?php include('nav.php'); ?>
+
+<div class="admin-container">
+        <label class="admin-greeting">Hi, Admin <?php echo $memberName; ?>!</label>
+  <label class="admin-description">Manage the attendance of CJC Members.</label>
+  <a href="attendance.php"><button class="attendance-button">Add Attendance</button></a>
+</div>
 
 <h1>My Attendance</h1>
 
