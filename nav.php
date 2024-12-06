@@ -66,6 +66,16 @@ $conn->close();
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
 <style>
+   body {
+        margin: 0;
+        padding: 0;
+        background-image: url('images/bg-myatt.png'); /* Use your file path */
+        background-size: cover; /* Ensures the image covers the entire screen */
+        background-position: center; /* Centers the image */
+        background-repeat: no-repeat; /* Prevents the image from repeating */
+        background-attachment: fixed; /* Keeps the image fixed during scrolling */
+        font-family: Arial, sans-serif; /* Apply a clean font style */
+    }
     /* Custom hover style for dropdown items */
     .dropdown-menu .dropdown-item:hover {
       background-color: #435186 !important;

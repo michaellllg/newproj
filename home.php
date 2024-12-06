@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>User Home Page</title>
 </head>
 
 <style>
-    .container {
+ body {
+        margin: 0;
+        padding: 0;
+        background-image: url('images/bg-myatt.png'); /* Use your file path */
+        background-size: cover; /* Ensures the image covers the entire screen */
+        background-position: center; /* Centers the image */
+        background-repeat: no-repeat; /* Prevents the image from repeating */
+        background-attachment: fixed; /* Keeps the image fixed during scrolling */
+        font-family: Arial, sans-serif; /* Apply a clean font style */
+    }
+  .container {
   text-align: center;
-
   background-color: #f2f2f2;
   padding: 30px;
-  border: .1px solid white ;
+  border: 5px solid #0f3e84; ;
   border-radius: 10px;
   box-shadow: 0 0 25px rgba(0, 0, 0, .1);
   width: 500px !important;
@@ -36,7 +45,6 @@
 <body>
 <?php include('nav.php'); ?>
 
-
 <div class="container">
     <h1>Daily Bible Verse</h1>
     <div id="verse-container">
@@ -44,6 +52,7 @@
       <p id="reference"></p>
     </div>
 </div>
+
 
 <script>
         const verses = [
