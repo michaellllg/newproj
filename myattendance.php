@@ -69,10 +69,12 @@ $conn->close();
         /* Center the graph container */
         .graph-container {
             display: flex;
-            justify-content: center;  /* Center the graph horizontally */  align-items: center;      /* Center the graph vertically */
+            justify-content: center;  /* Center the graph horizontally */  
+            align-items: center;      /* Center the graph vertically */
             height: 100vh;            /* Full viewport height */
             padding: 20px;
             position: relative;       /* Needed to position the dropdown */
+            bottom: -100px;
         }
 
         /* Styling for the graph container */
@@ -91,12 +93,13 @@ $conn->close();
             transform: scale(1.2);     /* Scale the graph to 120% (20% bigger) */
             transform-origin: center; /* Ensure scaling happens from the center */
         }
+        
 
         /* Dropdown for selecting years */
         .year-dropdown {
             position: absolute;
-            top: 200px;
-            right: 70px;
+            top: 220px;
+            right: 80px;
             padding: 5px 10px;
             border-radius: 5px;
             border: 1px solid #ddd;
@@ -176,9 +179,10 @@ $conn->close();
         h1 {
             text-align: center;
             font-size: 32px;
+            color: #364687;
             margin-bottom: 20px; /* Adds space between the title and the graph */
             position: relative;
-            top:150px;
+            top:25px;
         }
     </style>
 </head>

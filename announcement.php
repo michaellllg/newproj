@@ -31,8 +31,8 @@ main {
 
 .announcement-box {
     width: 90%;
-    max-width: 600px;
-    background: #fff;
+    max-width: 500px;
+    background: #ffff;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
