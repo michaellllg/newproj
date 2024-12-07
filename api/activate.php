@@ -28,23 +28,22 @@ if (isset($_GET['token'])) {
         $updateStmt = $conn->prepare("UPDATE accountinfo SET is_active = 1, activation_token = NULL WHERE activation_token = ?");
         $updateStmt->bind_param("s", $token);
         if ($updateStmt->execute()) {
-            // Success: Use JS alert and redirect
-            echo "<script>
-                alert('Account successfully activated.');
-                window.location.href = 'index.php';
-            </script>";
+            $message = "Account successfully activated.";
         } else {
-            // Error during activation: Use plain echo
-            echo "An error occurred while activating your account.";
+            $message = "An error occurred while activating your account.";
         }
     } else {
-        // Invalid token: Use plain echo
-        echo "Invalid or expired activation token.";
+        $message = "Invalid or expired activation token.";
     }
 } else {
-    // No token provided: Use plain echo
-    echo "Invalid request.";
+    $message = "Invalid request.";
 }
+
+// Display message as JS alert and redirect
+echo "<script>
+    alert('$message');
+    window.location.href = '../index.php';
+</script>";
 
 // Close connection
 mysqli_close($conn);

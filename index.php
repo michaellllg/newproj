@@ -84,7 +84,7 @@
                 </form>
                 <div class="bottom-link">
                     Don't have an account?
-                    <a href="#" id="signup-link">Sign up</a>
+                    <a href="forgot-password.php" id="signup-link">Sign up</a>
                 </div>
             </div>
         </div>
