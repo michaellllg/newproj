@@ -1,3 +1,6 @@
+<?php include 'api/status.php'; ?>
+
+
 <?php
 include 'api/login.php';
 
@@ -48,6 +51,7 @@ $conn->close();
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  <link rel="icon" type="image/x-icon" href="images/logo.png">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CJCRSG</title>

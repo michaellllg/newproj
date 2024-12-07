@@ -17,6 +17,22 @@
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
   </head>
+
+  <style>
+/* Custom styles for prev and next icons */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #555; /* Grey-black color */
+  border-radius: 50%; /* Optional: Makes the icons circular */
+  width: 30px;
+  height: 30px;
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+  background-color: #333; /* Darker shade on hover */
+}
+</style>
   <body>
 
 
@@ -68,7 +84,7 @@
                 </form>
                 <div class="bottom-link">
                     Don't have an account?
-                    <a href="#" id="signup-link">Sign up</a>
+                    <a href="forgot-password.php" id="signup-link">Sign up</a>
                 </div>
             </div>
         </div>
@@ -79,37 +95,33 @@
             </div>
             <div class="form-content">
                 <h2>SIGN UP</h2>
-                <form action="#">
-                <div class="input-field">
-                        <input type="text" required>
-                        <label>Enter your full name</label>
-                    </div>
-                    <div class="input-field">
-                        <input type="text" required>
-                        <label>Enter your email</label>
-                    </div>
-                    
-                    <div class="input-field">
-                        <input type="password" required>
-                        <label>Create password</label>
-                    </div>
-                    <div class="input-field">
-                        <input type="password" required>
-                        <label>Create password</label>
-                    </div>
-                    <div class="policy-text">
-                        <input type="checkbox" id="policy">
-                        <label for="policy">
-                            I agree to the
-                            <a href="#" class="option">Terms & Conditions</a>
-                        </label>
-                    </div>
-                    <button type="submit">Sign Up</button>
-                </form>
-                <div class="bottom-link">
-                    Already have an account? 
-                    <a href="#" id="login-link">Login</a>
-                </div>
+                <form action="api/signup.php" method="POST"> <!-- Keep this action pointing to signup.php -->
+        <div class="input-field">
+            <input type="text" name="fullname" required>
+            <label>Enter your full name</label>
+        </div>
+        <div class="input-field">
+            <input type="email" name="email" required>
+            <label>Enter your email</label>
+        </div>
+        <div class="input-field">
+            <input type="password" name="password" required>
+            <label>Enter your password</label>
+        </div>
+        <div class="policy-text">
+            <input type="checkbox" id="policy" required>
+            <label for="policy">
+                I agree to the
+                <a href="#" class="option">Terms & Conditions</a>
+            </label>
+        </div>
+        <button type="submit">Sign Up</button>
+
+        <div class="bottom-link">
+            Already have an account? 
+            <a href="#" id="login-link">Login</a>
+        </div>
+    </form>
             </div>
         </div>
     </div>
@@ -166,8 +178,8 @@
 
 
 
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="z-index: 0;">
+      <ol class="carousel-indicators" >
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
@@ -187,8 +199,8 @@
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
       </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" >
+        <span class="carousel-control-next-icon" aria-hidden="true" ></span>
         <span class="sr-only">Next</span>
       </a>
     </div>

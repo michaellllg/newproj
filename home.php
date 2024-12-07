@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/x-icon" href="images/logo.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Home Page</title>
@@ -69,7 +70,7 @@
 <body>
 <?php include('nav.php'); ?>
 <div class="welcome-section">
-            <h1>Hello, User 123!</h1>
+            <h1>Hello, <?php echo $memberName; ?>!</h1>
             <p>Here is your daily verse to keep you motivated.</p>
         </div>
 <div class="container">
