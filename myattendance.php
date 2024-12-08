@@ -453,10 +453,10 @@ $conn->close();
   new Chart(ctx, {
     type: 'polarArea',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','Sun'],
       datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        label: '# of Attendance',
+        data: [0,1,2,3,4,5],
         borderWidth: 1
       }]
     },
