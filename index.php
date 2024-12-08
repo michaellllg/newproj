@@ -32,6 +32,44 @@
 .carousel-control-next-icon:hover {
   background-color: #333; /* Darker shade on hover */
 }
+
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .welcome h1 {
+    font-size: 1.5rem;
+  }
+
+  #image-gallery {
+    font-size: 0.9rem;
+  }
+
+  .mision-vision h1 {
+    font-size: 1.4rem;
+  }
+
+  .mision-vision h3 {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome h1 {
+    font-size: 1.3rem;
+  }
+
+  #image-gallery {
+    font-size: 0.8rem;
+  }
+
+  .mision-vision h1 {
+    font-size: 1.2rem;
+  }
+
+  .mision-vision h3 {
+    font-size: 0.8rem;
+  }
+}
 </style>
   <body>
 
