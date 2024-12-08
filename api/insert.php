@@ -1,11 +1,13 @@
 <?php
+
 // Allow requests from any origin
 header("Access-Control-Allow-Origin: *");
+
+// Allow the POST method
 header("Access-Control-Allow-Methods: POST");
+
+// Allow content-type header
 header("Access-Control-Allow-Headers: Content-Type");
-header("Access-Control-Allow-Credentials: true");
-
-
 
 // Establish database connection
 $con = mysqli_connect("localhost", "u627256117_cjcrsg", "thisWASNTmytrue#3", "u627256117_cjcrsg") or die("Couldn't connect");
@@ -17,14 +19,18 @@ if ($con->connect_error) {
 
 // Check if the request method is POST
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Allow preflight requests
+    if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+        header('HTTP/1.1 200 OK');
+        exit();
+    }
+
     // Get memberID from POST data
     $data = json_decode(file_get_contents('php://input'), true);
-    
-    // Check if memberID is present in the request data
+
     if (isset($data['memberID'])) {
         $memberID = $data['memberID'];
 
-        // Check if attendance record already exists for the member on the current date
         $sql_check = "SELECT * FROM attendance WHERE memberID = ? AND DATE(date) = CURDATE()";
         $stmt_check = $con->prepare($sql_check);
 
@@ -39,12 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
 
             $stmt_check->close();
-        } else {
-            echo json_encode(["success" => false, "message" => "Error preparing statement"]);
-            exit;
         }
 
-        // Check if the memberID exists in the database
         $sql_check_member = "SELECT * FROM member WHERE memberID = ?";
         $stmt_check_member = $con->prepare($sql_check_member);
 
@@ -59,12 +61,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
 
             $stmt_check_member->close();
-        } else {
-            echo json_encode(["success" => false, "message" => "Error preparing statement"]);
-            exit;
         }
 
-        // Insert attendance record
         $sql_insert = "INSERT INTO attendance (memberID) VALUES (?)";
         $stmt_insert = $con->prepare($sql_insert);
 
@@ -87,6 +85,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
-// Close connection
 $con->close();
 ?>
