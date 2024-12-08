@@ -16,7 +16,7 @@ domReady(function () {
 
         if (memberID !== "") {
             // Send the memberID to the server for attendance recording
-            fetch("https://cjcrsg.site/api/insert.php", {
+            fetch("https://cjcrsg.site/api/insert.php", { // Fixed URL with HTTPS
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -30,14 +30,16 @@ domReady(function () {
                     return response.json();
                 })
                 .then((data) => {
+                    // Check if attendance recorded successfully
                     if (data.success) {
                         window.location.href = "attendanceRecorded.html";
                     } else {
+                        // Handle other responses, such as invalid member ID
                         alert(data.message || "Error recording attendance");
                     }
                 })
                 .catch((error) => {
-                    console.error("Fetch Error:", error);
+                    // Handle fetch error
                     alert("Error: " + error.message);
                 });
         } else {
