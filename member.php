@@ -539,7 +539,7 @@ $(function () {
         // Function to fetch users
         async function getUsers() {
             try {
-                let response = await fetch("http://localhost/newproj/api/db.php", {
+                let response = await fetch("http://cjcrsg.site/newproj/api/db.php", {
                     method: 'GET'
                 });
                 let responseData = await response.json();

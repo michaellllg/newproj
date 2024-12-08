@@ -16,7 +16,7 @@ domReady(function () {
 
         if (memberID !== "") {
             // Send the memberID to the server for attendance recording
-            fetch("http://localhost/newproj/api/insert.php", {
+            fetch("http://cjcrsg.site/api/insert.php", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
