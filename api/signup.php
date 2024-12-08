@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $mail->addAddress($email, $fullname);
 
                     // Email content
-                    $activation_link = "https://" . $_SERVER['HTTP_HOST'] . "/newproj/api/activate.php?token=" . urlencode($activation_token);
+                    $activation_link = "https://" . $_SERVER['HTTP_HOST'] . "/api/activate.php?token=" . urlencode($activation_token);
 
                     $mail->isHTML(true);
                     $mail->Subject = 'Account Activation';
