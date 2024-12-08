@@ -74,7 +74,7 @@ $conn->close();
             height: 100vh;            /* Full viewport height */
             padding: 20px;
             position: relative;       /* Needed to position the dropdown */
-            bottom: -100px;
+            bottom: 300px;
         }
 
         /* Styling for the graph container */
@@ -182,11 +182,7 @@ $conn->close();
             color: #364687;
             margin-bottom: 20px; /* Adds space between the title and the graph */
             position: relative;
-<<<<<<< HEAD
-            top:25px;
-=======
-            top:-100px;
->>>>>>> b1fdc07c05cb9db56378d70b4f1e21dd4c4575ec
+            top:10px;
         }
 
 
@@ -254,6 +250,27 @@ $conn->close();
   box-sizing: border-box;
 }
 
+/* css of the graph by diana binangkal*/
+.graphBox {
+  position: relative;
+  left: 25%;
+  top: -150px;
+  width: 70%;
+  padding:20px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 30px;
+  min-height: 200px;
+}
+
+.graphBox .box{
+  position: relative;
+  background: #BCCCDC;
+  padding: 20px;
+  width: 100%;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0, 0.08);
+  border-radius: 20px;
+}
 
 
 
@@ -321,8 +338,6 @@ $conn->close();
 
 
 
-
-
 @media (max-width: 768px) {
   .container-wrapper {
     flex-direction: column; /* Stack vertically below 768px */
@@ -367,6 +382,7 @@ $conn->close();
     font-size: 10px; /* Reduce font size for tiny screens */
   }
 }
+
     </style>
 </head>
 <body>
@@ -375,13 +391,23 @@ $conn->close();
 
 <?php include('nav.php'); ?>
 
+<h1>My Attendance</h1>
+
+<!--The Greetings XD -->
 <div class="admin-container">
-        <label class="admin-greeting">Hi, Admin <?php echo $memberName; ?>!</label>
+        <label class="admin-greeting">Hi, User <?php echo $memberName; ?>!</label>
   <label class="admin-description">Manage the attendance of CJC Members.</label>
   <a href="attendance.php"><button class="attendance-button">Add Attendance</button></a>
 </div>
-
-<h1>My Attendance</h1>
+<!-- Add Chart -->
+<div class="graphBox">
+    <div class="box">
+      <canvas id="myChart"></canvas>
+    </div>
+    <div class="box">
+      <canvas id="myChartt"></canvas>
+    </div>
+</div>
 
 <div class="graph-container">
     <select class="year-dropdown">
@@ -421,7 +447,28 @@ $conn->close();
         </ul>
     </div>
 </div>
-
+ <script src = "https://cdn.jsdelivr.net/npm/chart.js"></script>
+ <script>
+  const ctx = document.getElementById('myChart');
+  new Chart(ctx, {
+    type: 'polarArea',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+ </script>
 <script>
 // Get the current year
 const currentYear = new Date().getFullYear();
