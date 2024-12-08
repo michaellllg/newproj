@@ -2,7 +2,7 @@
 error_reporting(E_ALL); // Enable all error reporting for debugging
 
 // Connect to the database
-$db = mysqli_connect("localhost", "root", "", "cjcrsg");
+$db = mysqli_connect("localhost", "u627256117_cjcrsg", "thisWASNTmytrue#3", "u627256117_cjcrsg");
 
 // Check if the database connection is successful
 if (!$db) {

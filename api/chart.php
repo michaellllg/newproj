@@ -12,9 +12,9 @@ $month = isset($_GET['month']) ? $_GET['month'] : date("m");
 
 // Database connection
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "cjcrsg";
+$username = "u627256117_cjcrsg";
+$password = "thisWASNTmytrue#3";
+$dbname = "u627256117_cjcrsg";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 

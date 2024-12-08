@@ -1,6 +1,6 @@
 <?php
 // Establish database connection
-$con = mysqli_connect("localhost", "root", "", "cjcrsg") or die("Couldn't connect");
+$con = mysqli_connect("localhost", "u627256117_cjcrsg", "thisWASNTmytrue#3", "u627256117_cjcrsg") or die("Couldn't connect");
 
 // Check connection
 if ($con->connect_error) {

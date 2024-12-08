@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect("localhost", "root", "", "cjcrsg") or die("Couldn't connect");
+$con = mysqli_connect("localhost", "ru627256117_cjcrsg", "thisWASNTmytrue#3", "u627256117_cjcrsg") or die("Couldn't connect");
 
 // Check connection
 if ($con->connect_error) {

@@ -5,9 +5,9 @@ error_reporting(E_ALL);
 
 // Database connection details
 $host = "localhost";
-$username = "root";
-$password = "";
-$dbname = "cjcrsg";
+$username = "u627256117_cjcrsg";
+$password = "thisWASNTmytrue#3";
+$dbname = "u627256117_cjcrsg";
 
 // Create the database connection
 $con = mysqli_connect($host, $username, $password, $dbname);

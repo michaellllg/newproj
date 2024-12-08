@@ -190,11 +190,11 @@ $conn->close();
 
 
 <?php
-// Define database connection parameters
+
 $servername = "localhost";  // Adjust the server name as needed
-$username = "root";         // Adjust the username as needed
-$password = "";             // Adjust the password as needed
-$dbname = "cjcrsg";         // The name of your database
+$username = "u627256117_cjcrsg";         // Adjust the username as needed
+$password = "thisWASNTmytrue#3";             // Adjust the password as needed
+$dbname = "u627256117_cjcrsg";         // The name of your database        // The name of your database
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
