@@ -1,5 +1,8 @@
 <?php
 
+// Set timezone to Manila
+date_default_timezone_set("Asia/Manila");
+
 // Allow requests from any origin
 header("Access-Control-Allow-Origin: *");
 
@@ -63,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $stmt_check_member->close();
         }
 
-        $sql_insert = "INSERT INTO attendance (memberID) VALUES (?)";
+        $sql_insert = "INSERT INTO attendance (memberID, date) VALUES (?, NOW())"; // Use NOW() for current timestamp
         $stmt_insert = $con->prepare($sql_insert);
 
         if ($stmt_insert) {
