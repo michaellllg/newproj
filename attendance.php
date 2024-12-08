@@ -84,7 +84,7 @@
                 const memberID = document.getElementById("memberID").value.trim();
 
                 if (memberID !== "") {
-                    fetch("http://cjcrsg.site/api/insert.php", {
+                    fetch("https://cjcrsg.site/api/insert.php", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
