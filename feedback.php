@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/x-icon" href="images/logo.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback</title>
@@ -9,20 +10,39 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
-    body {
-        background-image: url('images/bg-myatt.png');
-    }
-/* Customize header */
-.navbar {
-    height: 60px; /* Adjust height */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+body {
+    background-image: url('images/bg-myatt.png');
+    background-repeat: no-repeat;
+    background-size: cover; /* Ensure the image covers the entire screen */
+    background-position: center; /* Center the image */
+    height: 100vh; /* Set the height to viewport */
+    margin: 0; /* Remove default margin */
 }
 
+
+header {
+  background: #364687;
+  position: sticky;
+  width: 100%;
+  margin-top: 10px;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  padding: 0 10px;
+}
 .navbar-brand {
     font-size: 1.5rem; /* Increase font size */
     font-weight: bold; /* Make it bold */
 }
 
+.navbar img {
+    max-height: 40px; /* Ensures the logo fits within the header */
+}
+
+.navbar h2 {
+    font-size: 1.5rem; /* Makes the text larger */
+    font-weight: bold; /* Ensures it's bold */
+}
         
         /* Custom star styling */
 #starRating i {
@@ -46,14 +66,15 @@ form {
 </head>
 <body>
        <!-- Blue Header -->
-       <nav class="navbar navbar-dark bg-primary">
-        <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1">CJCRSG</span>
-            <a href="#" class="logo">
-            <img src="images/logo.png" alt="logo">
+<nav class="navbar navbar-dark bg-primary">
+    <div class="container-fluid d-flex align-items-center">
+        <a href="#" class="d-flex align-items-center text-white text-decoration-none">
+            <img src="images/logo.png" alt="logo" class="me-2" style="height: 40px;"> <!-- Adjust the size as needed -->
+            <h2 class="m-0" style="font-size: 1.5rem;">CJCRSG</h2>
         </a>
-        </div>
-    </nav>
+    </div>
+</nav>
+
 
     <div class="container mt-5">
         <h1 class="text-center">We Value Your Feedback!</h1>
