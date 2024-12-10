@@ -224,7 +224,9 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-        <video class="d-block w-100" autoplay loop muted><source src="images/1.mp4" type="video/mp4"></video>
+        <video class="d-block w-100" autoplay loop muted>
+    <source src="images/1.mp4" type="video/mp4">
+  </video>
         </div>
         <div class="carousel-item">
           <img class="d-block w-100" src="images/2.png" alt="Second slide">
