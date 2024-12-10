@@ -60,11 +60,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $stmt_check_member->close();
         }
 
+<<<<<<< HEAD
+        // Generate PHP timezone-adjusted timestamp
+        $currentDateTime = date('Y-m-d H:i:s');
+        $sql_insert = "INSERT INTO attendance (memberID, date) VALUES (?, ?)";
+        $stmt_insert = $con->prepare($sql_insert);
+=======
         $sql_insert = "INSERT INTO attendance (memberID, date) VALUES (?, NOW())"; // Use NOW() for current timestamp
         $stmt_insert = $conn->prepare($sql_insert);
+>>>>>>> 231f55401671f8569e150e0545fdb68f85ac0f56
 
         if ($stmt_insert) {
-            $stmt_insert->bind_param("i", $memberID);
+            $stmt_insert->bind_param("is", $memberID, $currentDateTime);
             $stmt_insert->execute();
 
             if ($stmt_insert->affected_rows > 0) {
