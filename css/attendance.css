@@ -1,0 +1,318 @@
+
+@import url("https://fonts.googleapis.com/css2?family=sans-serif:opsz,wght@14..32,100..900&display=swap");
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+  }
+  
+  body {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(#eeeeff, #c8c7ff);
+  }
+  
+  .login-container {
+    background-color: #EAEDF7;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 340px;
+    height: 400px;
+    justify-self: center;
+    position: relative;
+    top: 120px;
+  }
+  
+  h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+    position: relative;
+    top: 50px;
+  }
+  
+  label {
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+    text-align: left;
+  }
+  
+  input {
+    padding: 15px;
+    font-size: 14px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    height: 45px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #3c4b9a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #2f3a8c;
+  }
+  
+  .qr-code-link {
+    font-size: 14px;
+    color: #3c4b9a;
+    text-decoration: none;
+    margin-top: 10px;
+  }
+  
+  .qr-code-link:hover {
+    text-decoration: underline;
+  }
+
+
+  
+header {
+    background: #0f3e84;
+    position: sticky;
+    width: 100%;
+    margin-top: 10px;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    padding: 0 10px;
+  }
+  
+  .navbar {
+    display: flex;
+    padding: 22px 0;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: space-between;
+  }
+  
+  .navbar .hamburger-btn {
+    display: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+  
+  .navbar .logo {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  .navbar .logo img {
+    width: 40px;
+    border-radius: 50%;
+  }
+  
+  .navbar .logo h2 {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.7rem;
+
+  }
+  
+  .navbar .links {
+    display: flex;
+    gap: 35px;
+    list-style: none;
+    align-items: center;
+  }
+  
+  .navbar .close-btn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    display: none;
+    color: #000;
+    cursor: pointer;
+  }
+  
+  .navbar .links a {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: 0.1s ease;
+    position: relative;
+    top: 7px;
+  }
+  
+  .navbar .links a:hover {
+    color: #19e8ff;
+  }
+  
+  .navbar .login-btn {
+    border: none;
+    outline: none;
+    background: #fff;
+    color: #275360;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 0.15s ease;
+  }
+  
+  .navbar .login-btn:hover {
+    background: #ddd;
+  }
+  
+ 
+  
+ 
+  
+
+
+  .container {
+    width: 30% !important;
+
+    margin: 30px;
+
+    
+}
+
+.container h1 {
+    color: #364687;
+}
+
+.section {
+    background-color: #EAEDF7;
+    padding: 50px 30px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
+}
+
+#my-qr-reader {
+    padding: 20px !important;
+   
+}
+
+#my-qr-reader img[alt="Info icon"] {
+    display: none;
+}
+
+#my-qr-reader img[alt="Camera based scan"] {
+    width: 100px !important;
+    height: 100px !important;
+}
+
+button {
+    padding: 10px 20px;
+    border: 1px solid #b2b2b2;
+    outline: none;
+    border-radius: 0.25em;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    background-color: #0F3E84;
+    transition: 0.3s background-color;
+}
+
+button:hover {
+    background-color: #586CBC;
+}
+
+.inputID a{
+    color: #0F3E84;
+    font-style: normal;
+    position: relative;
+    bottom: 38px;
+    left: 160px;
+}
+
+
+
+#html5-qrcode-anchor-scan-type-change {
+    text-decoration: none !important;
+    color: #1d9bf0;
+}
+
+video {
+    width: 100% !important;
+    border: 1px solid #b2b2b2 !important;
+    border-radius: 0.25em;
+}
+
+
+  
+
+
+  
+@media (max-width: 950px) {
+
+  
+    .navbar {
+      padding: 15px 0;
+    }
+  
+    .navbar .logo img {
+      display: none;
+    }
+  
+    .navbar .logo h2 {
+      font-size: 1.4rem;
+    }
+  
+    .navbar .links {
+      position: fixed;
+      top: 0;
+      z-index: 10;
+      left: -100%;
+      display: block;
+      height: 100vh;
+      width: 100%;
+      padding-top: 60px;
+      text-align: center;
+      background: #fff;
+      transition: 0.2s ease;
+    }
+  
+    .navbar {
+      left: 0;
+    }
+  
+    .navbar .links a {
+      display: inline-flex;
+      margin: 20px 0;
+      font-size: 1.2rem;
+      color: #000;
+    }
+  
+  
+  
+    .navbar .login-btn {
+      font-size: 0.9rem;
+      padding: 7px 10px;
+    }
+
+
+  }
+
+  
+  
+  
