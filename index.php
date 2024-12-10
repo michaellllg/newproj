@@ -117,7 +117,7 @@
         <input type="password" name="password" required>
         <label>Password</label>
     </div>
-    <a href="#" class="forgot-pass-link">Forgot password?</a>
+    <a href="forgot-password.php" class="forgot-pass-link">Forgot password?</a>
     <button type="submit">Log In</button>
                 </form>
                 <div class="bottom-link">
