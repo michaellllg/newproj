@@ -1,13 +1,7 @@
 <?php
 error_reporting(E_ALL); // Enable all error reporting for debugging
 
-// Connect to the database
-$db = mysqli_connect("localhost", "u627256117_cjcrsg", "thisWASNTmytrue#3", "u627256117_cjcrsg");
-
-// Check if the database connection is successful
-if (!$db) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+include 'api/connection.php';
 
 
 $memberID = isset($_GET['id']) ? (int) $_GET['id'] : 0; // Default to 0 if id is not set
@@ -18,7 +12,7 @@ $imagePath = 'https://dummyimage.com/600x400/000/fff'; // Default placeholder
 // Fetch the stored image path from the database
 if ($memberID > 0) {
     $query = "SELECT image FROM accountinfo WHERE memberID = $memberID";
-    $result = mysqli_query($db, $query);
+    $result = mysqli_query($conn, $query);
 
     if ($result && $data = mysqli_fetch_assoc($result)) {
         if (!empty($data['image'])) {
@@ -32,11 +26,11 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
     $folder = "uploads/" . $filename;  // Path to the 'uploads' folder
 
     // Escape special characters in the filename to prevent SQL injection
-    $filename = mysqli_real_escape_string($db, $filename);
+    $filename = mysqli_real_escape_string($conn, $filename);
 
     // Fetch the current image path from the database
     $query = "SELECT image FROM accountinfo WHERE memberID = $memberID";
-    $result = mysqli_query($db, $query);
+    $result = mysqli_query($conn, $query);
     $currentImage = null;
 
     if ($result && $data = mysqli_fetch_assoc($result)) {
@@ -47,7 +41,7 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
     $sql = "UPDATE accountinfo SET image='$filename' WHERE memberID = $memberID";
 
     // Execute the query and check for errors
-    if (mysqli_query($db, $sql)) {
+    if (mysqli_query($conn, $sql)) {
         $msg = "Image updated successfully in the database!";
 
         // If there's an old image, delete it from the uploads folder
@@ -62,7 +56,7 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
             $msg .= " Failed to upload new image to folder!";
         }
     } else {
-        $msg = "Error updating image in the database: " . mysqli_error($db);
+        $msg = "Error updating image in the database: " . mysqli_error($conn);
     }
 
     // Return response

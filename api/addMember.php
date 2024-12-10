@@ -1,10 +1,6 @@
 <?php
-$con = mysqli_connect("localhost", "ru627256117_cjcrsg", "thisWASNTmytrue#3", "u627256117_cjcrsg") or die("Couldn't connect");
+include 'connection.php';
 
-// Check connection
-if ($con->connect_error) {
-    die("Connection failed: " . $con->connect_error);
-}
 
 // Check if form data is received
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -19,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $role = $_POST['role']; // Add role data
 
     // Prepare and bind parameters for inserting into member table
-    $stmt_member = $con->prepare("INSERT INTO member (name, status) VALUES (?, ?)");
+    $stmt_member = $conn->prepare("INSERT INTO member (name, status) VALUES (?, ?)");
     $stmt_member->bind_param("ss", $name, $status);
 
     // Execute the statement to insert into the member table
@@ -27,10 +23,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($member_success) {
         // Retrieve the auto-generated memberID
-        $memberID = $con->insert_id;
+        $memberID = $conn->insert_id;
 
         // Check if the role exists in the role table
-        $check_role = $con->prepare("SELECT roleID FROM role WHERE roletype = ?");
+        $check_role = $conn->prepare("SELECT roleID FROM role WHERE roletype = ?");
         $check_role->bind_param("s", $role);
         $check_role->execute();
         $result_role = $check_role->get_result();
@@ -41,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $roleID = $row_role['roleID'];
 
             // Prepare and bind parameters for inserting into accountinfo table
-            $stmt_accountinfo = $con->prepare("INSERT INTO accountinfo (email, password, phone, life_stage, address, memberID) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt_accountinfo = $conn->prepare("INSERT INTO accountinfo (email, password, phone, life_stage, address, memberID) VALUES (?, ?, ?, ?, ?, ?)");
             $stmt_accountinfo->bind_param("sssssi", $email, $password, $phone, $life_stage, $address, $memberID);
 
             // Execute the statement to insert into the accountinfo table
@@ -49,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($accountinfo_success) {
                 // Prepare and bind parameters for inserting into accountrole table
-                $stmt_accountrole = $con->prepare("INSERT INTO accountrole (memberID, roleID) VALUES (?, ?)");
+                $stmt_accountrole = $conn->prepare("INSERT INTO accountrole (memberID, roleID) VALUES (?, ?)");
                 $stmt_accountrole->bind_param("ii", $memberID, $roleID);
 
                 // Execute the statement to insert into the accountrole table
@@ -85,5 +81,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // Close database connection
-$con->close();
+$conn->close();
 ?>

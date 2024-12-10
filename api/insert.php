@@ -12,13 +12,7 @@ header("Access-Control-Allow-Methods: POST");
 // Allow content-type header
 header("Access-Control-Allow-Headers: Content-Type");
 
-// Establish database connection
-$con = mysqli_connect("localhost", "u627256117_cjcrsg", "thisWASNTmytrue#3", "u627256117_cjcrsg") or die("Couldn't connect");
-
-// Check connection
-if ($con->connect_error) {
-    die("Connection failed: " . $con->connect_error);
-}
+include 'connection.php';
 
 // Check if the request method is POST
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -35,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $memberID = $data['memberID'];
 
         $sql_check = "SELECT * FROM attendance WHERE memberID = ? AND DATE(date) = CURDATE()";
-        $stmt_check = $con->prepare($sql_check);
+        $stmt_check = $conn->prepare($sql_check);
 
         if ($stmt_check) {
             $stmt_check->bind_param("i", $memberID);
@@ -51,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         $sql_check_member = "SELECT * FROM member WHERE memberID = ?";
-        $stmt_check_member = $con->prepare($sql_check_member);
+        $stmt_check_member = $conn->prepare($sql_check_member);
 
         if ($stmt_check_member) {
             $stmt_check_member->bind_param("i", $memberID);
@@ -66,10 +60,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $stmt_check_member->close();
         }
 
+<<<<<<< HEAD
         // Generate PHP timezone-adjusted timestamp
         $currentDateTime = date('Y-m-d H:i:s');
         $sql_insert = "INSERT INTO attendance (memberID, date) VALUES (?, ?)";
         $stmt_insert = $con->prepare($sql_insert);
+=======
+        $sql_insert = "INSERT INTO attendance (memberID, date) VALUES (?, NOW())"; // Use NOW() for current timestamp
+        $stmt_insert = $conn->prepare($sql_insert);
+>>>>>>> 231f55401671f8569e150e0545fdb68f85ac0f56
 
         if ($stmt_insert) {
             $stmt_insert->bind_param("is", $memberID, $currentDateTime);
@@ -90,5 +89,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
-$con->close();
+$conn->close();
 ?>

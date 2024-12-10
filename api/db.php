@@ -1,11 +1,5 @@
 <?php
-// Establish database connection
-$con = mysqli_connect("localhost", "u627256117_cjcrsg", "thisWASNTmytrue#3", "u627256117_cjcrsg") or die("Couldn't connect");
-
-// Check connection
-if ($con->connect_error) {
-    die("Connection failed: " . $con->connect_error);
-}
+include 'connection.php';
 
 // Check if memberID is provided in the request
 $memberID = isset($_GET['memberID']) ? $_GET['memberID'] : null;
@@ -21,7 +15,7 @@ if ($memberID !== null) {
         LEFT JOIN role r ON ar.roleID = r.roleID
         WHERE m.memberID = $memberID";
 
-    $result = $con->query($sql);
+    $result = $conn->query($sql);
 
     if ($result) {
         if ($result->num_rows > 0) {
@@ -36,7 +30,7 @@ if ($memberID !== null) {
         }
     } else {
         // Error executing query
-        $data['error'] = "Error: " . $con->error;
+        $data['error'] = "Error: " . $conn->error;
     }
 } else {
     // Handle case when memberID is not provided
@@ -45,23 +39,23 @@ if ($memberID !== null) {
 
 // Fetch member records
 $sql_member = "SELECT * FROM member";
-$result_member = $con->query($sql_member);
+$result_member = $conn->query($sql_member);
 
 // Fetch attendance records
 $sql_attendance = "SELECT * FROM attendance";
-$result_attendance = $con->query($sql_attendance);
+$result_attendance = $conn->query($sql_attendance);
 
 // Fetch accountinfo records
 $sql_accountinfo = "SELECT * FROM accountinfo";
-$result_accountinfo = $con->query($sql_accountinfo);
+$result_accountinfo = $conn->query($sql_accountinfo);
 
 // Fetch accountrole records
 $sql_accountrole = "SELECT * FROM accountrole";
-$result_accountrole = $con->query($sql_accountrole);
+$result_accountrole = $conn->query($sql_accountrole);
 
 // Fetch role records
 $sql_role = "SELECT * FROM role";
-$result_role = $con->query($sql_role);
+$result_role = $conn->query($sql_role);
 
 // Check if there are member results
 if ($result_member->num_rows > 0) {
@@ -128,5 +122,5 @@ header('Content-Type: application/json');
 echo $json_data;
 
 // Close connection
-$con->close();
+$conn->close();
 ?>

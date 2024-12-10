@@ -7,20 +7,7 @@ require '../phpmailer/src/SMTP.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Database connection
-$host = 'localhost';
-$username = 'u627256117_cjcrsg';
-$password = 'thisWASNTmytrue#3'; 
-$database = 'u627256117_cjcrsg';
-
-
-// Create connection
-$conn = mysqli_connect($host, $username, $password, $database);
-
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+include 'connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Get the form data

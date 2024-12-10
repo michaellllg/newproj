@@ -10,18 +10,7 @@ error_reporting(E_ALL);
 $year = isset($_GET['year']) ? $_GET['year'] : date("Y");
 $month = isset($_GET['month']) ? $_GET['month'] : date("m");
 
-// Database connection
-$servername = "localhost";
-$username = "u627256117_cjcrsg";
-$password = "thisWASNTmytrue#3";
-$dbname = "u627256117_cjcrsg";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Database connection failed: " . $conn->connect_error);
-}
+include 'connection.php';
 
 // Query the database
 $sql = "SELECT * FROM attendance WHERE YEAR(date) = ? AND MONTH(date) = ? ORDER BY date";

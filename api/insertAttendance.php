@@ -4,20 +4,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 
-$host = 'localhost';
-$username = 'u627256117_cjcrsg';
-$password = 'thisWASNTmytrue#3'; 
-$dbname = 'u627256117_cjcrsg';
-
-// Create the database connection
-$con = mysqli_connect($host, $username, $password, $dbname);
-
-// Check for a successful database connection
-if (!$con) {
-    echo json_encode(["success" => false, "message" => "Database connection failed: " . mysqli_connect_error()]);
-    exit;
-}
-
+include 'connection.php';
 // Check if the request method is POST
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Retrieve the raw POST data
@@ -35,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // Check if memberID exists in the member table
         $sql_check_member = "SELECT * FROM member WHERE memberID = ?";
-        $stmt_check_member = $con->prepare($sql_check_member);
+        $stmt_check_member = $conn->prepare($sql_check_member);
 
         if ($stmt_check_member) {
             // Bind and execute the statement
@@ -57,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // Insert attendance into the database
         $sql_insert = "INSERT INTO attendance (memberID) VALUES (?)";
-        $stmt_insert = $con->prepare($sql_insert);
+        $stmt_insert = $conn->prepare($sql_insert);
 
         if ($stmt_insert) {
             // Bind the memberID and execute the statement
@@ -83,5 +70,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 
 // Close the database connection
-$con->close();
+$conn->close();
 ?>

@@ -1,8 +1,8 @@
-<?php include 'api/status.php'; ?>
+<?php include 'api/connection.php'; ?>
 
 
 <?php
-include 'api/login.php';
+include 'api/connection.php';
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

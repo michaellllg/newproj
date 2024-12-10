@@ -1,15 +1,5 @@
 <?php
-// Define database connection parameters
-$servername = "localhost";
-$username = "u627256117_cjcrsg";
-$password = "thisWASNTmytrue#3";
-$dbname = "u627256117_cjcrsg";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include 'connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];

@@ -1,15 +1,6 @@
 
 <?php
-include 'api/login.php';
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
+include 'api/connection.php';
 // Get the ID from the URL
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
@@ -191,18 +182,7 @@ $conn->close();
 
 <?php
 
-$servername = "localhost";  // Adjust the server name as needed
-$username = "u627256117_cjcrsg";         // Adjust the username as needed
-$password = "thisWASNTmytrue#3";             // Adjust the password as needed
-$dbname = "u627256117_cjcrsg";         // The name of your database        // The name of your database
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include 'api/connection.php';
 
 $sql = "
 SELECT 

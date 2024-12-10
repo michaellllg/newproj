@@ -117,12 +117,12 @@
         <input type="password" name="password" required>
         <label>Password</label>
     </div>
-    <a href="#" class="forgot-pass-link">Forgot password?</a>
+    <a href="forgot-password.php" class="forgot-pass-link">Forgot password?</a>
     <button type="submit">Log In</button>
                 </form>
                 <div class="bottom-link">
                     Don't have an account?
-                    <a href="forgot-password.php" id="signup-link">Sign up</a>
+                    <a href="#" id="signup-link">Sign up</a>
                 </div>
             </div>
         </div>

@@ -205,20 +205,7 @@
 
 
 <?php
-// Define database connection parameters
-$servername = "localhost";  // Adjust the server name as needed
-$username = "u627256117_cjcrsg";         // Adjust the username as needed
-$password = "thisWASNTmytrue#3";             // Adjust the password as needed
-$dbname = "u627256117_cjcrsg";         // The name of your database
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
+include 'api/connection.php';
 // Query to get the combined data from `accountinfo` and `member` tables
 $sql = "
     SELECT 
