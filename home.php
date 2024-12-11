@@ -81,6 +81,50 @@
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
+        /* Daily Verse Section */
+        .verse-card {
+            background: #fff;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .verse-card h2 {
+            font-size: 1.8rem;
+            color: #0f3e84;
+            margin-bottom: 15px;
+        }
+
+        .verse-card p {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .verse-card .reference {
+            font-style: italic;
+            color: #888;
+            margin-top: 10px;
+        }
+
+        /* Footer Styling */
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #0f3e84;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
 @media only screen and (max-width: 768px) {
       body {
         font-size: 0.9rem; /* Reduce font size for medium screens */
