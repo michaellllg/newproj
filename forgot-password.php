@@ -163,15 +163,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <!-- Include your navigation -->
     <?php include('attendanceRecorded1.html'); ?>
 
-    <div class="forgot-password-container">
-        <h1>Forgot Password</h1>
-        <p>Enter your email address to reset your password</p>
-        <form action="" method="POST">
-            <label for="email">Email Address</label>
-            <input type="email" name="email" id="email" required oninput="validateEmailInput(this)">
-            <button type="submit">Send OTP</button>
-        </form>
-    </div>
+   
 </body>
 </html>
 
