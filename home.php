@@ -103,6 +103,8 @@
       .container {
         padding: 15px;
         border-width: 2px;
+        height: auto;
+        width: auto;
       }
 
       .welcome-section h1 {
