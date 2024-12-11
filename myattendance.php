@@ -361,7 +361,7 @@ $conn->close();
 <!--The Greetings XD -->
 <div class="admin-container">
         <label class="admin-greeting">Hi, User <?php echo $memberName; ?>!</label>
-  <label class="admin-description">Manage the attendance of CJC Members.</label>
+  <label class="admin-description">Record your attendance with just a few clicks. Click the button now! </label>
   <a href="attendance.php"><button class="attendance-button">Add Attendance</button></a>
 </div>
 
