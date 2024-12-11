@@ -19,20 +19,23 @@
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
         font-size: 1rem;
     }
-    
-  .container {
+  .wrapper {
+  max-width: 1200px; /* Limit the maximum width */
+  margin: 0 auto; /* Center the content */
+  padding: 0 20px; /* Add some padding for smaller screens */
+}
+
+
+.container {
   text-align: center;
   background-color: #f2f2f2;
   padding: 30px;
-  border: 5px solid #0f3e84; ;
+  border: 5px solid #0f3e84;
   border-radius: 10px;
   box-shadow: 0 0 25px rgba(0, 0, 0, .1);
-  width: 90%;
-  max-width: 550px;
-  margin: right;
-  margin-top: 5px; /* Adjust this value to move it lower */
-  position: relative;
-  top: 30px;
+  width: 100%; /* Adjust to take up full width of the wrapper */
+  max-width: 550px; /* Maintain a max width for the container */
+  margin: 20px auto; /* Center the container */
 }
 
 #bible-verse {
@@ -114,6 +117,7 @@
 </style>
 <body>
 <?php include('nav.php'); ?>
+<div class="wrapper">
 <div class="welcome-section">
             <h1>Hello, <?php echo $memberName; ?>!</h1>
             <p>Here is your daily verse to keep you motivated.</p>
@@ -125,6 +129,7 @@
       <p id="reference"></p>
     </div>
 </div>
+  </div>
 
 
 <script>
