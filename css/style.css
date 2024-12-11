@@ -773,7 +773,7 @@ footer a{
   transition: all 0.3s ease;
 }
 footer a:hover{
-  color: #5552f0;
+  color: #eb2f06;
 }
 @media (max-width:1100px) {
   footer .content .middle{
