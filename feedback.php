@@ -65,15 +65,7 @@ form {
     </style>
 </head>
 <body>
-       <!-- Blue Header -->
-<nav class="navbar navbar-dark bg-primary">
-    <div class="container-fluid d-flex align-items-center">
-        <a href="#" class="d-flex align-items-center text-white text-decoration-none">
-            <img src="images/logo.png" alt="logo" class="me-2" style="height: 40px;"> <!-- Adjust the size as needed -->
-            <h2 class="m-0" style="font-size: 1.5rem;">CJCRSG</h2>
-        </a>
-    </div>
-</nav>
+<?php include('attendanceRecorded1.html'); ?>
 
 
     <div class="container mt-5">
