@@ -41,7 +41,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Attendance Record</title>
+    <title>Contribution Graph</title>
     <style>
         /* Grid-related CSS */
         :root {
@@ -362,7 +362,7 @@ $conn->close();
 <!--The Greetings XD -->
 <div class="admin-container">
         <label class="admin-greeting">Hi, User <?php echo $memberName; ?>!</label>
-  <label class="admin-description">Record your attendance with just a few clicks.<br> Click the button now! </label>
+  <label class="admin-description">Manage the attendance of CJC Members.</label>
   <a href="attendance.php"><button class="attendance-button">Add Attendance</button></a>
 </div>
 
@@ -404,8 +404,7 @@ $conn->close();
         </ul>
     </div>
 </div>
- 
-< <script src = "https://cdn.jsdelivr.net/npm/chart.js"></script>
+ <script src = "https://cdn.jsdelivr.net/npm/chart.js"></script>
  <script>
   const ctx = document.getElementById('myChart');
   new Chart(ctx, {
@@ -503,5 +502,6 @@ document.querySelector('.year-dropdown').addEventListener('change', function() {
 });
 
 </script>
+
 </body>
 </html>
