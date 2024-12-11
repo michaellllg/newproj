@@ -50,17 +50,14 @@
 
 /* Welcome section */
 .welcome-section {
-    display: flex;
-    justify-content: center; /* Horizontally center */
-    align-items: center; /* Vertically center */
-    text-align: center;
+    text-align: center; /* Center the content inside this section */
     padding: 50px 20px;
     margin: 0 auto;
     margin-left: 10px;
     max-width: 800px;
     background-color: white;
-    height: 300px; /* Set a specific height to make sure the greeting is vertically centered */
-}
+  }
+
 
 .welcome-section h1 {
     color: #0f3e84;
