@@ -32,7 +32,7 @@
   border: 5px solid #0f3e84;
   border-radius: 35px;
   box-shadow: 0 0 25px rgba(0, 0, 0, .1);
-  width: 50%; /* Adjust to take up full width of the wrapper */
+  width: 40%; /* Adjust to take up full width of the wrapper */
   max-width: 550px; /* Maintain a max width for the container */
   margin: 20px auto; /* Center the container */
 }
@@ -119,7 +119,7 @@
 <div class="wrapper">
 <div class="welcome-section">
             <h1>Hello, <?php echo $memberName; ?>!</h1>
-            <p>Good day, user! Here is your bible verse <br> May it bring you joy and peace today. <br> Stay strong, stay blessed, and shine His light wherever you go!</p>
+            <p>Good day, user! Here is your daily bible verse.<br> May it bring you joy and peace today.</p>
         </div>
 <div class="container">
     <h1>Daily Bible Verse</h1>
