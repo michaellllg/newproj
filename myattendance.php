@@ -62,7 +62,7 @@ $conn->close();
             height: 100vh;            /* Full viewport height */
             padding: 20px;
             position: relative;       /* Needed to position the dropdown */
-            bottom: 100px;
+            bottom: 300px;
         }
 
         /* Styling for the graph container */
@@ -184,7 +184,6 @@ $conn->close();
   padding-right: 300px;
   position: relative;
   top: 50px;
-  z-index: 3 !important;
 
  
 }
@@ -238,6 +237,29 @@ $conn->close();
   flex-wrap: wrap; /* Allow wrapping on smaller screens */
   box-sizing: border-box;
 }
+
+/* css of the graph by diana binangkal*/
+.graphBox {
+  position: relative;
+  left: 25%;
+  top: -150px;
+  width: 70%;
+  padding:20px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 30px;
+  min-height: 200px;
+}
+
+.graphBox .box{
+  position: relative;
+  background: #BCCCDC;
+  padding: 20px;
+  width: 100%;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0, 0.08);
+  border-radius: 20px;
+}
+
 
 
 .modal-dialog-top {
@@ -364,6 +386,15 @@ $conn->close();
         <label class="admin-greeting">Hi, User <?php echo $memberName; ?>!</label>
   <label class="admin-description">Manage the attendance of CJC Members.</label>
   <a href="attendance.php"><button class="attendance-button">Add Attendance</button></a>
+</div>
+<!-- Add Chart -->
+<div class="graphBox">
+    <div class="box">
+      <canvas id="myChart"></canvas>
+    </div>
+    <div class="box">
+      <canvas id="myChartt"></canvas>
+    </div>
 </div>
 
 <div class="graph-container">
@@ -502,6 +533,6 @@ document.querySelector('.year-dropdown').addEventListener('change', function() {
 });
 
 </script>
-
+<script src="js/dashboard.js"></script>
 </body>
 </html>
