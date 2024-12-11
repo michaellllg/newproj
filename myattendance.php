@@ -41,7 +41,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contribution Graph</title>
+    <title>My Attendance Record</title>
     <style>
         /* Grid-related CSS */
         :root {
@@ -403,28 +403,7 @@ $conn->close();
         </ul>
     </div>
 </div>
- <script src = "https://cdn.jsdelivr.net/npm/chart.js"></script>
- <script>
-  const ctx = document.getElementById('myChart');
-  new Chart(ctx, {
-    type: 'polarArea',
-    data: {
-      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','Sun'],
-      datasets: [{
-        label: '# of Attendance',
-        data: [0,1,2,3,4,5],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
- </script>
+ 
 <script>
 // Get the current year
 const currentYear = new Date().getFullYear();
