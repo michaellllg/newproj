@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Home Page</title>
 </head>
-
 <style>
  body {
         margin: 0;
@@ -19,7 +18,6 @@
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
         font-size: 1rem;
     }
-  
   .wrapper {
   max-width: 1200px; /* Limit the maximum width */
   margin: 0 auto; /* Center the content */
@@ -28,15 +26,15 @@
 
 
 .container {
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 30px;
-    border-left: 6px solid #0f3e84; /* Add a left border for highlight */
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 20px auto;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  background-color: #f2f2f2;
+  padding: 30px;
+  border: 5px solid #0f3e84;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, .1);
+  width: 100%; /* Adjust to take up full width of the wrapper */
+  max-width: 550px; /* Maintain a max width for the container */
+  margin: 20px auto; /* Center the container */
 }
 
 #bible-verse {
@@ -49,82 +47,29 @@
   color: #888;
 }
 
-/* Welcome Section */
+
+/* Welcome section */
 .welcome-section {
-    text-align: center; /* Center-align content for better layout */
-    padding: 30px;
-    margin: 40px auto;
-    max-width: 700px;
-    background: rgba(255, 255, 255, 0.9); /* Add slight transparency for the background */
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Modern shadow for depth */
+    text-align: left;
+    padding: 50px 20px;
+    margin: 0 auto;
+    margin-left: 10px;
+    max-width: 800px;
+    background-color: white;
 }
 
 .welcome-section h1 {
     color: #0f3e84;
     font-size: 2.5rem;
-    margin-bottom: 20px;
-    font-weight: 700;
-    line-height: 1.2;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .welcome-section p {
-    font-size: 1.2rem;
-    color: #555;
-    line-height: 1.8;
+    font-size: 1rem;
+    color: #666;
 }
 
-/* Add hover effects for modern interaction */
-.container:hover {
-    transform: translateY(-5px); /* Subtle lift effect */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-        /* Daily Verse Section */
-        .verse-card {
-            background: #fff;
-            margin: 20px auto;
-            padding: 20px;
-            max-width: 600px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .verse-card h2 {
-            font-size: 1.8rem;
-            color: #0f3e84;
-            margin-bottom: 15px;
-        }
-
-        .verse-card p {
-            font-size: 1.2rem;
-            color: #333;
-        }
-
-        .verse-card .reference {
-            font-style: italic;
-            color: #888;
-            margin-top: 10px;
-        }
-
-        /* Footer Styling */
-        footer {
-            margin-top: 40px;
-            text-align: center;
-            color: #777;
-            font-size: 0.9rem;
-        }
-
-        footer a {
-            color: #0f3e84;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
 @media only screen and (max-width: 768px) {
       body {
         font-size: 0.9rem; /* Reduce font size for medium screens */
