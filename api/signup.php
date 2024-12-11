@@ -62,13 +62,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $mail->isSMTP();
                     $mail->Host = 'smtp.gmail.com';
                     $mail->SMTPAuth = true;
-                    $mail->Username = 'manlangitn07@gmail.com';
-                    $mail->Password = 'nkvc rzny vdhd xcvt';
+                    $mail->Username = 'cjcrsg.phils.inc@gmail.com';
+                    $mail->Password = 'tgyc dnku dorf kfub';
                     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                     $mail->Port = 587;
 
                     // Recipients
-                    $mail->setFrom('manlangitn07@gmail.com', 'Account activation');
+                    $mail->setFrom('cjcrsg.phils.inc@gmail.com', 'Account activation');
                     $mail->addAddress($email, $fullname);
 
                     // Email content
