@@ -80,9 +80,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             font-family: Arial, Helvetica, sans-serif;
             background: linear-gradient(to right, #e9eff1, #ffffff);
             height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             color: #333;
         }
 
@@ -95,6 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             width: 100%;
             text-align: center;
             transition: all 0.3s ease;
+            margin: auto;
         }
 
         h1 {
@@ -161,6 +159,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </script>
 </head>
 <body>
+    <?php include ('attendanceRecorded1.html');?>
 
     <div class="container">
         <h1>Forgot Password</h1>
