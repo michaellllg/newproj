@@ -19,6 +19,7 @@
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
         font-size: 1rem;
     }
+  
   .wrapper {
   max-width: 1200px; /* Limit the maximum width */
   margin: 0 auto; /* Center the content */
@@ -27,15 +28,15 @@
 
 
 .container {
-  text-align: center;
-  background-color: #f2f2f2;
-  padding: 30px;
-  border: 5px solid #0f3e84;
-  border-radius: 10px;
-  box-shadow: 0 0 25px rgba(0, 0, 0, .1);
-  width: 100%; /* Adjust to take up full width of the wrapper */
-  max-width: 550px; /* Maintain a max width for the container */
-  margin: 20px auto; /* Center the container */
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-left: 6px solid #0f3e84; /* Add a left border for highlight */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 #bible-verse {
@@ -48,29 +49,28 @@
   color: #888;
 }
 
-
-/* Welcome section */
+/* Welcome Section */
 .welcome-section {
-    text-align: left;
+    text-align: center; /* Center-align content for better layout */
     padding: 30px;
-    margin: 20px auto;
-    max-width: 800px;
-    background: #ffffff;
+    margin: 40px auto;
+    max-width: 700px;
+    background: rgba(255, 255, 255, 0.9); /* Add slight transparency for the background */
     border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Modern shadow */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Modern shadow for depth */
 }
 
 .welcome-section h1 {
     color: #0f3e84;
     font-size: 2.5rem;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     font-weight: 700;
     line-height: 1.2;
 }
 
 .welcome-section p {
-    font-size: 1.1rem;
-    color: #666;
+    font-size: 1.2rem;
+    color: #555;
     line-height: 1.8;
 }
 
