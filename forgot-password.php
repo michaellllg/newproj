@@ -79,10 +79,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         body {
             font-family: Arial, Helvetica, sans-serif;
             background: linear-gradient(to right, #e9eff1, #ffffff);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             color: #333;
         }
 
-        .forgot-password-container {
+        .container {
             background: white;
             padding: 2rem 3rem;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -90,10 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             max-width: 400px;
             width: 100%;
             text-align: center;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            transition: all 0.3s ease;
         }
 
         h1 {
@@ -139,6 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         button:hover {
             background: #1E2C5A;
         }
+
     </style>
     <script>
         // Input limit and validate @gmail.com
@@ -160,10 +162,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
 
-    <!-- Include your navigation -->
-    <?php include('attendanceRecorded1.html'); ?>
-
-   
+    <div class="container">
+        <h1>Forgot Password</h1>
+        <p>Enter your email address to reset your password</p>
+        <form action="" method="POST">
+            <label for="email">Email Address</label>
+            <input type="email" name="email" id="email" required oninput="validateEmailInput(this)">
+            <button type="submit">Send OTP</button>
+        </form>
+    </div>
 </body>
 </html>
-
