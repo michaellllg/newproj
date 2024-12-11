@@ -62,7 +62,7 @@ $conn->close();
             height: 100vh;            /* Full viewport height */
             padding: 20px;
             position: relative;       /* Needed to position the dropdown */
-            bottom: 300px;
+            bottom: 100px;
         }
 
         /* Styling for the graph container */
