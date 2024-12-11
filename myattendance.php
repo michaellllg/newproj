@@ -184,6 +184,7 @@ $conn->close();
   padding-right: 300px;
   position: relative;
   top: 50px;
+  z-index: 3 !important;
 
  
 }
