@@ -120,7 +120,7 @@
 <div class="wrapper">
 <div class="welcome-section">
             <h1>Hello, <?php echo $memberName; ?>!</h1>
-            <p>Here is your daily verse to keep you motivated.</p>
+            <p>Here is your bible verse of the day. <br> May it bring you joy and peace today.</p>
         </div>
 <div class="container">
     <h1>Daily Bible Verse</h1>
