@@ -69,7 +69,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forgot Password</title>
     <style>
-       
         /* General Reset */
         * {
             margin: 0;
@@ -83,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             color: #333;
         }
 
-        .container {
+        .forgot-password-container {
             background: white;
             padding: 2rem 3rem;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -160,9 +159,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </script>
 </head>
 <body>
-<?php include ('attendanceRecorded1.html');?>
 
-    <div class="container">
+    <!-- Include your navigation -->
+    <?php include('attendanceRecorded1.html'); ?>
+
+    <div class="forgot-password-container">
         <h1>Forgot Password</h1>
         <p>Enter your email address to reset your password</p>
         <form action="" method="POST">
@@ -173,3 +174,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 </body>
 </html>
+
