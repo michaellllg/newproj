@@ -25,18 +25,18 @@
   padding: 0 20px; /* Add some padding for smaller screens */
 }
 
-
 .container {
-  text-align: center;
-  background-color: #f2f2f2;
-  padding: 30px;
-  border: 5px solid #0f3e84;
-  border-radius: 10px;
-  box-shadow: 0 0 25px rgba(0, 0, 0, .1);
-  width: 100%; /* Adjust to take up full width of the wrapper */
-  max-width: 550px; /* Maintain a max width for the container */
-  margin: 20px auto; /* Center the container */
+    text-align: center;
+    background: linear-gradient(to top, #ffffff, #f8f9fa); /* Subtle gradient for modern look */
+    padding: 30px;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Smooth shadow */
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto; /* Center the container */
 }
+
 
 #bible-verse {
   font-size: 1.2em;
@@ -120,7 +120,7 @@
 <div class="wrapper">
 <div class="welcome-section">
             <h1>Hello, <?php echo $memberName; ?>!</h1>
-            <p>Here is your bible verse of the day. <br> May it bring you joy and peace today.</p>
+            <p>Good day, user! Here is your bible verse <br> May it bring you joy and peace today. <br> Stay strong, stay blessed, and shine His light wherever you go!</p>
         </div>
 <div class="container">
     <h1>Daily Bible Verse</h1>
