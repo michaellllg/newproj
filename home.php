@@ -17,17 +17,18 @@
         background-repeat: no-repeat; /* Prevents the image from repeating */
         background-attachment: fixed; /* Keeps the image fixed during scrolling */
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-        font-size: 12px;
+        font-size: 1rem;
     }
     
   .container {
   text-align: center;
   background-color: #f2f2f2;
-  padding: 50px;
+  padding: 30px;
   border: 5px solid #0f3e84; ;
   border-radius: 10px;
   box-shadow: 0 0 25px rgba(0, 0, 0, .1);
-  width: 550px !important;
+  width: 90%;
+  max-width: 550px;
   margin: right;
   margin-top: 5px; /* Adjust this value to move it lower */
   position: relative;
@@ -67,6 +68,48 @@
     color: #666;
 }
 
+@media only screen and (max-width: 768px) {
+      body {
+        font-size: 0.9rem; /* Reduce font size for medium screens */
+      }
+
+      .container {
+        padding: 20px;
+        border-width: 3px;
+      }
+
+      .welcome-section {
+        padding: 15px;
+        max-width: 90%;
+      }
+
+      .welcome-section h1 {
+        font-size: 1.8rem;
+      }
+
+      .welcome-section p {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media only screen and (max-width: 480px) {
+      body {
+        font-size: 0.8rem; /* Further reduce font size for small screens */
+      }
+
+      .container {
+        padding: 15px;
+        border-width: 2px;
+      }
+
+      .welcome-section h1 {
+        font-size: 1.5rem;
+      }
+
+      .welcome-section p {
+        font-size: 0.8rem;
+      }
+    }
 
 </style>
 <body>
