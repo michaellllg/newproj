@@ -70,11 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Forgot Password</title>
     <style>
         /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+
 
         body {
             font-family: Arial, Helvetica, sans-serif;
