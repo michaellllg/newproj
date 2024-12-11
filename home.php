@@ -32,8 +32,8 @@
   border: 5px solid #0f3e84;
   border-radius: 35px;
   box-shadow: 0 0 25px rgba(0, 0, 0, .1);
-  width: 40%; /* Adjust to take up full width of the wrapper */
-  max-width: 550px; /* Maintain a max width for the container */
+  width: 30%; /* Adjust to take up full width of the wrapper */
+  max-width: 400px; /* Maintain a max width for the container */
   margin: 20px auto; /* Center the container */
 }
 
