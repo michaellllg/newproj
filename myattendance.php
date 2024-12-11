@@ -364,15 +364,6 @@ $conn->close();
   <label class="admin-description">Manage the attendance of CJC Members.</label>
   <a href="attendance.php"><button class="attendance-button">Add Attendance</button></a>
 </div>
-<!-- Add Chart -->
-<div class="graphBox">
-    <div class="box">
-      <canvas id="myChart"></canvas>
-    </div>
-    <div class="box">
-      <canvas id="myChartt"></canvas>
-    </div>
-</div>
 
 <div class="graph-container">
     <select class="year-dropdown">

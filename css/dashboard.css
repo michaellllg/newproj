@@ -1,818 +1,345 @@
-/* Importing Google Fonts - Inter */
+
 @import url("https://fonts.googleapis.com/css2?family=sans-serif:opsz,wght@14..32,100..900&display=swap");
 
+
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Inter", sans-serif;
-}
-
-body {
-  width: 100%;
-  min-height: 100vh;
-  background: linear-gradient(#eeeeff, #c8c7ff);
-}
-
-
-header {
-  background: #0f3e84;
-  position: sticky;
-  width: 100%;
-  margin-top: 10px;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  padding: 0 10px;
-}
-
-.navbar {
-  display: flex;
-  padding: 22px 0;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  justify-content: space-between;
-}
-
-.navbar .hamburger-btn {
-  display: none;
-  color: #fff;
-  cursor: pointer;
-  font-size: 1.5rem;
-}
-
-.navbar .logo {
-  gap: 10px;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
-
-.navbar .logo img {
-  width: 40px;
-  border-radius: 50%;
-}
-
-.navbar .logo h2 {
-  color: #fff;
-  font-weight: 600;
-  font-size: 1.7rem;
-  position: relative;
-<<<<<<< HEAD
-  top: 20px;
-
-=======
-  top: .3rem !important;
->>>>>>> e7b46222bf13423f070e5e5cbe346a8d374b95d2
-}
-
-.navbar .links {
-  display: flex;
-  gap: 35px;
-  list-style: none;
-  align-items: center;
-}
-
-.navbar .close-btn {
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  display: none;
-  color: #000;
-  cursor: pointer;
-}
-
-.navbar .links a {
-  color: #fff;
-  font-size: 1.1rem;
-  font-weight: 500;
-  text-decoration: none;
-  transition: 0.1s ease;
-  position: relative;
-  top: 7px;
-
-}
-
-.navbar .links a:hover {
-  color: #19e8ff;
-}
-
-.navbar .login-btn {
-  border: none;
-  outline: none;
-  background: #fff;
-  color: #275360;
-  font-size: 1rem;
-  font-weight: 600;
-  padding: 10px 18px;
-  border-radius: 3px;
-  cursor: pointer;
-  transition: 0.15s ease;
-}
-
-.navbar .login-btn:hover {
-  background: #ddd;
-}
-
-.form-popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  z-index: 10;
-  width: 100%;
-  opacity: 0;
-  pointer-events: none;
-  max-width: 720px;
-  background: #fff;
-  border: 2px solid #fff;
-  transform: translate(-50%, -70%);
-}
-
-.show-popup .form-popup {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translate(-50%, -50%);
-  transition: transform 0.3s ease, opacity 0.1s;
-}
-
-.form-popup .close-btn {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  color: #878484;
-  cursor: pointer;
-}
-
-.blur-bg-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  pointer-events: none;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  transition: 0.1s ease;
-}
-
-.show-popup .blur-bg-overlay {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.form-popup .form-box {
-  display: flex;
-}
-
-.form-box .form-details {
-  width: 100%;
-  color: #fff;
-  max-width: 330px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.login .form-details {
-  padding: 0 40px;
-  background: url("images/login-img.jpg");
-  background-position: center;
-  background-size: cover;
-}
-
-.signup .form-details {
-  padding: 0 20px;
-  background: url("images/signup-img.jpg");
-  background-position: center;
-  background-size: cover;
-}
-
-.form-box .form-content {
-  width: 100%;
-  padding: 35px;
-}
-
-.form-box h2 {
-  text-align: center;
-  margin-bottom: 29px;
-}
-
-form .input-field {
-  position: relative;
-  height: 50px;
-  width: 100%;
-  margin-top: 20px;
-}
-
-.input-field input {
-  height: 100%;
-  width: 100%;
-  background: none;
-  outline: none;
-  font-size: 0.95rem;
-  padding: 0 15px;
-  border: 1px solid #717171;
-  border-radius: 3px;
-}
-
-.input-field input:focus {
-  border: 1px solid #364687;
-}
-
-.input-field label {
-  position: absolute;
-  top: 50%;
-  left: 15px;
-  transform: translateY(-50%);
-  color: #4a4646;
-  pointer-events: none;
-  transition: 0.2s ease;
-}
-
-.input-field input:is(:focus, :valid) {
-  padding: 16px 15px 0;
-}
-
-.input-field input:is(:focus, :valid) ~ label {
-  transform: translateY(-120%);
-  color: #364687;
-  font-size: 0.75rem;
-}
-
-.form-box a {
-  color: #364687;
-  text-decoration: none;
-}
-
-.form-box a:hover {
-  text-decoration: underline;
-}
-
-form :where(.forgot-pass-link, .policy-text) {
-  display: inline-flex;
-  margin-top: 13px;
-  font-size: 0.95rem;
-}
-
-form button {
-  width: 100%;
-  color: #fff;
-  border: none;
-  outline: none;
-  padding: 14px 0;
-  font-size: 1rem;
-  font-weight: 500;
-  border-radius: 3px;
-  cursor: pointer;
-  margin: 25px 0;
-  background: #364687;
-  transition: 0.2s ease;
-}
-
-form button:hover {
-  background: #0097a7;
-}
-
-.form-content .bottom-link {
-  text-align: center;
-}
-
-.form-popup .signup,
-.form-popup.show-signup .login {
-  display: none;
-}
-
-.form-popup.show-signup .signup {
-  display: flex;
-}
-
-.signup .policy-text {
-  display: flex;
-  margin-top: 14px;
-  align-items: center;
-}
-
-.signup .policy-text input {
-  width: 14px;
-  height: 14px;
-  margin-right: 7px;
-}
-
-
-@media (max-width: 950px) {
-  .navbar :is(.hamburger-btn, .close-btn) {
-    display: block;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
   }
-
-  .navbar {
-    padding: 15px 0;
-  }
-
-  .navbar .logo img {
-    display: none;
-  }
-
-  .navbar .logo h2 {
-    font-size: 1.4rem;
-  }
-
-  .navbar .links {
-    position: fixed;
-    top: 0;
-    z-index: 10;
-    left: -100%;
-    display: block;
-    height: 100vh;
+  
+  body {
     width: 100%;
-    padding-top: 60px;
+    min-height: 100vh;
+    background: linear-gradient(#eeeeff, #c8c7ff);
+  }
+  
+  .login-container {
+    background-color: #EAEDF7;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    background: #fff;
-    transition: 0.2s ease;
+    width: 340px;
+    height: 400px;
+    justify-self: center;
+    position: relative;
+    top: 120px;
   }
-
-  .navbar .links.show-menu {
-    left: 0;
+  
+  h2 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 20px;
   }
-
-  .navbar .links a {
-    display: inline-flex;
-    margin: 20px 0;
-    font-size: 1.2rem;
-    color: #000;
-  }
-
-  .navbar .links a:hover {
-    color: #364687;
-  }
-
-  .navbar .login-btn {
-    font-size: 0.9rem;
-    padding: 7px 10px;
-  }
-}
-
-@media (max-width: 760px) {
-  .form-popup {
-    width: 95%;
-  }
-
-  .form-box .form-details {
-    display: none;
-  }
-
-  .form-box .form-content {
-    padding: 30px 20px;
-  }
-}
-
-/* Container for Admin Section */
-.admin-container {
-  text-align: left; /* Align text to the left */
-  margin-top: 20px;
-  margin-left: 10x; /* Align to the left edge */
-  padding-top: 30px;
-  padding-right: 200px;
-
- 
-}
-
-/* Greeting Label Styling */
-.admin-greeting {
-  font-size: 30px;
-  font-weight: bold;
-  color: #303858;
-  margin-bottom: 8px;
-  display: block; /* Ensure spacing below the label */
-}
-
-/* Description Label Styling */
-.admin-description {
-  font-size: 14px;
-  color: #60657b;
-  margin-bottom: 16px;
-  display: block; /* Ensure proper spacing */
-}
-
-/* Button Styling */
-.attendance-button {
-  font-size: 14px;
-  font-weight: bold;
-  color: #303858;
-  background-color: #a4b6ee;
-  border: 1px solid #d6e7f3;
-  border-radius: 8px;
-  padding: 8px 16px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-/* Button Hover Effect */
-.attendance-button:hover {
-  background-color: #b4c6e4;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-
-/* Flex Container for Layout */
-.container-wrapper {
-  display: flex;
-  gap: 4px; /* Space between containery and chartCard */
-  justify-content: flex-end; /* Align to the right edge */
-  align-items: flex-start; /* Align at the top */
-  margin: 30px auto; /* Center the container horizontally */
-  padding: 0 15px;
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
-  box-sizing: border-box;
-}
-
-/* White Container */
-.containery {
-  width: 27%; /* Default width for large screens */
-  max-width: 400px;
-  height: 220px; /* Ensure it matches chart height */
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 35px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Member Status Widget Styling */
-.member-status-widget {
-  width: 100%;
-  font-size: 14px;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-.title {
-  font-weight: bold;
-  color: #333;
-}
-
-.filter-button {
-  background: none;
-  border: none;
-  font-size: 12px;
-  color: #666;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.progress-bar {
-  position: relative;
-  height: 12px;
-
-  border-radius: 6px;
-  margin-bottom: 16px;
-  overflow: hidden;
-  border: 2px solid #5c5acb !important; /* Darker blue border */
-}
-
-.inactive-bar {
-  position: absolute;
-  height: 100%;
-  background-color: #ffffff;
-  border-radius: 6px 0 0 6px;
-}
-
-.active-bar {
-  position: absolute;
-  height: 100%;
-  background-color: #3E519C;
-  border-radius: 0 6px 6px 0;
-}
-
-.stats {
-  display: flex;
-  flex-direction: column;
-}
-
-.total {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 12px;
-  font-weight: bold;
-}
-
-.status {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.status-item {
-  display: flex;
-  justify-content: space-between; /* Ensure space between dots and text */
-  align-items: center;
-  gap: 10px; /* Added gap to ensure space between dot and text */
-  flex-wrap: wrap; /* Allow items to wrap if necessary */
-  width: 100%; /* Ensure the status item doesn't overflow */
-}
-
-.status-dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-}
-
-.status-dot.active {
-  background-color: #3E519C;
-}
-
-.status-dot.inactive {
-  background-color: #dcd9ff;
-}
-
-.num {
-  position: relative;
-  right: 43px !important;
-}
-
-.statusw {
-  position: relative;
-  right: 50px !important;
-}
-
-/* Chart Box */
-.chartCard {
-  width: 28%; /* Default width for large screens */
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  align-items: flex-start;
-  height: 100%; /* Ensure height matches the containery */
-}
-
-.chartBox {
-  width: 100%;
-  max-width: 800px;
-  padding: 20px;
-  border-radius: 20px;
-  border: solid 3px rgb(214, 231, 243);
-  background: white;
-  box-sizing: border-box;
-  height: 100%; /* Ensure the chart takes full height */
-}
-
-#myChart {
-  width: 100% !important;
-  height: auto !important;
-}
-
-select {
-
-  background-color: rgb(240, 248, 255); /* Light blue background */
-  border: 2px solid rgb(214, 231, 243); /* Matches the chartBox border */
-
-
- 
-  color: #333; /* Darker text for readability */
-  cursor: pointer;
-  outline: none; /* Removes the focus outline */
-
-}
-
-select:hover {
-  background-color: rgb(230, 240, 255); /* Slightly darker on hover */
-  border-color: rgb(190, 210, 230); /* Subtle border change */
-}
-
-select:focus {
-  border-color: rgb(100, 150, 200); /* Highlighted border on focus */
-  box-shadow: 0 0 5px rgba(100, 150, 200, 0.5); /* Glow effect */
-}
-
-select option {
-  padding: 10px; /* Extra padding inside dropdown items */
-}
-
-
-@media (max-width: 1024px) {
-  .admin-container {
-    margin-left: 5px;
-    padding-right: 150px;
-  }
-
-  .container-wrapper {
-    gap: 10px;
-    padding: 0 10px;
-  }
-
-  .containery,
-  .chartCard {
-    width: 45%; /* Adjust width for medium screens */
-  }
-}
-
-
-
-/* For screens between 991px and 1399px */
-@media (min-width: 991px) and (max-width: 1399px) {
-  /* Admin container stays aligned to the left */
-  .admin-container {
-    text-align: left; /* Align text to the left */
-    margin-top: 20px;
-    margin-left: 10px; /* Ensure the container is on the left side */
-    padding-top: 30px;
-    padding-right: 10px; /* Adjust padding */
-  }
-
-  /* Flex container should align the widget and chart side by side */
-  .container-wrapper {
+  
+  form {
     display: flex;
-    gap: 10px; /* Increase gap between the widget and chart */
-    justify-content: flex-start; /* Align to the left */
-    align-items: flex-start; /* Align at the top */
-    margin: 20px auto;
-    padding: 0 20px; /* Ensure proper padding on the sides */
-    flex-wrap: wrap; /* Allow wrapping if needed */
+    flex-direction: column;
+    gap: 17px;
+    position: relative;
+    top: 50px;
+  }
+  
+  label {
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+    text-align: left;
+  }
+  
+  input {
+    padding: 15px;
+    font-size: 14px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    height: 45px;
+    margin-bottom: 10px;
+    width: 100%;
     box-sizing: border-box;
   }
-
-  /* Widget and Chart Cards side by side */
-  .containery,
-  .chartCard {
-    width: 30%; /* Set each to 48% width to fit side by side */
-    height: 235px !important;
+  
+  button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #3c4b9a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
   }
-
-  .statusw{
-    position: relative;
-    right: 50px;
+  
+  button:hover {
+    background-color: #2f3a8c;
   }
-
-  .num{
-    position: relative;
-    right: 40px;
-  }
-
-
-  /* Ensure the greeting text and description are properly sized */
-  .admin-greeting {
-    font-size: 26px; /* Adjust font size */
-  }
-
-  .admin-description {
-    font-size: 14px; /* Adjust font size */
-  }
-
-  /* Adjust button size */
-  .attendance-button {
+  
+  .qr-code-link {
     font-size: 14px;
-    padding: 10px 18px; /* Adjust padding for better fit */
+    color: #3c4b9a;
+    text-decoration: none;
+    margin-top: 10px;
+  }
+  
+  .qr-code-link:hover {
+    text-decoration: underline;
   }
 
-  /* Ensure chart box adapts properly */
-  .chartBox {
-    width: 120%;
-    padding: 20px;
+
+  
+header {
+    background: #0f3e84;
+    position: sticky;
+    width: 100%;
+    margin-top: 10px;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    padding: 0 10px;
+  }
+  
+  .navbar {
+    display: flex;
+    padding: 22px 0;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: space-between;
+  }
+  
+  .navbar .hamburger-btn {
+    display: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+  
+  .navbar .logo {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  .navbar .logo img {
+    width: 40px;
+    border-radius: 50%;
+  }
+  
+  .navbar .logo h2 {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.7rem;
 
   }
-}
-
-@media (max-width: 1999px) {
-  .statusw{
-    position: relative;
-    right: 35px;
-  }
-
-  .num{
-    position: relative;
-    right: 30px;
-  }
-
-}
-
-@media (max-width: 990px) {
-  .statusw{
-    position: relative;
-    right: 38px;
-  }
-
-  .num{
-    position: relative;
-    right: 37px;
-  }
-  .containery{
-    height: 12.2rem;
-  }
-
-}
-
-@media (max-width: 768px) {
-  .container-wrapper {
-    flex-direction: column; /* Stack vertically below 768px */
+  
+  .navbar .links {
+    display: flex;
+    gap: 35px;
+    list-style: none;
     align-items: center;
   }
-
-  .chartCard {
-    width: 70%; /* Full width for smaller screens */
-    margin-bottom: 20px;
+  
+  .navbar .close-btn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    display: none;
+    color: #000;
+    cursor: pointer;
   }
-
-  .containery{
-    width: 70%;
-  }
-
-  .admin-container {
-    margin-left: 5px;
-    padding-right: 0;
-    margin-bottom: 20px;
-  }
-
-  .statusw{
+  
+  .navbar .links a {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: 0.1s ease;
     position: relative;
-    right: 59px;
+    top: 7px;
   }
+  
+  .navbar .links a:hover {
+    color: #19e8ff;
+  }
+  
+  .navbar .login-btn {
+    border: none;
+    outline: none;
+    background: #fff;
+    color: #275360;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 0.15s ease;
+  }
+  
+  .navbar .login-btn:hover {
+    background: #ddd;
+  }
+  
+ 
+  
+  .container {
+    width: 30% !important;
+    max-width: 450px !important;
+    min-width: 450px !important;
+    margin: 30px;
 
-  .num{
-    position: relative;
-    right: 40px;
-  }
+    
 }
 
-@media (max-width: 500px) {
-  .chartCard {
-    width: 100%;
-  }
+.container h1 {
+    color: #364687;
+}
 
-  .containery{
-    width: 100%;
-  }
+.section {
+    background-color: #EAEDF7;
+    padding: 50px 30px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);}
 
-  .statusw{
+#my-qr-reader {
+    padding: 20px !important;
+   
+}
+
+#my-qr-reader img[alt="Info icon"] {
+    display: none;
+}
+
+#my-qr-reader img[alt="Camera based scan"] {
+    width: 100px !important;
+    height: 100px !important;
+}
+
+button {
+    padding: 10px 20px;
+    border: 1px solid #b2b2b2;
+    outline: none;
+    border-radius: 0.25em;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    background-color: #0F3E84;
+    transition: 0.3s background-color;
+}
+
+button:hover {
+    background-color: #586CBC;
+}
+
+.inputID a{
+    color: #0F3E84;
+    font-style: normal;
     position: relative;
-    left: -69px;
-  }
+    bottom: 38px;
+    left: 150px;
 }
 
 
-@media (max-width: 346px) {
-  /* Very small screens adjustments */
-  .container-wrapper {
-    flex-direction: column; /* Ensure vertical stacking on very small screens */
+
+
+
+
+#my-qr-reader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  height: auto;
+  padding: 20px;
+}
+
+#my-qr-reader video {
+  width: 320px !important; /* Original width */
+  height: 320px !important; /* Original height */
+  max-width: 100%;
+  border: 2px solid #b2b2b2 !important;
+  border-radius: 0.25em;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For devices with a max-width of 768px (tablets and smaller) */
+@media (max-width: 768px) {
+  .container {
+    width: 95% !important;
+    max-width: 100% !important;
+    min-width: auto !important;
+    margin: 15px;
   }
 
-  .chartCard {
-    width: 100%; /* Full width */
-    padding: 15px; /* Reduce padding */
+
+}
+
+/* For devices with a max-width of 480px (mobile phones) */
+@media (max-width: 480px) {
+  .container {
+    width: 100% !important;
+    margin: 10px;
   }
 
-  .statusw{
-    position: relative;
-    left: -16%;
-  }
 
-  .num{
-    position: relative;
-    right: 30px;
-  }
-
-  .containery{
-    width: 90% !important;
-  }
 }
 
 
-@media (max-width: 320px) {
-  /* Adjustments for extremely small screens */
-  .containery,
-  .chartCard {
-    width: 100%; /* Full width */
-    padding: 10px; /* Further reduce padding */
+  
+@media (max-width: 950px) {
+
+  
+    .navbar {
+      padding: 15px 0;
+    }
+  
+    .navbar .logo img {
+      display: none;
+    }
+  
+    .navbar .logo h2 {
+      font-size: 1.4rem;
+    }
+  
+    .navbar .links {
+      position: fixed;
+      top: 0;
+      z-index: 10;
+      left: -100%;
+      display: block;
+      height: 100vh;
+      width: 100%;
+      padding-top: 60px;
+      text-align: center;
+      background: #fff;
+      transition: 0.2s ease;
+    }
+  
+    .navbar {
+      left: 0;
+    }
+  
+    .navbar .links a {
+      display: inline-flex;
+      margin: 20px 0;
+      font-size: 1.2rem;
+      color: #000;
+    }
+  
+  
+  
+    .navbar .login-btn {
+      font-size: 0.9rem;
+      padding: 7px 10px;
+    }
+
+
   }
 
-  .admin-container {
-    padding-right: 0; /* Remove extra padding */
-  }
-}
-
-@media (max-width: 200px) {
-  /* Minimal adjustments for very tiny screens */
-  .containery,
-  .chartCard {
-    width: 100%; /* Full width */
-    padding: 5px; /* Further reduce padding */
-  }
-
-  .admin-container {
-    font-size: 10px; /* Reduce font size for tiny screens */
-  }
-}
-
-
+  
+  
+  

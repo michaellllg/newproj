@@ -35,12 +35,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com';
                 $mail->SMTPAuth = true;
-                $mail->Username = 'manlangitn07@gmail.com';
-                $mail->Password = 'tbtx uaum sssh vpjo';
+                $mail->Username = 'cjcrsg.phils.inc@gmail.com';
+                $mail->Password = 'gvqg rzai htgt ykrp';
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
 
-                $mail->setFrom('manlangitn07@gmail.com', 'OTP Service');
+                $mail->setFrom('cjcrsg.phils.inc@gmail.com', 'CJCRSG Otp code');
                 $mail->addAddress($email);
                 $mail->isHTML(true);
                 $mail->Subject = 'Your OTP Code';

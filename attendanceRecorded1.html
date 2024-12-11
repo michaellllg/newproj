@@ -24,28 +24,13 @@
         </nav>
     </header>
 
-    <div class="message-container">
-        <h1 class="atten">Attendance is recorded!</h1>
-        <p class="dance">It will automatically go back in <span id="countdown">❣</span>.</p>
-      </div>
-
 
       <script>
-        // JavaScript to handle countdown and navigate back
-        document.addEventListener("DOMContentLoaded", function () {
-          let countdown = 3; // Start countdown at 3 seconds
-          const countdownElement = document.getElementById("countdown");
-    
-          // Update the countdown every second
-          const interval = setInterval(() => {
-            countdownElement.textContent = countdown; // Update the number in the parentheses
-            countdown--; // Decrease countdown
-            if (countdown < 0) {
-              clearInterval(interval); // Stop the interval when countdown is complete
-              window.history.back(); // Navigate back to the previous page
-            }
-          }, 1000); // 1000ms = 1 second
-        });
+        // JavaScript to navigate back when the button is clicked
+        function goBack() {
+            window.history.back(); // Navigate to the previous page
+        }
+
       </script>
 </body>
 </html>

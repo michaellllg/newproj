@@ -183,13 +183,10 @@ header {
   
  
   
- 
-  
-
-
   .container {
     width: 30% !important;
-
+    max-width: 450px !important;
+    min-width: 450px !important;
     margin: 30px;
 
     
@@ -202,8 +199,7 @@ header {
 .section {
     background-color: #EAEDF7;
     padding: 50px 30px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
-}
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);}
 
 #my-qr-reader {
     padding: 20px !important;
@@ -242,24 +238,55 @@ button:hover {
     font-style: normal;
     position: relative;
     bottom: 38px;
-    left: 160px;
+    left: 150px;
 }
 
 
 
-#html5-qrcode-anchor-scan-type-change {
-    text-decoration: none !important;
-    color: #1d9bf0;
+
+
+
+#my-qr-reader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  height: auto;
+  padding: 20px;
 }
 
-video {
+#my-qr-reader video {
+  width: 320px !important; /* Original width */
+  height: 320px !important; /* Original height */
+  max-width: 100%;
+  border: 2px solid #b2b2b2 !important;
+  border-radius: 0.25em;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For devices with a max-width of 768px (tablets and smaller) */
+@media (max-width: 768px) {
+  .container {
+    width: 95% !important;
+    max-width: 100% !important;
+    min-width: auto !important;
+    margin: 15px;
+  }
+
+
+}
+
+/* For devices with a max-width of 480px (mobile phones) */
+@media (max-width: 480px) {
+  .container {
     width: 100% !important;
-    border: 1px solid #b2b2b2 !important;
-    border-radius: 0.25em;
+    margin: 10px;
+  }
+
+
 }
-
-
-  
 
 
   
