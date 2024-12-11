@@ -11,12 +11,11 @@
 
     <style>
 body {
-    background-image: url('images/bg-myatt.png');
-    background-repeat: no-repeat;
-    background-size: cover; /* Ensure the image covers the entire screen */
-    background-position: center; /* Center the image */
-    height: 100vh; /* Set the height to viewport */
-    margin: 0; /* Remove default margin */
+    background-image: url('images/bg-myatt.png'); /* Use your file path */
+        background-size: cover; /* Ensures the image covers the entire screen */
+        background-position: center; /* Centers the image */
+        background-repeat: no-repeat; /* Prevents the image from repeating */
+        background-attachment: fixed; /* Keeps the image fixed during scrolling */
 }
 
 
@@ -89,7 +88,7 @@ form {
             </div>
             <!-- Submit Button -->
             <div class="text-center">
-                <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                <button type="submit" class="btn btn-primary" style="color: #364687">Submit Feedback</button>
             </div>
         </form>
         <div id="feedbackMessage" class="mt-3 text-center"></div>
