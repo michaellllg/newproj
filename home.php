@@ -59,6 +59,7 @@
     color: #0f3e84;
     font-size: 2.5rem;
     margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .welcome-section p {
