@@ -54,6 +54,7 @@
     padding: 50px 20px;
     margin: 0 auto;
     margin-left: 10px;
+    left: 50%;
     max-width: 800px;
     background-color: white;
   }
