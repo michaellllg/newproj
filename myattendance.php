@@ -41,7 +41,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contribution Graph</title>
+    <title>My Attendance Record</title>
     <style>
         /* Grid-related CSS */
         :root {
@@ -62,7 +62,7 @@ $conn->close();
             height: 100vh;            /* Full viewport height */
             padding: 20px;
             position: relative;       /* Needed to position the dropdown */
-            bottom: 300px;
+            bottom: 100px;
         }
 
         /* Styling for the graph container */
@@ -238,29 +238,6 @@ $conn->close();
   box-sizing: border-box;
 }
 
-/* css of the graph by diana binangkal*/
-.graphBox {
-  position: relative;
-  left: 25%;
-  top: -150px;
-  width: 70%;
-  padding:20px;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-gap: 30px;
-  min-height: 200px;
-}
-
-.graphBox .box{
-  position: relative;
-  background: #BCCCDC;
-  padding: 20px;
-  width: 100%;
-  box-shadow: 0 7px 25px rgba(0, 0, 0, 0, 0.08);
-  border-radius: 20px;
-}
-
-
 
 .modal-dialog-top {
   top: 10%; /* Adjust this value to control how far from the top the modal appears */
@@ -384,17 +361,8 @@ $conn->close();
 <!--The Greetings XD -->
 <div class="admin-container">
         <label class="admin-greeting">Hi, User <?php echo $memberName; ?>!</label>
-  <label class="admin-description">Manage the attendance of CJC Members.</label>
+  <label class="admin-description">Record your attendance with just a few clicks.<br> Click the button now! </label>
   <a href="attendance.php"><button class="attendance-button">Add Attendance</button></a>
-</div>
-<!-- Add Chart -->
-<div class="graphBox">
-    <div class="box">
-      <canvas id="myChart"></canvas>
-    </div>
-    <div class="box">
-      <canvas id="myChartt"></canvas>
-    </div>
 </div>
 
 <div class="graph-container">
@@ -435,28 +403,7 @@ $conn->close();
         </ul>
     </div>
 </div>
- <script src = "https://cdn.jsdelivr.net/npm/chart.js"></script>
- <script>
-  const ctx = document.getElementById('myChart');
-  new Chart(ctx, {
-    type: 'polarArea',
-    data: {
-      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','Sun'],
-      datasets: [{
-        label: '# of Attendance',
-        data: [0,1,2,3,4,5],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
- </script>
+ 
 <script>
 // Get the current year
 const currentYear = new Date().getFullYear();

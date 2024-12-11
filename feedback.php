@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
@@ -19,9 +19,8 @@ body {
     margin: 0; /* Remove default margin */
 }
 
-
 header {
-  background: #364687;
+  background: #0f3e84;
   position: sticky;
   width: 100%;
   margin-top: 10px;
@@ -29,6 +28,15 @@ header {
   left: 0;
   z-index: 1;
   padding: 0 10px;
+}
+
+.navbar {
+  display: flex;
+  padding: 22px 0;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: space-between;
 }
 .navbar-brand {
     font-size: 1.5rem; /* Increase font size */
