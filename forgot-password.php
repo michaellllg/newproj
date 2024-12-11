@@ -69,13 +69,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forgot Password</title>
     <style>
+       
         /* General Reset */
-
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: Arial, Helvetica, sans-serif;
             background: linear-gradient(to right, #e9eff1, #ffffff);
-            height: 100vh;
             color: #333;
         }
 
@@ -87,8 +91,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             max-width: 400px;
             width: 100%;
             text-align: center;
-            transition: all 0.3s ease;
-            margin: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         h1 {
@@ -134,7 +140,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         button:hover {
             background: #1E2C5A;
         }
-
     </style>
     <script>
         // Input limit and validate @gmail.com
@@ -155,7 +160,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </script>
 </head>
 <body>
-    <?php include ('attendanceRecorded1.html');?>
 
     <div class="container">
         <h1>Forgot Password</h1>
