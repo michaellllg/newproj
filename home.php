@@ -28,11 +28,11 @@
 .container {
   text-align: center;
   background-color: #f2f2f2;
-  padding: 50px;
+  padding: 30px;
   border: 5px solid #0f3e84;
-  border-radius: 10px;
+  border-radius: 35px;
   box-shadow: 0 0 25px rgba(0, 0, 0, .1);
-  width: 100%; /* Adjust to take up full width of the wrapper */
+  width: 50%; /* Adjust to take up full width of the wrapper */
   max-width: 550px; /* Maintain a max width for the container */
   margin: 20px auto; /* Center the container */
 }
@@ -53,8 +53,6 @@
     text-align: center; /* Center the content inside this section */
     padding: 50px 20px;
     margin: 0 auto;
-    margin-left: 10px;
-    left: 50%;
     max-width: 800px;
     background-color: white;
   }
