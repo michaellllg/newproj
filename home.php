@@ -25,18 +25,18 @@
   padding: 0 20px; /* Add some padding for smaller screens */
 }
 
-.container {
-    text-align: center;
-    background: linear-gradient(to top, #ffffff, #f8f9fa); /* Subtle gradient for modern look */
-    padding: 30px;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Smooth shadow */
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto; /* Center the container */
-}
 
+.container {
+  text-align: center;
+  background-color: #f2f2f2;
+  padding: 30px;
+  border: 5px solid #0f3e84;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, .1);
+  width: 100%; /* Adjust to take up full width of the wrapper */
+  max-width: 550px; /* Maintain a max width for the container */
+  margin: 20px auto; /* Center the container */
+}
 
 #bible-verse {
   font-size: 1.2em;
@@ -52,23 +52,33 @@
 /* Welcome section */
 .welcome-section {
     text-align: left;
-    padding: 50px 20px;
-    margin: 0 auto;
-    margin-left: 10px;
+    padding: 30px;
+    margin: 20px auto;
     max-width: 800px;
-    background-color: white;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Modern shadow */
 }
 
 .welcome-section h1 {
     color: #0f3e84;
     font-size: 2.5rem;
     margin-bottom: 10px;
-    font-weight: bold;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
 .welcome-section p {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #666;
+    line-height: 1.8;
+}
+
+/* Add hover effects for modern interaction */
+.container:hover {
+    transform: translateY(-5px); /* Subtle lift effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 @media only screen and (max-width: 768px) {
