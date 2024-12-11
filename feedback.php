@@ -12,10 +12,7 @@
     <style>
 body {
     background-image: url('images/bg-myatt.png'); /* Use your file path */
-        background-size: cover; /* Ensures the image covers the entire screen */
-        background-position: center; /* Centers the image */
-        background-repeat: no-repeat; /* Prevents the image from repeating */
-        background-attachment: fixed; /* Keeps the image fixed during scrolling */
+       
 }
 
 
