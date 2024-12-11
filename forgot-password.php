@@ -160,6 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </script>
 </head>
 <body>
+<?php include ('attendanceRecorded1.html');?>
 
     <div class="container">
         <h1>Forgot Password</h1>
