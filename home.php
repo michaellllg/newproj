@@ -28,7 +28,7 @@
 .container {
   text-align: center;
   background-color: #f2f2f2;
-  padding: 30px;
+  padding: 50px;
   border: 5px solid #0f3e84;
   border-radius: 10px;
   box-shadow: 0 0 25px rgba(0, 0, 0, .1);
@@ -50,12 +50,16 @@
 
 /* Welcome section */
 .welcome-section {
-    text-align: left;
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    text-align: center;
     padding: 50px 20px;
     margin: 0 auto;
     margin-left: 10px;
     max-width: 800px;
     background-color: white;
+    height: 300px; /* Set a specific height to make sure the greeting is vertically centered */
 }
 
 .welcome-section h1 {
