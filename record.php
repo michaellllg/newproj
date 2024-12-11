@@ -401,11 +401,6 @@ $conn->close();
     });
 });
 
-
-
-
-
-
   </script>
    
     <!-- Linking custom script -->

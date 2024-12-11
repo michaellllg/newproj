@@ -533,6 +533,6 @@ document.querySelector('.year-dropdown').addEventListener('change', function() {
 });
 
 </script>
-<script src="js/dashboard.js"></script>
+
 </body>
 </html>
