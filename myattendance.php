@@ -238,29 +238,6 @@ $conn->close();
   box-sizing: border-box;
 }
 
-/* css of the graph by diana binangkal*/
-.graphBox {
-  position: relative;
-  left: 25%;
-  top: -150px;
-  width: 70%;
-  padding:20px;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-gap: 30px;
-  min-height: 200px;
-}
-
-.graphBox .box{
-  position: relative;
-  background: #BCCCDC;
-  padding: 20px;
-  width: 100%;
-  box-shadow: 0 7px 25px rgba(0, 0, 0, 0, 0.08);
-  border-radius: 20px;
-}
-
-
 
 .modal-dialog-top {
   top: 10%; /* Adjust this value to control how far from the top the modal appears */
