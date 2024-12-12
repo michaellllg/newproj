@@ -181,7 +181,6 @@ $conn->close();
 
 
 <?php
-
 include 'api/connection.php';
 
 $sql = "
@@ -198,10 +197,7 @@ JOIN
 ON 
     a.memberID = m.memberID
 ORDER BY 
-    a.date DESC, a.time DESC
-";
-?>
-
+    a.date DESC, a.time DESC"; // Sort by date and time in descending order
 
 $result = $conn->query($sql);
 
@@ -217,6 +213,7 @@ if ($result->num_rows > 0) {
 // Close the database connection
 $conn->close();
 ?>
+
 
 <!-- HTML to display the table -->
 <div class="table-responsive">
