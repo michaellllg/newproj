@@ -198,7 +198,7 @@ JOIN
 ON 
     a.memberID = m.memberID
 ORDER BY 
-    a.date ASC
+    a.date DESC
 ";
 
 
