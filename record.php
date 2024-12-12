@@ -183,6 +183,7 @@ $conn->close();
 <?php
 
 include 'api/connection.php';
+
 $sql = "
 SELECT 
     a.atten_id AS id, 
@@ -199,6 +200,7 @@ ON
 ORDER BY 
     a.date DESC, a.time DESC
 ";
+?>
 
 
 $result = $conn->query($sql);
