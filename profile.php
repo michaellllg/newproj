@@ -42,7 +42,7 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
 
     // Execute the query and check for errors
     if (mysqli_query($conn, $sql)) {
-        $msg = "Image updated successfully in the database!";
+        $msg = "Image updated successfully!!";
 
         // If there's an old image, delete it from the uploads folder
         if ($currentImage && file_exists("uploads/" . $currentImage)) {
@@ -51,9 +51,9 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
 
         // Move the uploaded image into the 'uploads' folder
         if (move_uploaded_file($tempname, $folder)) {
-            $msg .= " New image uploaded successfully to folder!";
+            $msg .= " New image uploaded successfully!";
         } else {
-            $msg .= " Failed to upload new image to folder!";
+            $msg .= " Failed to upload new image!";
         }
     } else {
         $msg = "Error updating image in the database: " . mysqli_error($conn);
@@ -74,7 +74,7 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
     <meta charset="UTF-8">
     <link rel="icon" type="image/x-icon" href="images/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Profile</title>
     <link rel="stylesheet" href="css/profile.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -116,6 +116,49 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
   }
 }
 
+ /* Custom button color */
+ #downloadQRCodeBtn {
+    width: 100%; /* Ensures button remains responsive */
+    background-color: #364687; /* Custom background color */
+    color: white; /* White text for contrast */
+    border: none; /* Remove default border */
+  }
+
+  /* Optional: Add hover effect for button */
+  #downloadQRCodeBtn:hover {
+    background-color: #2e3e81; /* Darken on hover */
+  }
+
+  .custom-btn {
+    background-color: #364687;
+    border-color: #364687;
+    color: white; /* White text for contrast */
+    border: none; /* Remove default border */
+}
+
+.custom-btn:hover {
+    background-color: #2c3e66; /* Optional: Hover color */
+    border-color: #2c3e66; /* Optional: Hover border color */
+}
+
+/* Default color for nav-link */
+.nav-link {
+    color:rgb(107, 115, 146) !important; /* Change this to the color you prefer */
+}
+
+/* Color for the active nav-link */
+.nav-link.active {
+    color: #364687 !important;
+}
+/* Hover effect for nav-link */
+.nav-link:hover {
+    color: #2c3e66 !important; /* Change this to the desired hover color */
+}
+@media (max-width: 767px) {
+    .profile-edit-btn {
+        display: block !important; /* Ensure the button is visible on mobile */
+    }
+}
 
 </style>
 <body>
@@ -181,9 +224,9 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
                 <div class="col-md-6">
                     <div class="profile-head">
                         <h5>
-                            <span id="memberName">Michael Nacion</span>
+                            <span id="memberName"></span>
                         </h5>
-                        <h6 id="roleType">Admin</h6>
+                        <h6 id="roleType"></h6>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
@@ -263,8 +306,9 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
                         </div>
 
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-<!-- QR Code Modal Trigger Button -->
-<button type="button" class="btn btn-primary" id="generateQRCodeBtn">View your QR Code</button>
+
+<button type="button" class="btn custom-btn" id="generateQRCodeBtn">View your QR Code</button>
+
 
 <!-- QR Code Modal -->
 <div class="modal fade" id="qrCodeModal" tabindex="-1" role="dialog" aria-labelledby="qrCodeModalLabel" aria-hidden="true" style="max-width: 400px; width: 100%; margin: auto;">
@@ -281,7 +325,7 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
         <img id="qrCodeImage" src="" alt="QR Code" class="img-fluid" />
         <br />
         <!-- Download Button -->
-        <a href="" id="downloadQRCodeBtn" class="btn btn-success mt-2" download="qrcode.png">Download</a>
+        <a href="" id="downloadQRCodeBtn" class="btn btn-success mt-2" download="qrcodeID<?php echo $memberID; ?>.png">Download</a>
       </div>
     </div>
   </div>
@@ -344,8 +388,7 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
     </div>
 
 
-
-    <!-- Confirmation Modal -->
+<!-- Confirmation Modal -->
 <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -365,6 +408,15 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
         </div>
     </div>
 </div>
+
+<script>
+    // Handle the 'Yes' button click
+    $('#confirmSaveButton').click(function() {
+        // Refresh the page
+        location.reload();
+    });
+</script>
+
 
 
     <script>
