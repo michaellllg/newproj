@@ -62,7 +62,7 @@ $conn->close();
             height: 100vh;            /* Full viewport height */
             padding: 20px;
             position: relative;       /* Needed to position the dropdown */
-            bottom: 300px;
+            bottom: 100px;
         }
 
         /* Styling for the graph container */
@@ -86,7 +86,7 @@ $conn->close();
         /* Dropdown for selecting years */
         .year-dropdown {
             position: absolute;
-            top: 220px;
+            top: 200px;
             right: 80px;
             padding: 5px 10px;
             border-radius: 5px;
@@ -94,6 +94,7 @@ $conn->close();
             font-size: 17px;
             background-color: #fff;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
         }
         
 
@@ -156,6 +157,7 @@ $conn->close();
             margin: 0;
             padding: 0;
             background-color: #f7f7f7; /* Light background for the page */
+            overflow: hidden;
         }
 
         .graph {
@@ -167,7 +169,7 @@ $conn->close();
         h1 {
             text-align: center;
             font-size: 32px;
-            color: #364687;
+            color: #364687 !important;
             margin-bottom: 20px; /* Adds space between the title and the graph */
             position: relative;
             top:10px;
@@ -184,6 +186,7 @@ $conn->close();
   padding-right: 300px;
   position: relative;
   top: 50px;
+  z-index: 1;
 
  
 }
@@ -238,34 +241,9 @@ $conn->close();
   box-sizing: border-box;
 }
 
-/* css of the graph by diana binangkal*/
-.graphBox {
-  position: relative;
-  left: 25%;
-  top: -150px;
-  width: 70%;
-  padding:20px;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-gap: 30px;
-  min-height: 200px;
-}
-
-.graphBox .box{
-  position: relative;
-  background: #BCCCDC;
-  padding: 20px;
-  width: 100%;
-  box-shadow: 0 7px 25px rgba(0, 0, 0, 0, 0.08);
-  border-radius: 20px;
-}
 
 
 
-.modal-dialog-top {
-  top: 10%; /* Adjust this value to control how far from the top the modal appears */
-  margin: 0 auto; /* Center horizontally */
-}
 
 
 @media (max-width: 1024px) {
@@ -387,15 +365,7 @@ $conn->close();
   <label class="admin-description">Manage the attendance of CJC Members.</label>
   <a href="attendance.php"><button class="attendance-button">Add Attendance</button></a>
 </div>
-<!-- Add Chart -->
-<div class="graphBox">
-    <div class="box">
-      <canvas id="myChart"></canvas>
-    </div>
-    <div class="box">
-      <canvas id="myChartt"></canvas>
-    </div>
-</div>
+
 
 <div class="graph-container">
     <select class="year-dropdown">
