@@ -293,6 +293,7 @@ $conn->close();
   /* Ensure the greeting text and description are properly sized */
   .admin-greeting {
     font-size: 26px; /* Adjust font size */
+    color: #0f3e84;
   }
 
   .admin-description {
