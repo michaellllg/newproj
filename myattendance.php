@@ -168,6 +168,7 @@ $conn->close();
         }
         /* Style for the H1 heading */
         h1 {
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
             text-align: center;
             font-size: 32px;
             color: #0f3e84 !important;
