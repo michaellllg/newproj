@@ -97,6 +97,23 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
 /* Dimmed effect for modals underneath */
 .modal.dimmed {
     filter: brightness(50%); /* Darkens the modal to simulate dimming */
+
+     /* Ensure modal width remains constant */
+  #qrCodeModal .modal-dialog {
+    max-width: 400px; /* Set a fixed maximum width */
+    width: 100%; /* Make it responsive */
+  }
+
+  /* Ensure image inside modal does not stretch */
+  #qrCodeImage {
+    width: 100%; /* Ensures the image is responsive */
+    height: auto; /* Keep aspect ratio intact */
+  }
+
+  /* Optional: Ensure button stays properly aligned */
+  #downloadQRCodeBtn {
+    width: 100%; /* Ensures button remains responsive */
+  }
 }
 
 
@@ -250,7 +267,7 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
 <button type="button" class="btn btn-primary" id="generateQRCodeBtn">View your QR Code</button>
 
 <!-- QR Code Modal -->
-<div class="modal fade" id="qrCodeModal" tabindex="-1" role="dialog" aria-labelledby="qrCodeModalLabel" aria-hidden="true" style="max-width: 20%; margin: auto;">
+<div class="modal fade" id="qrCodeModal" tabindex="-1" role="dialog" aria-labelledby="qrCodeModalLabel" aria-hidden="true" style="max-width: 400px; width: 100%; margin: auto;">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
