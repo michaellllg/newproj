@@ -193,6 +193,15 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
                     <div class="tab-content profile-tab" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
+                        <div class="row">
+                        <div class="col-md-6">
+                            <label>Member ID</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p id="memberID"><?php echo $memberID; ?></p>
+                         </div>
+                            </div>
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>Email</label>
