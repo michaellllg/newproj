@@ -225,7 +225,8 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="images/1.gif" alt="First slide">
+        <img class="d-block w-100" src="images/1.gif" alt="First slide" loading="lazy">
+
         </div>
         <div class="carousel-item">
           <img class="d-block w-100" src="images/2.png" alt="Second slide">
@@ -463,6 +464,12 @@
 
 
     <script>
+
+$('.carousel').on('slide.bs.carousel', function () {
+    // Logic to load content after the slide has been shown
+});
+
+
   let body = document.querySelector("body"),
       lightBox = document.querySelector(".lightBox"),
       img = document.querySelectorAll(".gImg"),
