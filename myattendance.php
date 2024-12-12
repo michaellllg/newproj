@@ -152,8 +152,9 @@ $conn->close();
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-            font-size: 12px;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+           font-size: 12px;
+           font-weight: bold;
             margin: 0;
             padding: 0;
             background-color: #f7f7f7; /* Light background for the page */
