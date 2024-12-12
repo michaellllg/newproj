@@ -360,7 +360,7 @@ $conn->close();
 
 <?php include('nav.php'); ?>
 
-<h1>My Attendance</h1>
+<h1><strong style="font-weight: bold;">My Attendance</strong></h1>
 
 <!--The Greetings XD -->
 <div class="admin-container">
