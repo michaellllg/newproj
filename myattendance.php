@@ -169,10 +169,11 @@ $conn->close();
         h1 {
             text-align: center;
             font-size: 32px;
-            color: #364687 !important;
+            color: #0f3e84 !important;
+            font-weight: bold;
             margin-bottom: 20px; /* Adds space between the title and the graph */
             position: relative;
-            top:10px;
+            top:20px;
         }
 
 
