@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 header("Location: reset_password.php?email=$email");
                 exit();
             } else {
-                echo "<script>alert('Invalid or expired OTP!');</script>";
+                echo "<script>alert('Invalid OTP!');</script>";
             }
         } else {
             echo "<script>alert('Email not found!');</script>";

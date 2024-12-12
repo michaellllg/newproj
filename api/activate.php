@@ -21,7 +21,7 @@ if (isset($_GET['token'])) {
             $message = "An error occurred while activating your account.";
         }
     } else {
-        $message = "Invalid or expired activation token.";
+        $message = " Expired activation token.";
     }
 } else {
     $message = "Invalid request.";
