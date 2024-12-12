@@ -14,6 +14,9 @@ header("Access-Control-Allow-Headers: Content-Type");
 
 include 'connection.php';
 
+// Set MySQL timezone to Manila
+$conn->query("SET time_zone = '+08:00'");
+
 // Check if the request method is POST
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Allow preflight requests
