@@ -1,6 +1,6 @@
 <?php
 // Database connection
-$host = 'local';
+$host = 'localhost';
 $username = 'u627256117_cjcrsg';
 $password = 'thisWASNTmytrue#3'; 
 $database = 'u627256117_cjcrsg';
