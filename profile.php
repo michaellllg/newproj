@@ -198,7 +198,7 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
                             <label>Member ID</label>
                         </div>
                         <div class="col-md-6">
-                            <p id="memberID"><?php echo $memberID; ?></p>
+                            <p id="memberID"></p>
                          </div>
                             </div>
 
@@ -207,7 +207,7 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
                                     <label>Email</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p id="email">nacionm007@gmail.com</p>
+                                    <p id="email"></p>
                                 </div>
                             </div>
                             
@@ -216,7 +216,7 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
                                     <label>Phone</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p id="phone">09123456789</p>
+                                    <p id="phone"></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -224,7 +224,7 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
                                     <label>Status</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p id="status">Active</p>
+                                    <p id="status"></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -232,7 +232,7 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
                                     <label>Life Stage</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p id="lifeStage">College Student</p>
+                                    <p id="lifeStage"></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -240,7 +240,7 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
                                     <label>Address</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p id="address">San Roque</p>
+                                    <p id="address"></p>
                                 </div>
                             </div>
                         </div>
@@ -367,6 +367,30 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
 
 
     <script>
+
+// Fetch the memberID from the URL
+function getParameterByName(name) {
+    var urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name) || '';
+}
+
+// Fetch and display memberID (padded with leading zeros)
+$(document).ready(function () {
+    var memberID = getParameterByName('id'); // Get the memberID from the URL
+    if (memberID) {
+        // Pad the memberID to be 4 digits
+        var paddedMemberID = ('000' + memberID).slice(-4);
+        $('#memberID').text(paddedMemberID); // Display it in the profile
+    }
+});
+
+
+
+
+
+
+
+
         $(document).ready(function () {
     let formData = {}; // Declare formData in a wider scope for reuse
 
