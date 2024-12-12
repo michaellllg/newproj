@@ -183,7 +183,6 @@ $conn->close();
 <?php
 
 include 'api/connection.php';
-
 $sql = "
 SELECT 
     a.atten_id AS id, 
@@ -197,7 +196,10 @@ JOIN
     member m 
 ON 
     a.memberID = m.memberID
+ORDER BY 
+    a.date DESC, a.time DESC
 ";
+
 
 $result = $conn->query($sql);
 
