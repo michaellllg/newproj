@@ -74,7 +74,7 @@ $conn->close();
                                  "days squares";
             grid-template-columns: auto 1fr;
             grid-gap: 10px;
-            background-color: white;   /* White background for the graph */
+            background-color:rgb(165, 165, 165);   /* White background for the graph */
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Shadow effect */
             border-radius: 10px;       /* Rounded corners for the graph container */
             padding: 20px;
