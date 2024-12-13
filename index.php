@@ -46,11 +46,11 @@
   }
 
   .mision-vision h1 {
-    font-size: 1.4rem;
+    font-size: 3.1rem;
   }
 
   .mision-vision h3 {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
   }
 }
 
@@ -64,11 +64,11 @@
   }
 
   .mision-vision h1 {
-    font-size: 1.2rem;
+    font-size: 3rem;
   }
 
   .mision-vision h3 {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 }
 </style>
@@ -89,7 +89,7 @@
               <h2>CJCRSG</h2>
           </a>
           <ul class="links">
-              <span class="close-btn material-symbols-rounded">close</span>
+              <span class="close-btn material-symbols-rounded" id="closeb">close</span>
               <li><a href="#" class="navl">Home</a></li>
               <li><a href="#image-gallery" class="navl">Gallery</a></li>
               <li><a href="#about" class="navl">About</a></li>
@@ -430,7 +430,7 @@
             <a href="#"><i class="fas fa-phone-volume"></i>   +637 9089 6767</a>
           </div>
           <div class="email">
-            <a href="#"><i class="fas fa-envelope">    </i>  cjcrsg@gmail.com</a>
+            <a href="#"><i class="fas fa-envelope" >    </i>  cjcrsg@gmail.com</a>
           </div>
           <br>
           <div class="topic">Follow us</div>
@@ -473,8 +473,6 @@ $('.carousel').on('slide.bs.carousel', function () {
   let body = document.querySelector("body"),
       lightBox = document.querySelector(".lightBox"),
       img = document.querySelectorAll(".gImg"),
-      showImg = lightBox.querySelector(".showImg img"),
-      close = lightBox .querySelector(".close");
      for (let image of img) {
        image.addEventListener("click", ()=>{
          showImg.src = image.src;

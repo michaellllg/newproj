@@ -29,32 +29,19 @@
         </nav>
     </header>
 
-    <div class="wrapper">
-        <!-- QR Code Scanner Section -->
-        <div class="container" id="qrScanner">
-            <h1>Scan QR Codes</h1>
-            <div class="section">
-                <div id="my-qr-reader"></div>
-            </div>
-            <div class="inputID">
-                <a href="#" id="inputMemberID">Input Member ID</a>
-            </div>
-        </div>
 
         <!-- Login Form (Hidden by Default) -->
-        <div class="login-container" id="attendance-form" style="display: none;">
+        <div class="login-container" id="attendance-form">
             <h2>Attendance <br>Login</h2>
             <form>
                 <label for="memberID">MemberID</label>
                 <input type="text" id="memberID" name="memberID" placeholder="Enter your ID" required />
                 <button type="submit" id="submit-btn">Login</button>
-                <a href="#" class="qr-code-link" id="scanQRCode">Scan QR Code</a>
+                <a href="qrcode.php" class="qr-code-link" id="scanQRCode">Scan QR Code</a>
             </form>
         </div>
     </div>
 
-    <script src="js/html5-qr.js"></script>
-    <script src="js/qrscanner.js"></script>
 
     <script>
         // JavaScript to navigate back when the button is clicked
@@ -62,23 +49,6 @@
             window.history.back(); // Navigate to the previous page
         }
 
-        // Handle "Input Member ID" link
-        document.getElementById("inputMemberID").addEventListener("click", function(e) {
-            e.preventDefault(); // Prevent default link behavior
-
-            // Show login form and hide QR scanner
-            document.getElementById("attendance-form").style.display = "block"; // Show login form
-            document.getElementById("qrScanner").style.display = "none"; // Hide QR scanner
-        });
-
-        // Handle "Scan QR Code" link
-        document.getElementById("scanQRCode").addEventListener("click", function(e) {
-            e.preventDefault(); // Prevent default link behavior
-
-            // Show QR scanner and hide login form
-            document.getElementById("attendance-form").style.display = "none"; // Hide login form
-            document.getElementById("qrScanner").style.display = "block"; // Show QR scanner
-        });
 
         // QR Code Processing
         document.addEventListener("DOMContentLoaded", function () {
