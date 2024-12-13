@@ -1,9 +1,8 @@
 <?php
-// Database connection
 $host = 'localhost';
-$username = 'root';
-$password = ''; 
-$database = 'cjcrsg';
+$username = 'u627256117_cjcrsg';
+$password = 'thisWASNTmytrue#3'; 
+$database = 'u627256117_cjcrsg';
 
 
 // Create connection
