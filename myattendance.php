@@ -46,7 +46,7 @@ $conn->close();
     <style>
         /* Grid-related CSS */
         :root {
-            --square-size: 15px;
+            --square-size: 18px;
             --square-gap: 5px;
             --week-width: calc(var(--square-size) + var(--square-gap));
         }
@@ -55,16 +55,8 @@ $conn->close();
         .days { grid-area: days; }
         .squares { grid-area: squares; }
 
-        /* Center the graph container */
-        .graph-container {
-            display: flex;
-            justify-content: center;  /* Center the graph horizontally */  
-            align-items: center;      /* Center the graph vertically */
-            height: 100vh;            /* Full viewport height */
-            padding: 20px;
-            position: relative;       /* Needed to position the dropdown */
-            bottom: 100px;
-        }
+
+
 
         /* Styling for the graph container */
         .graph {
@@ -73,30 +65,55 @@ $conn->close();
                                  "days squares";
             grid-template-columns: auto 1fr;
             grid-gap: 10px;
-            background-color: white;   /* White background for the graph */
+            background-color:rgb(207, 205, 205);   /* White background for the graph */
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Shadow effect */
             border-radius: 10px;       /* Rounded corners for the graph container */
             padding: 20px;
-            max-width: 100%;           /* Make sure it fits within the viewport */
-            overflow: hidden;
-            transform: scale(1.2);     /* Scale the graph to 120% (20% bigger) */
-            transform-origin: center; /* Ensure scaling happens from the center */
+            max-width: 1300px;
+          width: 100%;
+            position: relative;
+            top: 50px;
+            left: 20px;
+            overflow-x: auto; /* Add horizontal scroll on smaller screens */
+            -webkit-overflow-scrolling: touch; /* Enable smooth scrolling for touch devices */
         }
         
 
         /* Dropdown for selecting years */
         .year-dropdown {
             position: absolute;
-            top: 200px;
-            right: 80px;
+            top: 350px;
+            right: 110px;
             padding: 5px 10px;
             border-radius: 5px;
             border: 1px solid #ddd;
             font-size: 17px;
-            background-color: #fff;
+            background-color: rgb(207, 205, 205);
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow-x: auto; /* Add horizontal scroll on smaller screens */
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch; /* Enable smooth scrolling for touch devices */
 
         }
+
+        /* Media queries */
+@media screen and (max-width: 1200px) {
+    .graph {
+        max-width: 90% !important; /* Shrink the width by 1% and 5px */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .graph {
+        max-width: 75% !important; /* Further shrink width */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .graph {
+        max-width: 65% !important; /* Further shrink for small screens */
+    }
+}
         
 
         .months {
@@ -159,7 +176,7 @@ $conn->close();
             margin: 0;
             padding: 0;
             background-color: #f7f7f7; /* Light background for the page */
-            overflow: hidden;
+            
         }
 
         .graph {
@@ -176,7 +193,7 @@ $conn->close();
             font-weight: bold;
             margin-bottom: 20px; /* Adds space between the title and the graph */
             position: relative;
-            top:20px;
+            top:50px;
         }
 
 
@@ -190,7 +207,7 @@ $conn->close();
   padding-right: 300px;
   position: relative;
   top: 50px;
-  z-index: 1;
+
 
  
 }
@@ -246,114 +263,6 @@ $conn->close();
 }
 
 
-
-
-
-
-@media (max-width: 1024px) {
-  .admin-container {
-    margin-left: 5px;
-    padding-right: 150px;
-  }
-
-  .container-wrapper {
-    gap: 10px;
-    padding: 0 10px;
-  }
-
-}
-
-
-
-/* For screens between 991px and 1399px */
-@media (min-width: 991px) and (max-width: 1399px) {
-  /* Admin container stays aligned to the left */
-  .admin-container {
-    text-align: left; /* Align text to the left */
-    margin-top: 20px;
-    margin-left: 10px; /* Ensure the container is on the left side */
-    padding-top: 30px;
-    padding-right: 10px; /* Adjust padding */
-  }
-
-  /* Flex container should align the widget and chart side by side */
-  .container-wrapper {
-    display: flex;
-    gap: 10px; /* Increase gap between the widget and chart */
-    justify-content: flex-start; /* Align to the left */
-    align-items: flex-start; /* Align at the top */
-    margin: 20px auto;
-    padding: 0 20px; /* Ensure proper padding on the sides */
-    flex-wrap: wrap; /* Allow wrapping if needed */
-    box-sizing: border-box;
-  }
-
-}
- 
-
-  /* Ensure the greeting text and description are properly sized */
-  .admin-greeting {
-    font-size: 26px; /* Adjust font size */
-    color: #0f3e84;
-  }
-
-  .admin-description {
-    font-size: 14px; /* Adjust font size */
-  }
-
-  /* Adjust button size */
-  .attendance-button {
-    font-size: 14px;
-    padding: 10px 18px; /* Adjust padding for better fit */
-  }
-
-
-
-@media (max-width: 768px) {
-  .container-wrapper {
-    flex-direction: column; /* Stack vertically below 768px */
-    align-items: center;
-  }
-
-  
-
-  .admin-container {
-    margin-left: 5px;
-    padding-right: 0;
-    margin-bottom: 20px;
-  }
-
-
-}
-
-
-
-
-@media (max-width: 346px) {
-  /* Very small screens adjustments */
-  .container-wrapper {
-    flex-direction: column; /* Ensure vertical stacking on very small screens */
-  }
-
- 
-}
-
-
-@media (max-width: 320px) {
-
-
-  .admin-container {
-    padding-right: 0; /* Remove extra padding */
-  }
-}
-
-@media (max-width: 200px) {
-
-  .admin-container {
-    font-size: 10px; /* Reduce font size for tiny screens */
-  }
-}
-
     </style>
 </head>
 <body>
@@ -372,7 +281,9 @@ $conn->close();
 </div>
 
 
-<div class="graph-container">
+
+
+
     <select class="year-dropdown">
     <option value="2023" <?php echo $year == 2023 ? 'selected' : ''; ?>>2023</option>
     <option value="2024" <?php echo $year == 2024 ? 'selected' : ''; ?>>2024</option>
@@ -382,6 +293,10 @@ $conn->close();
     </select>
 
     <div class="graph">
+
+   
+
+
         <ul class="months">
             <li>Jan</li>
             <li>Feb</li>
@@ -408,8 +323,11 @@ $conn->close();
         <ul class="squares">
             <!-- JavaScript will populate this -->
         </ul>
+        
     </div>
-</div>
+    <br>
+
+<h1>.</h1>
  <script src = "https://cdn.jsdelivr.net/npm/chart.js"></script>
  <script>
   const ctx = document.getElementById('myChart');
