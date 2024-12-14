@@ -90,13 +90,13 @@ $conn->close();
         /* Dropdown for selecting years */
         .year-dropdown {
             position: absolute;
-            top: 30px;
+            top: 20px;
             right: 80px;
             padding: 5px 10px;
             border-radius: 5px;
             border: 1px solid #ddd;
             font-size: 17px;
-            background-color: #fff;
+            background-color:rgb(177, 177, 199);
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
         }
