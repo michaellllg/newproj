@@ -213,7 +213,6 @@ $conn->close();
 </div>
 
 
-
   
   <div class="form-popup"></div>
       
@@ -478,11 +477,9 @@ $(function () {
             return; // Stop the process if fields are blank
         }
 
-        // Show confirmation modal
-        $('#confirmationModal').modal('show');
-        
-        // Handle the confirmation action
-        $('#confirmAddMemberBtn').click(function() {
+        // Show JavaScript confirmation warning
+        if (confirm("Are you sure you want to add this member?")) {
+            // User confirmed action
             // Send data to the server using AJAX
             $.ajax({
                 type: 'POST',
@@ -503,118 +500,68 @@ $(function () {
             .fail(function (data) {
                 console.error('Error:', data); // Log any errors
             });
-
-            // Close the confirmation modal
-            $('#confirmationModal').modal('hide');
-        });
+        } else {
+            // User canceled action
+            alert("Action canceled. Member not added.");
+        }
     });
 
+    // Function to fetch users
+    async function getUsers() {
+        try {
+            let response = await fetch("http://cjcrsg.site/newproj/api/db.php", {
+                method: 'GET'
+            });
+            let responseData = await response.json();
+            console.log(responseData);
 
-        // Function to fetch users
-        async function getUsers() {
-            try {
-                let response = await fetch("http://cjcrsg.site/newproj/api/db.php", {
-                    method: 'GET'
-                });
-                let responseData = await response.json();
-                console.log(responseData);
-
-                // Sort the members array by name in ascending order
-                responseData.members.sort((a, b) => {
-                    return a.name.localeCompare(b.name);
-                });
-
-               
-
-                // Append user data to table
-                responseData.members.forEach((member) => {
-                    $('.table-group').append(
-                        `
-                        <tr>
-                            <td><a href="profile.html?memberID=${member.memberID}"  style="color: black;" >${member.name}</a></td>
-                            <td>${member.status}</td>
-                            <td>${member.dateCreated}</td>
-                            <td>${member.lastUpdated}</td>
-                        </tr>
-                        `
-                    );
-                });
-
-                // Filter/search functionality
-                $('#search-input').on('keyup', function () {
-                    let searchText = $(this).val().trim().toLowerCase();
-                    $('.table-group tr').each(function () {
-                        let name = $(this).find('td:first').text().toLowerCase();
-                        if (name.includes(searchText)) {
-                            $(this).show();
-                        } else {
-                            $(this).hide();
-                        }
-                    });
-                });
-            } catch (error) {
-                console.error('Error fetching users:', error);
-            }
-        }
-
-         // Event listener for confirm logout button
-         $('#confirmLogout').click(function() {
-                // Redirect to the logout script
-                window.location.href = 'index.html';
+            // Sort the members array by name in ascending order
+            responseData.members.sort((a, b) => {
+                return a.name.localeCompare(b.name);
             });
 
-        getUsers(); // Call function to fetch users
+            // Append user data to table
+            responseData.members.forEach((member) => {
+                $('.table-group').append(
+                    `
+                    <tr>
+                        <td><a href="profile.html?memberID=${member.memberID}"  style="color: black;" >${member.name}</a></td>
+                        <td>${member.status}</td>
+                        <td>${member.dateCreated}</td>
+                        <td>${member.lastUpdated}</td>
+                    </tr>
+                    `
+                );
+            });
 
-        
+            // Filter/search functionality
+            $('#search-input').on('keyup', function () {
+                let searchText = $(this).val().trim().toLowerCase();
+                $('.table-group tr').each(function () {
+                    let name = $(this).find('td:first').text().toLowerCase();
+                    if (name.includes(searchText)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+        } catch (error) {
+            console.error('Error fetching users:', error);
+        }
+    }
 
+    // Event listener for confirm logout button
+    $('#confirmLogout').click(function() {
+        // Redirect to the logout script
+        window.location.href = 'index.php';
     });
 
-    
-</script>
-
-
-<script>
-   document.getElementById("addMemberBtn").addEventListener("click", function () {
-const formFields = {
-name: document.getElementById("memberName").value.trim(),
-role: document.getElementById("memberRole").value,
-status: document.getElementById("memberStatus").value,
-lifeStage: document.getElementById("memberLifeStage").value.trim(),
-email: document.getElementById("memberEmail").value.trim(),
-password: document.getElementById("memberPassword").value.trim(),
-phone: document.getElementById("memberPhone").value.trim(),
-address: document.getElementById("memberAddress").value.trim()
-};
-
-const isFormValid = Object.values(formFields).every(value => value !== "");
-
-if (isFormValid) {
-$("#confirmationModal").modal("show");
-
-document.getElementById("confirmAddMemberBtn").onclick = function () {
-fetch("api/addMember.php", {
-method: "POST",
-headers: { "Content-Type": "application/json" },
-body: JSON.stringify(formFields)
-})
-.then(response => response.json())
-.then(data => {
-if (data.success) {
-location.reload(); // Refresh page on success
-} else {
-alert("Error adding member: " + data.message);
-}
-})
-.catch(error => {
-console.error("Error:", error);
-alert("An unexpected error occurred.");
+    getUsers(); // Call function to fetch users
 });
-};
-} else {
-alert("Please fill in all the fields before proceeding.");
-}
-});
-</script>
+
+
+
 
   
     <!-- Linking custom script -->
