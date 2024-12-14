@@ -70,6 +70,12 @@ $conn->close();
     border-color: darkred;
     color: #FA8028;
 }
+
+
+.links li.active a {
+    color: rgb(178, 168, 236); /* Your primary blue color */
+
+}
 </style>
 
 
@@ -90,7 +96,7 @@ $conn->close();
               <span class="close-btn material-symbols-rounded">close</span>
               <li><a  href="dashboard.php?id=<?php echo $_GET['id']; ?>">Dashboard</a></li>
               <li><a  href="member.php?id=<?php echo $_GET['id']; ?>">Member</a></li>
-              <li><a  href="record.php?id=<?php echo $_GET['id']; ?>">Attendance</a></li>
+              <li class="active"><a  href="record.php?id=<?php echo $_GET['id']; ?>">Attendance</a></li>
               <li><a  href="event.php?id=<?php echo $_GET['id']; ?>">Announcement</a></li>
           </ul>
                    <!-- Dropdown Menu -->
@@ -274,6 +280,23 @@ $conn->close();
         <!-- Pagination items will be dynamically created -->
     </ul>
 </nav>
+
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('reload') === 'true') {
+    urlParams.delete('reload'); // Remove the reload flag from the URL
+    const newURL = `${window.location.pathname}?${urlParams.toString()}`;
+    window.history.replaceState(null, '', newURL); // Update the URL without reloading
+    location.reload(); // Reload the page
+  }
+});
+
+</script>
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
 

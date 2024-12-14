@@ -430,7 +430,7 @@
             <a href=""><i class="fas fa-phone-volume"></i>   +637 9089 6767</a>
           </div>
           <div class="email">
-            <a href="https://mail.google.com/mail/u/0/#inbox?compose=jrjtXSpwjzQMTfPSvtbdVvlFSLgnntkBqSCbzNBXGZBXJnHZjBBtVbFjPTcfWhsRnwcjnqKg"><i class="fas fa-envelope" >    </i>  cjcrsg.phils.inc@gmail.com</a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=cjcrsg.phils.inc@gmail.com" target="_blank"><i class="fas fa-envelope" >    </i>  cjcrsg.phils.inc@gmail.com</a>
           </div>
           <br>
           <div class="topic">Follow us</div>

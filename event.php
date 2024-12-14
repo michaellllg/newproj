@@ -87,6 +87,12 @@ background-color: #344687 !important; /* Darker shade for hover effect */
     color: maroon;
 }
 
+
+.links li.active a {
+    color:rgb(178, 168, 236); /* Your primary blue color */
+
+}
+
 </style>
 
 
@@ -111,7 +117,7 @@ background-color: #344687 !important; /* Darker shade for hover effect */
             <li><a href="dashboard.php?id=<?php echo $_GET['id']; ?>">Dashboard</a></li>
             <li><a href="member.php?id=<?php echo $_GET['id']; ?>">Member</a></li>
             <li><a href="record.php?id=<?php echo $_GET['id']; ?>">Attendance</a></li>
-            <li><a href="event.php?id=<?php echo $_GET['id']; ?>">Announcement</a></li>
+            <li class="active"><a href="event.php?id=<?php echo $_GET['id']; ?>">Announcement</a></li>
         </ul>
 
           <!-- Dropdown Menu -->
@@ -185,7 +191,18 @@ background-color: #344687 !important; /* Darker shade for hover effect */
     </div>
 
 
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('reload') === 'true') {
+    urlParams.delete('reload'); // Remove the reload flag from the URL
+    const newURL = `${window.location.pathname}?${urlParams.toString()}`;
+    window.history.replaceState(null, '', newURL); // Update the URL without reloading
+    location.reload(); // Reload the page
+  }
+});
 
+</script>
 
     <script>
        function createPost() {

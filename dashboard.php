@@ -26,7 +26,13 @@
     border: none;
 }
 .custom-view-btn:hover {
-    background-color: #5b6aa8; /* Slightly darker shade for hover effect */
+    background-color:rgb(60, 214, 214); /* Slightly darker shade for hover effect */
+}
+
+
+.links li.active a {
+    color:rgb(178, 168, 236); /* Your primary blue color */
+
 }
 
  </style>
@@ -45,7 +51,7 @@
           </a>
           <ul class="links">
               <span class="close-btn material-symbols-rounded">close</span>
-              <li><a  href="dashboard.php?id=<?php echo $_GET['id']; ?>">Dashboard</a></li>
+              <li class="active"><a  href="dashboard.php?id=<?php echo $_GET['id']; ?>">Dashboard</a></li>
               <li><a  href="member.php?id=<?php echo $_GET['id']; ?>">Member</a></li>
               <li><a  href="record.php?id=<?php echo $_GET['id']; ?>">Attendance</a></li>
               <li><a  href="event.php?id=<?php echo $_GET['id']; ?>">Announcement</a></li>
@@ -282,12 +288,20 @@ foreach ($combinedData as $row) {
 
 </div>
 
-    <!-- Your existing HTML code for the search, filter, and table remains unchanged -->
+   
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('reload') === 'true') {
+    urlParams.delete('reload'); // Remove the reload flag from the URL
+    const newURL = `${window.location.pathname}?${urlParams.toString()}`;
+    window.history.replaceState(null, '', newURL); // Update the URL without reloading
+    location.reload(); // Reload the page
+  }
+});
 
-<!-- Add the script for print functionality -->
-<!-- Your existing HTML and PHP code for the table remains unchanged -->
+</script>
 
-<!-- Add the script for print functionality -->
 <script>
     // Function to handle the print button click
     document.getElementById("printButton").addEventListener("click", function () {

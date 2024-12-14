@@ -91,7 +91,7 @@ header {
 }
 
 .navbar .links a:hover {
-  color: #19e8ff;
+  color: #8474e0;
 }
 
 .navbar .login-btn {
@@ -271,7 +271,7 @@ form button {
 }
 
 form button:hover {
-  background: #0097a7;
+  background: #6d5adb;
 }
 
 .form-content .bottom-link {
@@ -343,7 +343,7 @@ form button:hover {
   }
 
   .navbar .links a:hover {
-    color: #364687;
+    color: #abb5df;
   }
 
   .navbar .login-btn {

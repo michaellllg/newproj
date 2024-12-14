@@ -402,8 +402,9 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
                 Are you sure you want to save the changes?
             </div>
             <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
                 <button type="button" class="btn btn-success" id="confirmSaveButton" style="background-color: #0F3E84;">Yes</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+               
             </div>
         </div>
     </div>
@@ -420,10 +421,18 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
 
 
     <script>
-    // JavaScript to navigate back when the button is clicked
     function goBack() {
-      window.history.back(); // Navigate to the previous page
-    }
+  const previousPage = document.referrer; // Get the URL of the previous page
+  if (previousPage) {
+    const reloadURL = previousPage.includes('?') 
+      ? `${previousPage}&reload=true` 
+      : `${previousPage}?reload=true`;
+    window.location.href = reloadURL; // Navigate to the previous page with reload flag
+  } else {
+    window.history.back(); // Fallback to history navigation
+  }
+}
+
   </script>
 
 
