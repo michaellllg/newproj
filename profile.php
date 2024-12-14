@@ -374,7 +374,7 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
                         </div>
                         <div class="form-group">
                             <label for="editPhone">Phone number</label>
-                            <input type="number" class="form-control" id="editPhone" placeholder="Enter phone number"  pattern="\d{11}"  required>
+                            <input type="number" class="form-control" id="editPhone" placeholder="Enter phone number"  pattern="\d{12}"  required>
                         </div>
                         <div class="form-group">
                             <label for="editAddress">Address</label>
