@@ -96,7 +96,7 @@ $conn->close();
               <span class="close-btn material-symbols-rounded">close</span>
               <li><a  href="dashboard.php?id=<?php echo $_GET['id']; ?>">Dashboard</a></li>
               <li><a  href="member.php?id=<?php echo $_GET['id']; ?>">Member</a></li>
-              <li><a  href="record.php?id=<?php echo $_GET['id']; ?>">Attendance</a></li>
+              <li class="active" id="id"><a  href="record.php?id=<?php echo $_GET['id']; ?>">Attendance</a></li>
               <li><a  href="event.php?id=<?php echo $_GET['id']; ?>">Announcement</a></li>
           </ul>
                    <!-- Dropdown Menu -->
