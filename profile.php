@@ -421,17 +421,10 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
 
 
     <script>
+    // JavaScript to navigate back when the button is clicked
     function goBack() {
-  const previousPage = document.referrer; // Get the URL of the previous page
-  if (previousPage) {
-    const reloadURL = previousPage.includes('?') 
-      ? `${previousPage}&reload=true` 
-      : `${previousPage}?reload=true`;
-    window.location.href = reloadURL; // Navigate to the previous page with reload flag
-  } else {
-    window.history.back(); // Fallback to history navigation
-  }
-}
+            window.history.back(); // Navigate to the previous page
+        }
 
   </script>
 
