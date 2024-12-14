@@ -669,8 +669,10 @@ form button {
 }
 
 form button:hover {
-    background: #8090d3;
+    background: #6D7EC5;
     color:#0a2c5f;
+    border:#0a2c5f ;
+    font-weight: bold;
 }
 
 .form-content .bottom-link {
