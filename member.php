@@ -565,32 +565,34 @@ $(function () {
 
         getUsers(); // Call function to fetch users
 
+        
+
     });
 
-
-
-
-
-    document.getElementById('addMemberBtn').addEventListener('click', function () {
-    const confirmation = confirm('Are you sure you want to add this member?');
-    if (confirmation) {
-        const form = document.getElementById('addMemberForm');
-
-        // Validate the form fields
-        if (!form.checkValidity()) {
-            alert('Please fill in all required fields correctly.');
-            return;
-        }
-
-        // Submit the form or perform AJAX request to add the member
-        alert('Member added successfully!'); // Replace this with your actual functionality
-    } else {
-        // User canceled the action
-        alert('Add Member action canceled.');
-    }
-});
-
+    
 </script>
+
+
+<script>
+    // Handle the Add Member Button
+    document.getElementById("addMemberBtn").addEventListener("click", function () {
+        // Display a confirmation dialog
+        const confirmAction = confirm("Are you sure you want to add this member?");
+        if (confirmAction) {
+            // Simulate form submission or handle the actual form submission here
+            const form = document.getElementById("addMemberForm");
+            if (form.checkValidity()) {
+                alert("Member added successfully!"); // Replace with actual form submission logic
+                form.reset(); // Clear the form
+            } else {
+                alert("Please fill out all required fields.");
+            }
+        } else {
+            alert("Action cancelled.");
+        }
+    });
+</script>
+
   
     <!-- Linking custom script -->
     <script src="js/dashbooard.js"></script>
