@@ -90,7 +90,7 @@ $conn->close();
         /* Dropdown for selecting years */
         .year-dropdown {
             position: absolute;
-            top: 90px;
+            top: 30px;
             right: 80px;
             padding: 5px 10px;
             border-radius: 5px;

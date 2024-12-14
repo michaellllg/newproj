@@ -268,7 +268,7 @@ $conn->close();
     </div>
     <div class="col-md-6 d-flex justify-content-end align-items-center">
         <select id="filterInput" class="form-select d-inline-block " style="width: 110px; margin-right: 5px;">
-            <option value="">Filter by Status</option>
+            <option value="">None</option>
             <option value="Active">Active</option>
             <option value="Inactive">Inactive</option>
         </select>
@@ -586,6 +586,30 @@ $(function () {
         getUsers(); // Call function to fetch users
 
     });
+
+
+
+
+
+    document.getElementById('addMemberBtn').addEventListener('click', function () {
+    const confirmation = confirm('Are you sure you want to add this member?');
+    if (confirmation) {
+        const form = document.getElementById('addMemberForm');
+
+        // Validate the form fields
+        if (!form.checkValidity()) {
+            alert('Please fill in all required fields correctly.');
+            return;
+        }
+
+        // Submit the form or perform AJAX request to add the member
+        alert('Member added successfully!'); // Replace this with your actual functionality
+    } else {
+        // User canceled the action
+        alert('Add Member action canceled.');
+    }
+});
+
 </script>
   
     <!-- Linking custom script -->
