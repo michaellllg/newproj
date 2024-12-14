@@ -48,7 +48,7 @@
               <li><a  href="dashboard.php?id=<?php echo $_GET['id']; ?>">Dashboard</a></li>
               <li><a  href="member.php?id=<?php echo $_GET['id']; ?>">Member</a></li>
               <li><a  href="record.php?id=<?php echo $_GET['id']; ?>">Attendance</a></li>
-              <li><a  href="event.php?id=<?php echo $_GET['id']; ?>">Event</a></li>
+              <li><a  href="event.php?id=<?php echo $_GET['id']; ?>">Announcement</a></li>
           </ul>
                   <!-- Dropdown Menu -->
         <div class="dropdown">
