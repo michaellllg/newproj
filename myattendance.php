@@ -373,6 +373,20 @@ $conn->close();
         </ul>
     </div>
 </div>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('reload') === 'true') {
+    urlParams.delete('reload'); // Remove the reload flag from the URL
+    const newURL = `${window.location.pathname}?${urlParams.toString()}`;
+    window.history.replaceState(null, '', newURL); // Update the URL without reloading
+    location.reload(); // Reload the page
+  }
+});
+
  <script src = "https://cdn.jsdelivr.net/npm/chart.js"></script>
  <script>
   const ctx = document.getElementById('myChart');
