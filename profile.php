@@ -402,7 +402,7 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
                 Are you sure you want to save the changes?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="confirmSaveButton">Yes</button>
+                <button type="button" class="btn btn-success" id="confirmSaveButton" style="background-color: #0F3E84;">Yes</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
             </div>
         </div>
