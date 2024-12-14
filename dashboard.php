@@ -241,7 +241,7 @@ $conn->close();
 <div class="table-responsive">
     <table class="table table-striped table-bordered" id="dataTable">
         <thead class="table-black">
-            <tr>
+            <tr style= "cursor: pointer;">
                 <th scope="col" style="width: 10%;" data-sort="name">ID
                     <span class="sort-icon">&#9650;&#9660;</span>
                 </th>
