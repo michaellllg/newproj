@@ -213,7 +213,7 @@ $conn->close();
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="confirmationModalLabel">Confirm Add Member</h5>
+                <h5 class="modal-title" id="confirmationModalLabel" style="background-color: #0F3E84;">Confirm Add Member</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -223,7 +223,7 @@ $conn->close();
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                <button type="button" class="btn btn-primary" id="confirmAddMemberBtn">Yes, Add Member</button>
+                <button type="button" class="btn btn-primary" id="confirmAddMemberBtn" style="background-color: #0F3E84;" >Yes, Add Member</button>
             </div>
         </div>
     </div>
