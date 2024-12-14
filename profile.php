@@ -353,7 +353,7 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
                     <form id="editProfileForm">
                         <div class="form-group">
                             <label for="editName">Name</label>
-                            <input type="text" class="form-control" id="editName" placeholder="Enter name">
+                            <input type="text" class="form-control" id="editName" placeholder="Enter name" required>
                         </div>
 
                         
@@ -366,19 +366,19 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
                         </div>
                         <div class="form-group">
                             <label for="editLifeStage">Life Stage</label>
-                            <input type="text" class="form-control" id="editLifeStage" placeholder="Enter life stage">
+                            <input type="text" class="form-control" id="editLifeStage" placeholder="Enter life stage" required>
                         </div>
                         <div class="form-group">
                             <label for="editEmail">Email address</label>
-                            <input type="email" class="form-control" id="editEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                            <input type="email" class="form-control" id="editEmail" aria-describedby="emailHelp" placeholder="Enter email" required>
                         </div>
                         <div class="form-group">
                             <label for="editPhone">Phone number</label>
-                            <input type="text" class="form-control" id="editPhone" placeholder="Enter phone number">
+                            <input type="number" class="form-control" id="editPhone" placeholder="Enter phone number"  pattern="\d{11}"  required>
                         </div>
                         <div class="form-group">
                             <label for="editAddress">Address</label>
-                            <input type="text" class="form-control" id="editAddress" placeholder="Enter address">
+                            <input type="text" class="form-control" id="editAddress" placeholder="Enter address" required>
                         </div>
                         <button type="submit" class="btn btn-primary" style="background-color: #0F3E84;">Save Changes</button>
                     </form>
