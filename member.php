@@ -574,23 +574,46 @@ $(function () {
 
 
 <script>
-    // Handle the Add Member Button
-    document.getElementById("addMemberBtn").addEventListener("click", function () {
-        // Display a confirmation dialog
-        const confirmAction = confirm("Are you sure you want to add this member?");
-        if (confirmAction) {
-            // Simulate form submission or handle the actual form submission here
-            const form = document.getElementById("addMemberForm");
-            if (form.checkValidity()) {
-                alert("Member added successfully!"); // Replace with actual form submission logic
-                form.reset(); // Clear the form
-            } else {
-                alert("Please fill out all required fields.");
-            }
-        } else {
-            alert("Action cancelled.");
-        }
-    });
+   document.getElementById("addMemberBtn").addEventListener("click", function () {
+const formFields = {
+name: document.getElementById("memberName").value.trim(),
+role: document.getElementById("memberRole").value,
+status: document.getElementById("memberStatus").value,
+lifeStage: document.getElementById("memberLifeStage").value.trim(),
+email: document.getElementById("memberEmail").value.trim(),
+password: document.getElementById("memberPassword").value.trim(),
+phone: document.getElementById("memberPhone").value.trim(),
+address: document.getElementById("memberAddress").value.trim()
+};
+
+const isFormValid = Object.values(formFields).every(value => value !== "");
+
+if (isFormValid) {
+$("#confirmationModal").modal("show");
+
+document.getElementById("confirmAddMemberBtn").onclick = function () {
+fetch("api/addMember.php", {
+method: "POST",
+headers: { "Content-Type": "application/json" },
+body: JSON.stringify(formFields)
+})
+.then(response => response.json())
+.then(data => {
+if (data.success) {
+location.reload(); // Refresh page on success
+} else {
+alert("Error adding member: " + data.message);
+}
+})
+.catch(error => {
+console.error("Error:", error);
+alert("An unexpected error occurred.");
+});
+};
+} else {
+alert("Please fill in all the fields before proceeding.");
+}
+});
 </script>
 
   
