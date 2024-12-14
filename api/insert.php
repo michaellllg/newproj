@@ -60,11 +60,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $stmt_check_member->close();
         }
 
-        $sql_insert = "INSERT INTO attendance (memberID, date) VALUES (?, NOW())"; // Use NOW() for current timestamp
+        // Use PHP to generate the current timestamp
+        $currentTimestamp = date('Y-m-d H:i:s');
+
+        $sql_insert = "INSERT INTO attendance (memberID, date) VALUES (?, ?)";
         $stmt_insert = $conn->prepare($sql_insert);
 
         if ($stmt_insert) {
-            $stmt_insert->bind_param("i", $memberID);
+            $stmt_insert->bind_param("is", $memberID, $currentTimestamp);
             $stmt_insert->execute();
 
             if ($stmt_insert->affected_rows > 0) {

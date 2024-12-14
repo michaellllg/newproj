@@ -1,0 +1,132 @@
+.container {
+    width: 30% !important;
+    max-width: 450px !important;
+    min-width: 450px !important;
+    margin: 30px;
+
+    
+}
+
+.container h1 {
+    color: #364687;
+}
+
+.section {
+    background-color: #EAEDF7;
+    padding: 50px 30px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);}
+
+#my-qr-reader {
+    padding: 20px !important;
+   
+}
+
+#my-qr-reader img[alt="Info icon"] {
+    display: none;
+}
+
+#my-qr-reader img[alt="Camera based scan"] {
+    width: 100px !important;
+    height: 100px !important;
+}
+
+button {
+    padding: 10px 20px;
+    border: 1px solid #b2b2b2;
+    outline: none;
+    border-radius: 0.25em;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    background-color: #0F3E84;
+    transition: 0.3s background-color;
+}
+
+button:hover {
+    background-color: #586CBC;
+}
+
+.inputID a{
+    color: #0F3E84;
+    font-style: normal;
+    position: relative;
+    bottom: 38px;
+    left: 150px;
+}
+
+
+
+
+
+
+#my-qr-reader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  height: auto;
+  padding: 20px;
+}
+
+#my-qr-reader video {
+  width: 320px !important; /* Original width */
+  height: 320px !important; /* Original height */
+  max-width: 100%;
+  border: 2px solid #b2b2b2 !important;
+  border-radius: 0.25em;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For devices with a max-width of 768px (tablets and smaller) */
+@media (max-width: 768px) {
+  .container {
+    width: 90% !important;
+    max-width: 100% !important;
+    min-width: auto !important;
+    margin: 15px;
+  }
+
+
+
+  #my-qr-reader video {
+    width: 400px !important; /* Adjusted size */
+    height: 240px !important; /* Adjusted size */
+  }
+
+  .inputID a {
+    bottom: 30px;
+    left: 160px;
+  }
+}
+
+/* For devices with a max-width of 480px (mobile phones) */
+@media (max-width: 480px) {
+  .container {
+    width: 100% !important;
+    margin: 10px;
+  }
+
+
+
+  #my-qr-reader video {
+    width: 240px !important; /* Adjusted size */
+    height: 200px !important; /* Adjusted size */
+  }
+
+  .inputID a {
+    bottom: 25px;
+    left: 100px;
+    bottom: 40px;
+  }
+
+  button {
+    font-size: 13px;
+    padding: 8px 15px;
+  }
+}
+
+

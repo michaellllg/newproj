@@ -5,6 +5,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="images/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CJCRSG</title>
     <!-- Linking Google fonts for icons -->
@@ -45,11 +46,11 @@
   }
 
   .mision-vision h1 {
-    font-size: 1.4rem;
+    font-size: 3.1rem;
   }
 
   .mision-vision h3 {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
   }
 }
 
@@ -63,11 +64,11 @@
   }
 
   .mision-vision h1 {
-    font-size: 1.2rem;
+    font-size: 3rem;
   }
 
   .mision-vision h3 {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 }
 </style>
@@ -88,7 +89,7 @@
               <h2>CJCRSG</h2>
           </a>
           <ul class="links">
-              <span class="close-btn material-symbols-rounded">close</span>
+              <span class="close-btn material-symbols-rounded" id="closeb">close</span>
               <li><a href="#" class="navl">Home</a></li>
               <li><a href="#image-gallery" class="navl">Gallery</a></li>
               <li><a href="#about" class="navl">About</a></li>
@@ -224,7 +225,8 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="images/1.gif" alt="First slide">
+        <img class="d-block w-100" src="images/1.gif" alt="First slide" loading="lazy">
+
         </div>
         <div class="carousel-item">
           <img class="d-block w-100" src="images/2.png" alt="Second slide">
@@ -428,7 +430,7 @@
             <a href="#"><i class="fas fa-phone-volume"></i>   +637 9089 6767</a>
           </div>
           <div class="email">
-            <a href="#"><i class="fas fa-envelope">    </i>  cjcrsg@gmail.com</a>
+            <a href="#"><i class="fas fa-envelope" >    </i>  cjcrsg@gmail.com</a>
           </div>
           <br>
           <div class="topic">Follow us</div>
@@ -462,11 +464,15 @@
 
 
     <script>
+
+$('.carousel').on('slide.bs.carousel', function () {
+    // Logic to load content after the slide has been shown
+});
+
+
   let body = document.querySelector("body"),
       lightBox = document.querySelector(".lightBox"),
       img = document.querySelectorAll(".gImg"),
-      showImg = lightBox.querySelector(".showImg img"),
-      close = lightBox .querySelector(".close");
      for (let image of img) {
        image.addEventListener("click", ()=>{
          showImg.src = image.src;

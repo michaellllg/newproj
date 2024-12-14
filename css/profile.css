@@ -197,7 +197,7 @@ header {
     color: #333;
 }
 .profile-head h6{
-    color: #0062cc;
+    color: #364687;
 }
 .profile-edit-btn{
     border: none;
@@ -207,6 +207,8 @@ header {
     font-weight: 600;
     color: #6c757d;
     cursor: pointer;
+    z-index: 2 !important; /* Add this to ensure the button is on top */
+    
 }
 .proile-rating{
     font-size: 12px;
@@ -227,11 +229,12 @@ header {
 }
 .profile-head .nav-tabs .nav-link.active{
     border: none;
-    border-bottom:2px solid #0062cc;
+    border-bottom:2px solid #364687;
 }
 .profile-work{
     padding: 14%;
-    margin-top: -15%;
+    margin-top: 1%;
+    z-index: 1 !important; /* Add this to ensure the button is on top */
 }
 .profile-work p{
     font-size: 12px;
@@ -253,5 +256,5 @@ header {
 }
 .profile-tab p{
     font-weight: 600;
-    color: #0062cc;
+    color: #364687;
 }

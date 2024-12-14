@@ -42,7 +42,7 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
 
     // Execute the query and check for errors
     if (mysqli_query($conn, $sql)) {
-        $msg = "Image updated successfully in the database!";
+        $msg = "Image updated successfully!!";
 
         // If there's an old image, delete it from the uploads folder
         if ($currentImage && file_exists("uploads/" . $currentImage)) {
@@ -51,9 +51,9 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
 
         // Move the uploaded image into the 'uploads' folder
         if (move_uploaded_file($tempname, $folder)) {
-            $msg .= " New image uploaded successfully to folder!";
+            $msg .= " New image uploaded successfully!";
         } else {
-            $msg .= " Failed to upload new image to folder!";
+            $msg .= " Failed to upload new image!";
         }
     } else {
         $msg = "Error updating image in the database: " . mysqli_error($conn);
@@ -72,8 +72,9 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="images/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Profile</title>
     <link rel="stylesheet" href="css/profile.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -96,8 +97,68 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
 /* Dimmed effect for modals underneath */
 .modal.dimmed {
     filter: brightness(50%); /* Darkens the modal to simulate dimming */
+
+     /* Ensure modal width remains constant */
+  #qrCodeModal .modal-dialog {
+    max-width: 400px; /* Set a fixed maximum width */
+    width: 100%; /* Make it responsive */
+  }
+
+  /* Ensure image inside modal does not stretch */
+  #qrCodeImage {
+    width: 100%; /* Ensures the image is responsive */
+    height: auto; /* Keep aspect ratio intact */
+  }
+
+  /* Optional: Ensure button stays properly aligned */
+  #downloadQRCodeBtn {
+    width: 100%; /* Ensures button remains responsive */
+  }
 }
 
+ /* Custom button color */
+ #downloadQRCodeBtn {
+    width: 100%; /* Ensures button remains responsive */
+    background-color: #364687; /* Custom background color */
+    color: white; /* White text for contrast */
+    border: none; /* Remove default border */
+  }
+
+  /* Optional: Add hover effect for button */
+  #downloadQRCodeBtn:hover {
+    background-color: #2e3e81; /* Darken on hover */
+  }
+
+  .custom-btn {
+    background-color: #364687;
+    border-color: #364687;
+    color: white; /* White text for contrast */
+    border: none; /* Remove default border */
+}
+
+.custom-btn:hover {
+    background-color: #2c3e66; /* Optional: Hover color */
+    border-color: #2c3e66; /* Optional: Hover border color */
+}
+
+/* Default color for nav-link */
+.nav-link {
+    color:rgb(107, 115, 146) !important; /* Change this to the color you prefer */
+}
+
+/* Color for the active nav-link */
+.nav-link.active {
+    color: #364687 !important;
+}
+/* Hover effect for nav-link */
+.nav-link:hover {
+    color: #2c3e66 !important; /* Change this to the desired hover color */
+}
+@media (max-width: 767px) {
+    .profile-edit-btn {
+        display: block !important; /* Ensure the button is visible on mobile */
+    }
+}
 
 </style>
 <body>
@@ -163,9 +224,9 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
                 <div class="col-md-6">
                     <div class="profile-head">
                         <h5>
-                            <span id="memberName">Michael Nacion</span>
+                            <span id="memberName"></span>
                         </h5>
-                        <h6 id="roleType">Admin</h6>
+                        <h6 id="roleType"></h6>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
@@ -192,12 +253,21 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
                     <div class="tab-content profile-tab" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
+                        <div class="row">
+                        <div class="col-md-6">
+                            <label>Member ID</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p id="memberID"></p>
+                         </div>
+                            </div>
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>Email</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p id="email">nacionm007@gmail.com</p>
+                                    <p id="email"></p>
                                 </div>
                             </div>
                             
@@ -206,7 +276,7 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
                                     <label>Phone</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p id="phone">09123456789</p>
+                                    <p id="phone"></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -214,7 +284,7 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
                                     <label>Status</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p id="status">Active</p>
+                                    <p id="status"></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -222,7 +292,7 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
                                     <label>Life Stage</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p id="lifeStage">College Student</p>
+                                    <p id="lifeStage"></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -230,17 +300,18 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
                                     <label>Address</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <p id="address">San Roque</p>
+                                    <p id="address"></p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-<!-- QR Code Modal Trigger Button -->
-<button type="button" class="btn btn-primary" id="generateQRCodeBtn">View your QR Code</button>
+
+<button type="button" class="btn custom-btn" id="generateQRCodeBtn">View your QR Code</button>
+
 
 <!-- QR Code Modal -->
-<div class="modal fade" id="qrCodeModal" tabindex="-1" role="dialog" aria-labelledby="qrCodeModalLabel" aria-hidden="true" style="max-width: 20%; margin: auto;">
+<div class="modal fade" id="qrCodeModal" tabindex="-1" role="dialog" aria-labelledby="qrCodeModalLabel" aria-hidden="true" style="max-width: 400px; width: 100%; margin: auto;">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -254,7 +325,7 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
         <img id="qrCodeImage" src="" alt="QR Code" class="img-fluid" />
         <br />
         <!-- Download Button -->
-        <a href="" id="downloadQRCodeBtn" class="btn btn-success mt-2" download="qrcode.png">Download</a>
+        <a href="" id="downloadQRCodeBtn" class="btn btn-success mt-2" download="qrcodeID<?php echo $memberID; ?>.png">Download</a>
       </div>
     </div>
   </div>
@@ -317,8 +388,7 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
     </div>
 
 
-
-    <!-- Confirmation Modal -->
+<!-- Confirmation Modal -->
 <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -339,6 +409,15 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
     </div>
 </div>
 
+<script>
+    // Handle the 'Yes' button click
+    $('#confirmSaveButton').click(function() {
+        // Refresh the page
+        location.reload();
+    });
+</script>
+
+
 
     <script>
     // JavaScript to navigate back when the button is clicked
@@ -357,6 +436,30 @@ if (isset($_FILES['uploadfile']) && $memberID > 0) {
 
 
     <script>
+
+// Fetch the memberID from the URL
+function getParameterByName(name) {
+    var urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name) || '';
+}
+
+// Fetch and display memberID (padded with leading zeros)
+$(document).ready(function () {
+    var memberID = getParameterByName('id'); // Get the memberID from the URL
+    if (memberID) {
+        // Pad the memberID to be 4 digits
+        var paddedMemberID = ('000' + memberID).slice(-4);
+        $('#memberID').text(paddedMemberID); // Display it in the profile
+    }
+});
+
+
+
+
+
+
+
+
         $(document).ready(function () {
     let formData = {}; // Declare formData in a wider scope for reuse
 

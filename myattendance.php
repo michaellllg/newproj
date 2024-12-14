@@ -40,6 +40,7 @@ $conn->close();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="images/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contribution Graph</title>
     <style>
@@ -59,10 +60,11 @@ $conn->close();
             display: flex;
             justify-content: center;  /* Center the graph horizontally */  
             align-items: center;      /* Center the graph vertically */
-            height: 100vh;            /* Full viewport height */
+            height: 50vh;            /* Full viewport height */
             padding: 20px;
             position: relative;       /* Needed to position the dropdown */
-            bottom: 100px;
+            top: 30px;
+            z-index: 0 !important;
         }
 
         /* Styling for the graph container */
@@ -72,21 +74,23 @@ $conn->close();
                                  "days squares";
             grid-template-columns: auto 1fr;
             grid-gap: 10px;
-            background-color: white;   /* White background for the graph */
+            background-color:rgb(165, 165, 165);   /* White background for the graph */
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Shadow effect */
             border-radius: 10px;       /* Rounded corners for the graph container */
             padding: 20px;
             max-width: 100%;           /* Make sure it fits within the viewport */
             overflow: hidden;
             transform: scale(1.2);     /* Scale the graph to 120% (20% bigger) */
-            transform-origin: center; /* Ensure scaling happens from the center */
+            transform-origin: center;
+            overflow-x: auto; /* Add horizontal scroll on smaller screens */
+    -webkit-overflow-scrolling: touch; /* Enable smooth scrolling for touch devices */
         }
         
 
         /* Dropdown for selecting years */
         .year-dropdown {
             position: absolute;
-            top: 200px;
+            top: 50px;
             right: 80px;
             padding: 5px 10px;
             border-radius: 5px;
@@ -158,13 +162,17 @@ $conn->close();
             margin: 0;
             padding: 0;
             background-color: #f7f7f7; /* Light background for the page */
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         .graph {
             padding: 20px;
             border: 1px #e1e4e8 solid;
-            margin: 70px;
+            margin-top: 20px;
+            margin-right: 70px;
+            margin-bottom: 20px;
+            margin-left: 70px;
+            z-index: 0 !important;
         }
         /* Style for the H1 heading */
         h1 {
@@ -179,17 +187,18 @@ $conn->close();
         }
 
 
+
         
 /* Container for Admin Section */
 .admin-container {
   text-align: left; /* Align text to the left */
   margin-top: 20px;
-  margin-left: 100px; /* Align to the left edge */
+  margin-left: 70px; /* Align to the left edge */
   padding-top: 30px;
-  padding-right: 300px;
+  padding-right: 50px;
   position: relative;
   top: 50px;
-  z-index: 1;
+
 
  
 }
@@ -244,113 +253,68 @@ $conn->close();
   box-sizing: border-box;
 }
 
+@media (max-width: 1400px) {
 
 
+.graph{
+  position: relative;
+  top: 100px !important;
+}
+}
 
+@media (max-width: 600px) {
+.admin-greeting{
+  font-size: 15px;
+}
 
+.admin-description{
+  font-size: 10px;
+}
+.admin-button{
+  font-size: 15px;
+}
 
-@media (max-width: 1024px) {
-  .admin-container {
-    margin-left: 5px;
-    padding-right: 150px;
-  }
+.graph{
+  position: relative;
+  top: 100px !important;
+  margin: 1px 70px;
+}
+}
 
-  .container-wrapper {
-    gap: 10px;
-    padding: 0 10px;
-  }
+@media (max-width: 430px) {
+.admin-greeting{
+  font-size: 15px;
+}
+
+.admin-description{
+  font-size: 10px;
+}
+.admin-button{
+  font-size: 15px;
+}
+
+.graph{
+  position: relative;
+  top: -100px;
+}
 
 }
 
-
-
-/* For screens between 991px and 1399px */
-@media (min-width: 991px) and (max-width: 1399px) {
-  /* Admin container stays aligned to the left */
-  .admin-container {
-    text-align: left; /* Align text to the left */
-    margin-top: 20px;
-    margin-left: 10px; /* Ensure the container is on the left side */
-    padding-top: 30px;
-    padding-right: 10px; /* Adjust padding */
-  }
-
-  /* Flex container should align the widget and chart side by side */
-  .container-wrapper {
-    display: flex;
-    gap: 10px; /* Increase gap between the widget and chart */
-    justify-content: flex-start; /* Align to the left */
-    align-items: flex-start; /* Align at the top */
-    margin: 20px auto;
-    padding: 0 20px; /* Ensure proper padding on the sides */
-    flex-wrap: wrap; /* Allow wrapping if needed */
-    box-sizing: border-box;
-  }
-
-}
- 
-
-  /* Ensure the greeting text and description are properly sized */
-  .admin-greeting {
-    font-size: 26px; /* Adjust font size */
-    color: #0f3e84;
-  }
-
-  .admin-description {
-    font-size: 14px; /* Adjust font size */
-  }
-
-  /* Adjust button size */
-  .attendance-button {
-    font-size: 14px;
-    padding: 10px 18px; /* Adjust padding for better fit */
-  }
-
-
-
-@media (max-width: 768px) {
-  .container-wrapper {
-    flex-direction: column; /* Stack vertically below 768px */
-    align-items: center;
-  }
-
-  
-
-  .admin-container {
-    margin-left: 5px;
-    padding-right: 0;
-    margin-bottom: 20px;
-  }
-
-
+@media (max-width: 360px) {
+.admin-greeting{
+  font-size: 15px;
 }
 
-
-
-
-@media (max-width: 346px) {
-  /* Very small screens adjustments */
-  .container-wrapper {
-    flex-direction: column; /* Ensure vertical stacking on very small screens */
-  }
-
- 
+.admin-description{
+  font-size: 10px;
+}
+.admin-button{
+  font-size: 15px;
 }
 
-
-@media (max-width: 320px) {
-
-
-  .admin-container {
-    padding-right: 0; /* Remove extra padding */
-  }
+.graph{
+  margin: 20px 15px;
 }
-
-@media (max-width: 200px) {
-
-  .admin-container {
-    font-size: 10px; /* Reduce font size for tiny screens */
-  }
 }
 
     </style>
