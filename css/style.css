@@ -669,7 +669,8 @@ form button {
 }
 
 form button:hover {
-    background: #4d5fa6;
+    background: #8090d3;
+    color:#0a2c5f;
 }
 
 .form-content .bottom-link {
